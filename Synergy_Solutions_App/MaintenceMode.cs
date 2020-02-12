@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
-Dictionary<string, Boolean> Clickedcontainer = new Dictionary<string, Boolean>();
+
 namespace Synergy_Solutions_App
 {
+
     public partial class MaintenceMode : Form
     {
-       //*********************************
-       // Constant Definitions
-       //*********************************
+        //*********************************
+        // Constant Definitions
+        //*********************************
         Thread th;
 
         public MaintenceMode()
@@ -38,6 +39,10 @@ namespace Synergy_Solutions_App
             textBox14.ReadOnly = true;
         }
 
+        private bool yeet()
+        {
+            return true;
+        }
         private void shitGoBakcToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -64,7 +69,7 @@ namespace Synergy_Solutions_App
 
         private void button11_Click(object sender, EventArgs e)
         {
-          //  textBox7.Text = "Active";
+            ClickedContainer.Add("button1Clicked", true);
         }
 
         private void label2_Click(object sender, EventArgs e)
