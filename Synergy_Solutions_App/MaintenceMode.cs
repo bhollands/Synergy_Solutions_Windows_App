@@ -17,11 +17,9 @@ namespace Synergy_Solutions_App
     public partial class MaintenceMode : Form
     {
         bool isConnected = false;
- 
-        
-        //*********************************
-        // Constant Definitions
-        //*********************************
+        string lastWritten;
+        string log;
+
         Thread th;
 
         public MaintenceMode()
@@ -37,8 +35,8 @@ namespace Synergy_Solutions_App
         private void readOnly()
         {
             TextBox[] textBox = {textBox1, textBox2, textBox3, textBox4, textBox5,
-                                textBox6, textBox7, textBox8,Dbug_window, textBox10, textBox11, textBox12,
-                                textBox13, textBox14,};
+                                textBox6, LEDbox1, LEDbox4,Dbug_window, LEDbox6, LEDbox5, LEDbox7,
+                                LEDbox3, LEDbox2,};
             foreach (TextBox textbox in textBox)
             {
                 textbox.ReadOnly = true;
@@ -62,15 +60,7 @@ namespace Synergy_Solutions_App
 
         private void shitGoBakcToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             this.Close();
-            //UserMode um = new UserMode();
-            //um.Show();
-
-
-/*            th = new Thread(opennewform);
-            th.SetApartmentState(ApartmentState.STA);
-            th.Start();*/
         }
 
         private void opennewform()
@@ -83,29 +73,9 @@ namespace Synergy_Solutions_App
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void button11_Click(object sender, EventArgs e)
-        {
-           // port.Write("#LED1OF\n");
 
-            if (isConnected && "#LED1ON\n" != lastWritten)
-            {
-                writeToPort("#LED1ON\n");
-                textBox7.Text = "Active";
-                //port.Write("#LED1ON\n");
-            }
-            else
-            {
-                writeToPort("#LED1OF\n");
-                textBox7.Text = "Inactive";
-            }
-        }
-
-        string lastWritten;
         private void writeToPort(string mesg)
         {
             try
@@ -116,219 +86,89 @@ namespace Synergy_Solutions_App
             catch (System.InvalidOperationException)
             {
                 
-                string send = GetTimeStamp(DateTime.Now) + " | " + "ERROR: No Connected Port" + Environment.NewLine;
-                AppendText(rich_traffic_window, send, Color.Red);
+                string send = "ERROR: No Connected Port";
+                logTraffic(rich_traffic_window, send, Color.Red);
                 return;
             }
 
-            
-            string sent = GetTimeStamp(DateTime.Now)+ " | " +port.PortName + "_Tx: " + mesg + Environment.NewLine;
-            AppendText(rich_traffic_window, sent, Color.Black);
-            //traffic_window.AppendText(port.PortName+"_Tx: "+mesg+Environment.NewLine);
+            string sent = port.PortName + "_Tx: " + mesg;
+            logTraffic(rich_traffic_window, sent, Color.Black);
         }
 
         private string GetTimeStamp(DateTime value)
         {
             return value.ToString("HH:mm:ss");
         }
-/*        private void toLog(string toPost)
-        {
-            string newLine = Environment.NewLine;
-            string time = GetTimeStamp(DateTime.Now);
-            logString = logString.Insert(0, time + " | " + toPost + newLine);
-            textBox1.Text = logString;
-        }*/
 
-        private void AppendText(RichTextBox box, string text, Color color)
+        bool grey = false;
+        private void logTraffic(RichTextBox box, string text, Color color)
         {
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
 
             box.SelectionColor = color;
-            box.AppendText(text);
+            //string time = GetTimeStamp(DateTime.Now) + " | ";
+            box.AppendText(text+Environment.NewLine);
+            if (grey == true)
+            {
+                box.SelectionBackColor = Color.White;
+                grey = false;
+            }
+            else
+            {
+                box.SelectionBackColor = Color.LightGray;
+                grey = true; ; ;
+            }
             box.SelectionColor = box.ForeColor;
+            box.ScrollToCaret();
         }
-        private void label2_Click(object sender, EventArgs e)
+
+        private void button5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button11_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox14_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox11_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
+            ledButton(1);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-
+            ledButton(2);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-
+            ledButton(3);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            ledButton(4);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            ledButton(5);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ledButton(6);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
+            ledButton(7);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void textBox9_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox17_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox18_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -338,10 +178,27 @@ namespace Synergy_Solutions_App
 
         }
 
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void ledButton(int no)
         {
+            TextBox[] ledBox = {LEDbox1, LEDbox2, LEDbox3, LEDbox4,
+                                LEDbox5, LEDbox6, LEDbox7};
+            string Oncommand = "#LED" + no + "ON\n";
+            string OFFcommand = "#LED" + no + "OF\n";
+            TextBox activeBox;
+            activeBox = ledBox[no-1];
 
+            if (isConnected && Oncommand != lastWritten)
+            {
+                writeToPort(Oncommand);
+                activeBox.Text = "Active";
+            }
+            else
+            {
+                writeToPort(OFFcommand);
+                activeBox.Text = "Inactive";
+            }
         }
+    
 
         private void button5_Click_1(object sender, EventArgs e)
         {
@@ -393,17 +250,5 @@ namespace Synergy_Solutions_App
             Dbug_window.AppendText("--------------------------------------" + Environment.NewLine);
 
         }
-
-        private void textBox9_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rich_traffic_window_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
-
-
 }

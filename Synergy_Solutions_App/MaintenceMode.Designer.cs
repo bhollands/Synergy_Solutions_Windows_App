@@ -35,13 +35,13 @@
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.shitGoBakcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.LED_1 = new System.Windows.Forms.Button();
+            this.LED_7 = new System.Windows.Forms.Button();
+            this.LED_6 = new System.Windows.Forms.Button();
+            this.LED_5 = new System.Windows.Forms.Button();
+            this.LED_4 = new System.Windows.Forms.Button();
+            this.LED_3 = new System.Windows.Forms.Button();
+            this.LED_2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -80,13 +80,13 @@
             this.button8 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.port = new System.IO.Ports.SerialPort(this.components);
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.LEDbox7 = new System.Windows.Forms.TextBox();
+            this.LEDbox6 = new System.Windows.Forms.TextBox();
+            this.LEDbox5 = new System.Windows.Forms.TextBox();
+            this.LEDbox3 = new System.Windows.Forms.TextBox();
+            this.LEDbox2 = new System.Windows.Forms.TextBox();
+            this.LEDbox1 = new System.Windows.Forms.TextBox();
+            this.LEDbox4 = new System.Windows.Forms.TextBox();
             this.rich_traffic_window = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -135,7 +135,6 @@
             this.shitGoBakcToolStripMenuItem.Name = "shitGoBakcToolStripMenuItem";
             this.shitGoBakcToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.shitGoBakcToolStripMenuItem.Text = "Shit go Bakc";
-            this.shitGoBakcToolStripMenuItem.Click += new System.EventHandler(this.shitGoBakcToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -146,77 +145,76 @@
             this.textBox1.Size = new System.Drawing.Size(109, 24);
             this.textBox1.TabIndex = 10;
             this.textBox1.Text = "Inactive";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button11
+            // LED_1
             // 
-            this.button11.Location = new System.Drawing.Point(257, 36);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 15;
-            this.button11.Text = "LED 1";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.LED_1.Location = new System.Drawing.Point(257, 36);
+            this.LED_1.Name = "LED_1";
+            this.LED_1.Size = new System.Drawing.Size(75, 23);
+            this.LED_1.TabIndex = 15;
+            this.LED_1.Text = "LED 1";
+            this.LED_1.UseVisualStyleBackColor = true;
+            this.LED_1.Click += new System.EventHandler(this.button11_Click);
             // 
-            // button3
+            // LED_7
             // 
-            this.button3.Location = new System.Drawing.Point(257, 213);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 23;
-            this.button3.Text = "LED 7";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.LED_7.Location = new System.Drawing.Point(257, 213);
+            this.LED_7.Name = "LED_7";
+            this.LED_7.Size = new System.Drawing.Size(75, 23);
+            this.LED_7.TabIndex = 23;
+            this.LED_7.Text = "LED 7";
+            this.LED_7.UseVisualStyleBackColor = true;
+            this.LED_7.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // LED_6
             // 
-            this.button4.Location = new System.Drawing.Point(257, 184);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "LED 6";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.LED_6.Location = new System.Drawing.Point(257, 184);
+            this.LED_6.Name = "LED_6";
+            this.LED_6.Size = new System.Drawing.Size(75, 23);
+            this.LED_6.TabIndex = 24;
+            this.LED_6.Text = "LED 6";
+            this.LED_6.UseVisualStyleBackColor = true;
+            this.LED_6.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button6
+            // LED_5
             // 
-            this.button6.Location = new System.Drawing.Point(257, 155);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 25;
-            this.button6.Text = "LED 5";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.LED_5.Location = new System.Drawing.Point(257, 155);
+            this.LED_5.Name = "LED_5";
+            this.LED_5.Size = new System.Drawing.Size(75, 23);
+            this.LED_5.TabIndex = 25;
+            this.LED_5.Text = "LED 5";
+            this.LED_5.UseVisualStyleBackColor = true;
+            this.LED_5.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // LED_4
             // 
-            this.button7.Location = new System.Drawing.Point(257, 126);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 26;
-            this.button7.Text = "LED 4";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.LED_4.Location = new System.Drawing.Point(257, 126);
+            this.LED_4.Name = "LED_4";
+            this.LED_4.Size = new System.Drawing.Size(75, 23);
+            this.LED_4.TabIndex = 26;
+            this.LED_4.Text = "LED 4";
+            this.LED_4.UseVisualStyleBackColor = true;
+            this.LED_4.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button12
+            // LED_3
             // 
-            this.button12.Location = new System.Drawing.Point(257, 97);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 27;
-            this.button12.Text = "LED 3";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.LED_3.Location = new System.Drawing.Point(257, 97);
+            this.LED_3.Name = "LED_3";
+            this.LED_3.Size = new System.Drawing.Size(75, 23);
+            this.LED_3.TabIndex = 27;
+            this.LED_3.Text = "LED 3";
+            this.LED_3.UseVisualStyleBackColor = true;
+            this.LED_3.Click += new System.EventHandler(this.button12_Click);
             // 
-            // button13
+            // LED_2
             // 
-            this.button13.Location = new System.Drawing.Point(257, 65);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 28;
-            this.button13.Text = "LED 2";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.LED_2.Location = new System.Drawing.Point(257, 65);
+            this.LED_2.Name = "LED_2";
+            this.LED_2.Size = new System.Drawing.Size(75, 23);
+            this.LED_2.TabIndex = 28;
+            this.LED_2.Text = "LED 2";
+            this.LED_2.UseVisualStyleBackColor = true;
+            this.LED_2.Click += new System.EventHandler(this.button13_Click);
             // 
             // textBox2
             // 
@@ -227,7 +225,6 @@
             this.textBox2.Size = new System.Drawing.Size(109, 24);
             this.textBox2.TabIndex = 29;
             this.textBox2.Text = "Inactive";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox3
             // 
@@ -238,7 +235,6 @@
             this.textBox3.Size = new System.Drawing.Size(109, 24);
             this.textBox3.TabIndex = 30;
             this.textBox3.Text = "Inactive";
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
@@ -249,7 +245,6 @@
             this.textBox4.Size = new System.Drawing.Size(109, 24);
             this.textBox4.TabIndex = 31;
             this.textBox4.Text = "Inactive";
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox5
             // 
@@ -260,7 +255,6 @@
             this.textBox5.Size = new System.Drawing.Size(109, 24);
             this.textBox5.TabIndex = 32;
             this.textBox5.Text = "Inactive";
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox6
             // 
@@ -271,7 +265,6 @@
             this.textBox6.Size = new System.Drawing.Size(109, 24);
             this.textBox6.TabIndex = 33;
             this.textBox6.Text = "Inactive";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label1
             // 
@@ -283,7 +276,6 @@
             this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 42;
             this.label1.Text = "Switch 1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -295,31 +287,28 @@
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 43;
             this.label2.Text = "Switch 2";
-            this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Gold;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 186);
+            this.label3.Location = new System.Drawing.Point(25, 186);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 44;
             this.label3.Text = "Slider 1";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Gold;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 220);
+            this.label4.Location = new System.Drawing.Point(30, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 16);
             this.label4.TabIndex = 45;
             this.label4.Text = "Slider 2";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -331,7 +320,6 @@
             this.label6.Size = new System.Drawing.Size(55, 16);
             this.label6.TabIndex = 47;
             this.label6.Text = "Button 1";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -343,7 +331,6 @@
             this.label7.Size = new System.Drawing.Size(55, 16);
             this.label7.TabIndex = 48;
             this.label7.Text = "Button 2";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label5
             // 
@@ -366,7 +353,6 @@
             this.Dbug_window.Size = new System.Drawing.Size(142, 97);
             this.Dbug_window.TabIndex = 50;
             this.Dbug_window.Text = "No Connection";
-            this.Dbug_window.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // button1
             // 
@@ -396,14 +382,14 @@
             this.button2.TabIndex = 58;
             this.button2.Text = "Read";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Salmon;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(478, 33);
+            this.label9.Location = new System.Drawing.Point(511, 38);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 16);
             this.label9.TabIndex = 60;
@@ -411,7 +397,7 @@
             // 
             // connectBtn
             // 
-            this.connectBtn.Location = new System.Drawing.Point(481, 79);
+            this.connectBtn.Location = new System.Drawing.Point(509, 90);
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(75, 23);
             this.connectBtn.TabIndex = 61;
@@ -443,7 +429,6 @@
             this.label10.Size = new System.Drawing.Size(123, 16);
             this.label10.TabIndex = 64;
             this.label10.Text = "Last Servo Number";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -548,7 +533,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 74;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -560,7 +544,6 @@
             this.label16.Size = new System.Drawing.Size(61, 16);
             this.label16.TabIndex = 75;
             this.label16.Text = "Direction";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // label17
             // 
@@ -592,88 +575,80 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(481, 52);
+            this.comboBox1.Location = new System.Drawing.Point(487, 59);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 79;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
-            // textBox12
+            // LEDbox7
             // 
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(338, 212);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(109, 24);
-            this.textBox12.TabIndex = 39;
-            this.textBox12.Text = "Inactive";
-            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            this.LEDbox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox7.Location = new System.Drawing.Point(338, 212);
+            this.LEDbox7.Multiline = true;
+            this.LEDbox7.Name = "LEDbox7";
+            this.LEDbox7.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox7.TabIndex = 39;
+            this.LEDbox7.Text = "Inactive";
             // 
-            // textBox10
+            // LEDbox6
             // 
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(338, 184);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(109, 24);
-            this.textBox10.TabIndex = 37;
-            this.textBox10.Text = "Inactive";
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.LEDbox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox6.Location = new System.Drawing.Point(338, 184);
+            this.LEDbox6.Multiline = true;
+            this.LEDbox6.Name = "LEDbox6";
+            this.LEDbox6.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox6.TabIndex = 37;
+            this.LEDbox6.Text = "Inactive";
             // 
-            // textBox11
+            // LEDbox5
             // 
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(338, 157);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(109, 24);
-            this.textBox11.TabIndex = 38;
-            this.textBox11.Text = "Inactive";
-            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.LEDbox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox5.Location = new System.Drawing.Point(338, 157);
+            this.LEDbox5.Multiline = true;
+            this.LEDbox5.Name = "LEDbox5";
+            this.LEDbox5.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox5.TabIndex = 38;
+            this.LEDbox5.Text = "Inactive";
             // 
-            // textBox13
+            // LEDbox3
             // 
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(338, 97);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(109, 24);
-            this.textBox13.TabIndex = 40;
-            this.textBox13.Text = "Inactive";
-            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
+            this.LEDbox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox3.Location = new System.Drawing.Point(338, 97);
+            this.LEDbox3.Multiline = true;
+            this.LEDbox3.Name = "LEDbox3";
+            this.LEDbox3.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox3.TabIndex = 40;
+            this.LEDbox3.Text = "Inactive";
             // 
-            // textBox14
+            // LEDbox2
             // 
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(338, 65);
-            this.textBox14.Multiline = true;
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(109, 24);
-            this.textBox14.TabIndex = 41;
-            this.textBox14.Text = "Inactive";
-            this.textBox14.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
+            this.LEDbox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox2.Location = new System.Drawing.Point(338, 65);
+            this.LEDbox2.Multiline = true;
+            this.LEDbox2.Name = "LEDbox2";
+            this.LEDbox2.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox2.TabIndex = 41;
+            this.LEDbox2.Text = "Inactive";
             // 
-            // textBox7
+            // LEDbox1
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(338, 36);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(109, 24);
-            this.textBox7.TabIndex = 34;
-            this.textBox7.Text = "Inactive";
-            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.LEDbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox1.Location = new System.Drawing.Point(338, 36);
+            this.LEDbox1.Multiline = true;
+            this.LEDbox1.Name = "LEDbox1";
+            this.LEDbox1.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox1.TabIndex = 34;
+            this.LEDbox1.Text = "Inactive";
             // 
-            // textBox8
+            // LEDbox4
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(338, 127);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(109, 24);
-            this.textBox8.TabIndex = 35;
-            this.textBox8.Text = "Inactive";
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.LEDbox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LEDbox4.Location = new System.Drawing.Point(338, 127);
+            this.LEDbox4.Multiline = true;
+            this.LEDbox4.Name = "LEDbox4";
+            this.LEDbox4.Size = new System.Drawing.Size(109, 24);
+            this.LEDbox4.TabIndex = 35;
+            this.LEDbox4.Text = "Inactive";
             // 
             // rich_traffic_window
             // 
@@ -682,7 +657,6 @@
             this.rich_traffic_window.Size = new System.Drawing.Size(222, 317);
             this.rich_traffic_window.TabIndex = 81;
             this.rich_traffic_window.Text = "";
-            this.rich_traffic_window.TextChanged += new System.EventHandler(this.rich_traffic_window_TextChanged);
             // 
             // label8
             // 
@@ -742,25 +716,25 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.LEDbox2);
+            this.Controls.Add(this.LEDbox3);
+            this.Controls.Add(this.LEDbox7);
+            this.Controls.Add(this.LEDbox5);
+            this.Controls.Add(this.LEDbox6);
+            this.Controls.Add(this.LEDbox4);
+            this.Controls.Add(this.LEDbox1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.LED_2);
+            this.Controls.Add(this.LED_3);
+            this.Controls.Add(this.LED_4);
+            this.Controls.Add(this.LED_5);
+            this.Controls.Add(this.LED_6);
+            this.Controls.Add(this.LED_7);
+            this.Controls.Add(this.LED_1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBox16);
@@ -789,13 +763,13 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem shitGoBakcToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button LED_1;
+        private System.Windows.Forms.Button LED_7;
+        private System.Windows.Forms.Button LED_6;
+        private System.Windows.Forms.Button LED_5;
+        private System.Windows.Forms.Button LED_4;
+        private System.Windows.Forms.Button LED_3;
+        private System.Windows.Forms.Button LED_2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
@@ -834,13 +808,13 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.IO.Ports.SerialPort port;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox LEDbox7;
+        private System.Windows.Forms.TextBox LEDbox6;
+        private System.Windows.Forms.TextBox LEDbox5;
+        private System.Windows.Forms.TextBox LEDbox3;
+        private System.Windows.Forms.TextBox LEDbox2;
+        private System.Windows.Forms.TextBox LEDbox1;
+        private System.Windows.Forms.TextBox LEDbox4;
         private System.Windows.Forms.RichTextBox rich_traffic_window;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label18;
