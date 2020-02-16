@@ -72,7 +72,7 @@
             // maintainceModeToolStripMenuItem
             // 
             this.maintainceModeToolStripMenuItem.Name = "maintainceModeToolStripMenuItem";
-            this.maintainceModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.maintainceModeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.maintainceModeToolStripMenuItem.Text = "Maintaince Mode";
             this.maintainceModeToolStripMenuItem.Click += new System.EventHandler(this.maintainceModeToolStripMenuItem_Click);
             // 
@@ -127,6 +127,7 @@
             // 
             // domainUpDown1
             // 
+            this.domainUpDown1.Items.Add("_");
             this.domainUpDown1.Items.Add("A");
             this.domainUpDown1.Items.Add("B");
             this.domainUpDown1.Items.Add("C");
@@ -157,10 +158,11 @@
             this.domainUpDown1.Name = "domainUpDown1";
             this.domainUpDown1.Size = new System.Drawing.Size(29, 20);
             this.domainUpDown1.TabIndex = 4;
-            this.domainUpDown1.Text = "A";
+            this.domainUpDown1.Text = "_";
             // 
             // domainUpDown2
             // 
+            this.domainUpDown2.Items.Add("_");
             this.domainUpDown2.Items.Add("A");
             this.domainUpDown2.Items.Add("B");
             this.domainUpDown2.Items.Add("C");
@@ -191,10 +193,11 @@
             this.domainUpDown2.Name = "domainUpDown2";
             this.domainUpDown2.Size = new System.Drawing.Size(34, 20);
             this.domainUpDown2.TabIndex = 5;
-            this.domainUpDown2.Text = "A";
+            this.domainUpDown2.Text = "_";
             // 
             // domainUpDown3
             // 
+            this.domainUpDown3.Items.Add("_");
             this.domainUpDown3.Items.Add("A");
             this.domainUpDown3.Items.Add("B");
             this.domainUpDown3.Items.Add("C");
@@ -225,10 +228,12 @@
             this.domainUpDown3.Name = "domainUpDown3";
             this.domainUpDown3.Size = new System.Drawing.Size(29, 20);
             this.domainUpDown3.TabIndex = 6;
-            this.domainUpDown3.Text = "A";
+            this.domainUpDown3.Text = "_";
             // 
             // domainUpDown4
             // 
+            this.domainUpDown4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.domainUpDown4.Items.Add("_");
             this.domainUpDown4.Items.Add("A");
             this.domainUpDown4.Items.Add("B");
             this.domainUpDown4.Items.Add("C");
@@ -259,7 +264,7 @@
             this.domainUpDown4.Name = "domainUpDown4";
             this.domainUpDown4.Size = new System.Drawing.Size(28, 20);
             this.domainUpDown4.TabIndex = 7;
-            this.domainUpDown4.Text = "A";
+            this.domainUpDown4.Text = "_";
             // 
             // label3
             // 
