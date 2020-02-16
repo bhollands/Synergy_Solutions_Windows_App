@@ -14,10 +14,7 @@ namespace Synergy_Solutions_App
 {
     public partial class UserMode : Form
     {
-        static int score = 0;
-
-        String temp = score.ToString();
-        //xtBox1.Text = temp;
+       
 
         Thread th;
         public UserMode()
@@ -27,6 +24,9 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            int scorePH = 5555;
+            scoreText.ReadOnly = true;
+            scoreText.Text = scorePH.ToString();
 
         }
 
@@ -53,9 +53,5 @@ namespace Synergy_Solutions_App
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
