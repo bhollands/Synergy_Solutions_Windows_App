@@ -105,7 +105,6 @@ namespace Synergy_Solutions_App
         {
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
-
             box.SelectionColor = color;
             //string time = GetTimeStamp(DateTime.Now) + " | ";
             box.AppendText(text+Environment.NewLine);
