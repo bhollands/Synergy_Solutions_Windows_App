@@ -11,7 +11,7 @@ using System.Threading;
 
 
 namespace Synergy_Solutions_App
-{
+{ #yeet
 
     public partial class MaintenceMode : Form
     {
@@ -47,6 +47,10 @@ namespace Synergy_Solutions_App
         {
 
             this.Close();
+            //UserMode um = new UserMode();
+            //um.Show();
+
+
             th = new Thread(opennewform);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();
@@ -69,7 +73,7 @@ namespace Synergy_Solutions_App
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ClickedContainer.Add("button1Clicked", true);
+            //ClickedContainer.Add("button1Clicked", true);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -253,6 +257,11 @@ namespace Synergy_Solutions_App
         }
 
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

@@ -32,7 +32,7 @@ namespace Synergy_Solutions_App
 
         private void maintainceModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //this.Close();
             th = new Thread(opennewform);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();

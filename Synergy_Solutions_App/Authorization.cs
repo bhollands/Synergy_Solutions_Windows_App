@@ -44,7 +44,6 @@ namespace Synergy_Solutions_App
         private void openMaintainceMode()
         {
             Close();
-            this.Close();
             th = new Thread(opennewform);
             th.SetApartmentState(ApartmentState.STA);
             th.Start();
