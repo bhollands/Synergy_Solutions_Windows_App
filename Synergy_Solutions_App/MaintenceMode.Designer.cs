@@ -87,15 +87,27 @@
             this.LEDbox2 = new System.Windows.Forms.TextBox();
             this.LEDbox1 = new System.Windows.Forms.TextBox();
             this.LEDbox4 = new System.Windows.Forms.TextBox();
-            this.rich_traffic_window = new System.Windows.Forms.RichTextBox();
+            this.TX_traffic_window = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.RX_traffic_window = new System.Windows.Forms.RichTextBox();
+            this.dist_button = new System.Windows.Forms.Button();
+            this.Dist_Sen_Clk = new System.Windows.Forms.NumericUpDown();
+            this.TX_Clear = new System.Windows.Forms.Button();
+            this.RX_Clear = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dist_Sen_Clk)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -571,6 +583,7 @@
             this.button8.TabIndex = 78;
             this.button8.Text = "Go";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // comboBox1
             // 
@@ -579,6 +592,10 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 79;
+            // 
+            // port
+            // 
+            this.port.PortName = "COM5";
             // 
             // LEDbox7
             // 
@@ -650,23 +667,23 @@
             this.LEDbox4.TabIndex = 35;
             this.LEDbox4.Text = "Inactive";
             // 
-            // rich_traffic_window
+            // TX_traffic_window
             // 
-            this.rich_traffic_window.Location = new System.Drawing.Point(396, 265);
-            this.rich_traffic_window.Name = "rich_traffic_window";
-            this.rich_traffic_window.Size = new System.Drawing.Size(222, 317);
-            this.rich_traffic_window.TabIndex = 81;
-            this.rich_traffic_window.Text = "";
+            this.TX_traffic_window.Location = new System.Drawing.Point(12, 485);
+            this.TX_traffic_window.Name = "TX_traffic_window";
+            this.TX_traffic_window.Size = new System.Drawing.Size(222, 115);
+            this.TX_traffic_window.TabIndex = 81;
+            this.TX_traffic_window.Text = "";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(393, 249);
+            this.label8.Location = new System.Drawing.Point(9, 469);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(74, 16);
+            this.label8.Size = new System.Drawing.Size(68, 16);
             this.label8.TabIndex = 82;
-            this.label8.Text = "Bus Traffic:";
+            this.label8.Text = "TX Traffic:";
             // 
             // label18
             // 
@@ -678,15 +695,139 @@
             this.label18.TabIndex = 83;
             this.label18.Text = "Conection Status:";
             // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.LightCoral;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(396, 265);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(180, 152);
+            this.textBox7.TabIndex = 84;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.LightCoral;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(421, 277);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(110, 24);
+            this.label19.TabIndex = 85;
+            this.label19.Text = "Dist. Sensor";
+            this.label19.Click += new System.EventHandler(this.label19_Click);
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(425, 312);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(109, 24);
+            this.textBox8.TabIndex = 86;
+            this.textBox8.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(245, 469);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(69, 16);
+            this.label20.TabIndex = 88;
+            this.label20.Text = "RX Traffic:";
+            // 
+            // RX_traffic_window
+            // 
+            this.RX_traffic_window.Location = new System.Drawing.Point(248, 485);
+            this.RX_traffic_window.Name = "RX_traffic_window";
+            this.RX_traffic_window.Size = new System.Drawing.Size(222, 115);
+            this.RX_traffic_window.TabIndex = 87;
+            this.RX_traffic_window.Text = "";
+            // 
+            // dist_button
+            // 
+            this.dist_button.Location = new System.Drawing.Point(448, 377);
+            this.dist_button.Name = "dist_button";
+            this.dist_button.Size = new System.Drawing.Size(75, 23);
+            this.dist_button.TabIndex = 89;
+            this.dist_button.Text = "Read";
+            this.dist_button.UseVisualStyleBackColor = true;
+            this.dist_button.Click += new System.EventHandler(this.dist_button_Click);
+            // 
+            // Dist_Sen_Clk
+            // 
+            this.Dist_Sen_Clk.Location = new System.Drawing.Point(481, 351);
+            this.Dist_Sen_Clk.Maximum = new decimal(new int[] {
+            1316134912,
+            2328,
+            0,
+            0});
+            this.Dist_Sen_Clk.Name = "Dist_Sen_Clk";
+            this.Dist_Sen_Clk.Size = new System.Drawing.Size(76, 20);
+            this.Dist_Sen_Clk.TabIndex = 90;
+            // 
+            // TX_Clear
+            // 
+            this.TX_Clear.Location = new System.Drawing.Point(475, 507);
+            this.TX_Clear.Name = "TX_Clear";
+            this.TX_Clear.Size = new System.Drawing.Size(75, 23);
+            this.TX_Clear.TabIndex = 91;
+            this.TX_Clear.Text = "TX";
+            this.TX_Clear.UseVisualStyleBackColor = true;
+            this.TX_Clear.Click += new System.EventHandler(this.TX_Clear_Click);
+            // 
+            // RX_Clear
+            // 
+            this.RX_Clear.Location = new System.Drawing.Point(476, 552);
+            this.RX_Clear.Name = "RX_Clear";
+            this.RX_Clear.Size = new System.Drawing.Size(75, 23);
+            this.RX_Clear.TabIndex = 92;
+            this.RX_Clear.Text = "RX";
+            this.RX_Clear.UseVisualStyleBackColor = true;
+            this.RX_Clear.Click += new System.EventHandler(this.RX_Clear_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(473, 469);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(69, 16);
+            this.label21.TabIndex = 93;
+            this.label21.Text = "Clear Log:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.LightCoral;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(401, 353);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(74, 16);
+            this.label22.TabIndex = 94;
+            this.label22.Text = "Clk Cycles:";
+            // 
             // MaintenceMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(670, 612);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.RX_Clear);
+            this.Controls.Add(this.TX_Clear);
+            this.Controls.Add(this.Dist_Sen_Clk);
+            this.Controls.Add(this.dist_button);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.RX_traffic_window);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.rich_traffic_window);
+            this.Controls.Add(this.TX_traffic_window);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label17);
@@ -750,6 +891,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dist_Sen_Clk)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -815,8 +957,19 @@
         private System.Windows.Forms.TextBox LEDbox2;
         private System.Windows.Forms.TextBox LEDbox1;
         private System.Windows.Forms.TextBox LEDbox4;
-        private System.Windows.Forms.RichTextBox rich_traffic_window;
+        private System.Windows.Forms.RichTextBox TX_traffic_window;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.RichTextBox RX_traffic_window;
+        private System.Windows.Forms.Button dist_button;
+        private System.Windows.Forms.NumericUpDown Dist_Sen_Clk;
+        private System.Windows.Forms.Button TX_Clear;
+        private System.Windows.Forms.Button RX_Clear;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }

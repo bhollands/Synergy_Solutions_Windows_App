@@ -18,6 +18,7 @@ namespace Synergy_Solutions_App
     {
         bool isConnected = false;
         string lastWritten;
+        string lastRecived;
         string log;
 
         Thread th;
@@ -27,8 +28,9 @@ namespace Synergy_Solutions_App
             InitializeComponent();
             readOnly();
             getComPorts();
-            rich_traffic_window.ReadOnly = true;
-            rich_traffic_window.BackColor = Color.White;
+            TX_traffic_window.ReadOnly = true;
+            TX_traffic_window.BackColor = Color.White;
+
 
         }
 
@@ -36,7 +38,7 @@ namespace Synergy_Solutions_App
         {
             TextBox[] textBox = {textBox1, textBox2, textBox3, textBox4, textBox5,
                                 textBox6, LEDbox1, LEDbox4,Dbug_window, LEDbox6, LEDbox5, LEDbox7,
-                                LEDbox3, LEDbox2,};
+                                LEDbox3, LEDbox2, textBox8};
             foreach (TextBox textbox in textBox)
             {
                 textbox.ReadOnly = true;
@@ -73,9 +75,6 @@ namespace Synergy_Solutions_App
 
         }
 
-
-
-
         private void writeToPort(string mesg)
         {
             try
@@ -85,14 +84,40 @@ namespace Synergy_Solutions_App
             }
             catch (System.InvalidOperationException)
             {
-                
+
                 string send = "ERROR: No Connected Port";
-                logTraffic(rich_traffic_window, send, Color.Red);
+                logTraffic(TX_traffic_window, send, Color.Red);
                 return;
             }
 
             string sent = port.PortName + "_Tx: " + mesg;
-            logTraffic(rich_traffic_window, sent, Color.Black);
+            logTraffic(TX_traffic_window, sent, Color.Black);
+        }
+
+        private string readFromPort()
+        {
+            try
+            {
+                lastRecived = port.ReadLine();
+                if (lastRecived != "")
+                {
+                    logTraffic(RX_traffic_window, lastRecived, Color.Black);
+                }
+                return lastRecived;
+                
+            }
+            catch
+            {
+                string send = "ERROR: No Connected Port";
+                logTraffic(RX_traffic_window, send, Color.Red);
+                return null;
+            }
+
+        }
+
+        private void f()
+        {
+
         }
 
         private string GetTimeStamp(DateTime value)
@@ -116,7 +141,7 @@ namespace Synergy_Solutions_App
             else
             {
                 box.SelectionBackColor = Color.LightGray;
-                grey = true; ; ;
+                grey = true;
             }
             box.SelectionColor = box.ForeColor;
             box.ScrollToCaret();
@@ -164,7 +189,19 @@ namespace Synergy_Solutions_App
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                lastRecived = port.ReadExisting();
+                string a = e.ToString();
+               if (lastRecived != "")
+               {
+                    logTraffic(RX_traffic_window, lastRecived, Color.Black);
+               }
+            }
+            catch
+            {
+                return;
+            }
         }
        
         private void button1_Click(object sender, EventArgs e)
@@ -210,6 +247,7 @@ namespace Synergy_Solutions_App
             {
                 disconnect();
             }
+
         }
         private void connect()
         {
@@ -219,12 +257,14 @@ namespace Synergy_Solutions_App
             Dbug_window.Text = "";
  
             Dbug_window.AppendText("Selected COM Port = " + selectedPort + Environment.NewLine);
+            Dbug_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
             try
             {
-                Dbug_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
                 port.PortName = selectedPort;
                 port.Open();
-                port.Write("#STAR\n");
+                string start = "#STAR\n";
+                port.Write(start);
+                logTraffic(TX_traffic_window, start, Color.Black);
                 connectBtn.Text = "Disconnect";
                 Dbug_window.AppendText("--------------------------------------" + Environment.NewLine);
             }
@@ -239,15 +279,94 @@ namespace Synergy_Solutions_App
 
         private void disconnect()
         {
-            isConnected = false;
-            port.Write("#STOP\n");
-            port.Close();
-            connectBtn.Text = "Connect";
-            //disableControls();
-            //resetDefaults();
+            try
+            {
+                isConnected = false;
+                port.Write("#STOP\n");
+                port.Close();
+                connectBtn.Text = "Connect";
+            }
+            catch
+            {
+                return;
+            }
+
             Dbug_window.AppendText(port.PortName + " is now closed" + Environment.NewLine);
             Dbug_window.AppendText("--------------------------------------" + Environment.NewLine);
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+        }
+
+        private void dist_button_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Dist_Sen_Clk.Value; i++)
+            {
+                readFromPort();
+
+                if (RX_id() == "ds")
+                {
+                    textBox8.Text = RX_Data();
+                }
+            }
+        }
+
+        private string RX_Data()
+        {
+            //logTraffic(TX_traffic_window, "RX_Data = " + lastRecived, Color.Black);
+            try
+            {
+                int srt_pos = lastRecived.IndexOf("~");
+                int end_pos = lastRecived.IndexOf(";");
+                string a = lastRecived.Substring(srt_pos+1, end_pos - 4);
+                //logTraffic(TX_traffic_window, "RX_Data1 = " + a, Color.Black);
+                return a;
+            }
+            catch
+            {
+                return "null";
+            }
+
+            
+
+
+        }
+        private string RX_id()
+        {
+            try
+            {
+                int srt_pos = lastRecived.IndexOf("#");
+                int end_pos = lastRecived.IndexOf("~");
+                string a = lastRecived.Substring(srt_pos+1, end_pos-1);
+               // logTraffic(TX_traffic_window, "RX_id = " + a, Color.Black);
+                return lastRecived.Substring(srt_pos+1, end_pos-1);
+            }
+            catch
+            {
+                return "null";
+            }
+
+        }
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TX_Clear_Click(object sender, EventArgs e)
+        {
+            TX_traffic_window.Text = "";
+        }
+
+        private void RX_Clear_Click(object sender, EventArgs e)
+        {
+            RX_traffic_window.Text = "";
         }
     }
 }
