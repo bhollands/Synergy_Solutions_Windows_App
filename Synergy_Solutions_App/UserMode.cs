@@ -53,5 +53,13 @@ namespace Synergy_Solutions_App
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string userName = " ";
+            string[] letterList = { letter1.Text, letter2.Text, letter3.Text, letter4.Text };
+            for (int i = 0; i < 4; i++) {
+                userName = userName + letterList[i];
+            }
+        }
     }
 }
