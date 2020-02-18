@@ -35,7 +35,7 @@
             this.youreOnYourOwnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noHelpHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getGudM8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Score = new System.Windows.Forms.ListBox();
+            this.highScores = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.letter1 = new System.Windows.Forms.DomainUpDown();
             this.letter3 = new System.Windows.Forms.DomainUpDown();
@@ -106,13 +106,13 @@
             this.getGudM8ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.getGudM8ToolStripMenuItem.Text = "Get gud m8";
             // 
-            // Score
+            // highScores
             // 
-            this.Score.FormattingEnabled = true;
-            this.Score.Location = new System.Drawing.Point(12, 63);
-            this.Score.Name = "Score";
-            this.Score.Size = new System.Drawing.Size(160, 316);
-            this.Score.TabIndex = 1;
+            this.highScores.FormattingEnabled = true;
+            this.highScores.Location = new System.Drawing.Point(12, 63);
+            this.highScores.Name = "highScores";
+            this.highScores.Size = new System.Drawing.Size(160, 316);
+            this.highScores.TabIndex = 1;
             // 
             // label2
             // 
@@ -326,7 +326,7 @@
             this.Controls.Add(this.letter3);
             this.Controls.Add(this.letter1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Score);
+            this.Controls.Add(this.highScores);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserMode";
@@ -348,7 +348,7 @@
         private System.Windows.Forms.ToolStripMenuItem youreOnYourOwnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noHelpHereToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getGudM8ToolStripMenuItem;
-        private System.Windows.Forms.ListBox Score;
+        private System.Windows.Forms.ListBox highScores;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DomainUpDown letter1;
         private System.Windows.Forms.DomainUpDown letter3;

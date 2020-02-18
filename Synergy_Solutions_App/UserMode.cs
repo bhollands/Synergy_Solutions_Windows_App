@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 using System.Threading;
 
+
+
+
 namespace Synergy_Solutions_App
 {
+
     public partial class UserMode : Form
     {
-       
+        public int scorePH = 5555;
+        public int[] highScoresList = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         Thread th;
         public UserMode()
@@ -24,9 +29,17 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            int scorePH = 5555;
+            
             scoreText.ReadOnly = true;
             scoreText.Text = scorePH.ToString();
+
+            highScores.Items.Add("hello");
+
+            for (int k = 0; k <= 10; k++) {
+                highScores.Items.Add(highScoresList[k].ToString());
+            }
+
+            highScores.Items.Add("goodbye");
 
         }
 
@@ -60,6 +73,30 @@ namespace Synergy_Solutions_App
             for (int i = 0; i < 4; i++) {
                 userName = userName + letterList[i];
             }
+
+           
+
+
+            for (int j = 0; j < highScoresList.Length; j++)
+            {
+                highScoresList[j] = 22;
+                int checker = 9999;
+                if (highScoresList[j] < checker) {
+                    highScoresList[j] = checker;
+                    break;
+                }
+
+            }
+
+           highScores.Items.Clear();
+
+            for (int k = 0; k <= 10; k++)
+            {
+                highScores.Items.Add(highScoresList[k].ToString());
+            }
+
         }
+
+
     }
 }
