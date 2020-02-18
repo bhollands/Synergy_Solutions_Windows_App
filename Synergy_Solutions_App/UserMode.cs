@@ -19,7 +19,7 @@ namespace Synergy_Solutions_App
     public partial class UserMode : Form
     {
         public int scorePH = 5555;
-        public int[] highScoresList = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public int[] highScoresList = {9999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         Thread th;
         public UserMode()
@@ -68,6 +68,7 @@ namespace Synergy_Solutions_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int listLength = highScoresList.Length;
             string userName = " ";
             string[] letterList = { letter1.Text, letter2.Text, letter3.Text, letter4.Text };
             for (int i = 0; i < 4; i++) {
@@ -77,11 +78,19 @@ namespace Synergy_Solutions_App
            
 
 
-            for (int j = 0; j < highScoresList.Length; j++)
+            for (int j = 0; j < listLength; j++)
             {
-                highScoresList[j] = 22;
-                int checker = 9999;
-                if (highScoresList[j] < checker) {
+                //highScoresList[j] = 22;
+                int checker = 99;
+                if (checker >= highScoresList[j]) {
+
+                    for (int l = 1; l < (listLength - j); l++)
+                    {
+                        highScoresList[listLength - 1] = -1;
+                        highScoresList[listLength - l] = -2;
+                    }
+
+
                     highScoresList[j] = checker;
                     break;
                 }
