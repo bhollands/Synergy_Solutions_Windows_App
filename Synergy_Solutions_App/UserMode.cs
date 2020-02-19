@@ -12,7 +12,7 @@ namespace Synergy_Solutions_App
     {
         public int scorePH = 5555;
         int letterChoice = 0;
-        public int[] highScoresList = {9999, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
+        public int[] highScoresList = {101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
         public string[] highScoreNames = {"STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_"};
       
 

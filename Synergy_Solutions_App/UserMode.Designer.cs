@@ -49,7 +49,13 @@
             this.debugButton1 = new System.Windows.Forms.Button();
             this.debugButton2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -316,7 +322,7 @@
             // 
             // debugButton1
             // 
-            this.debugButton1.Location = new System.Drawing.Point(592, 264);
+            this.debugButton1.Location = new System.Drawing.Point(588, 287);
             this.debugButton1.Name = "debugButton1";
             this.debugButton1.Size = new System.Drawing.Size(97, 23);
             this.debugButton1.TabIndex = 15;
@@ -326,7 +332,7 @@
             // 
             // debugButton2
             // 
-            this.debugButton2.Location = new System.Drawing.Point(592, 293);
+            this.debugButton2.Location = new System.Drawing.Point(588, 316);
             this.debugButton2.Name = "debugButton2";
             this.debugButton2.Size = new System.Drawing.Size(97, 23);
             this.debugButton2.TabIndex = 16;
@@ -336,7 +342,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(577, 322);
+            this.button2.Location = new System.Drawing.Point(573, 345);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 23);
             this.button2.TabIndex = 17;
@@ -344,15 +350,44 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(553, 371);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Your Score kept in int scorePH";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.Location = new System.Drawing.Point(528, 264);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(194, 135);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(532, 271);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(178, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Delete after this section is integrated";
+            // 
             // UserMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 478);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.debugButton2);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.debugButton1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.debugButton2);
             this.Controls.Add(this.scoreText);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -364,12 +399,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.highScores);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserMode";
             this.Text = "UserMode";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,6 +436,10 @@
         private System.Windows.Forms.Button debugButton1;
         private System.Windows.Forms.Button debugButton2;
         private System.Windows.Forms.Button button2;
+        private System.Diagnostics.PerformanceCounter performanceCounter1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
     }
 }
 
