@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 using System.Threading;
+using System.Windows.Forms;
 
 
 
@@ -19,7 +11,10 @@ namespace Synergy_Solutions_App
     public partial class UserMode : Form
     {
         public int scorePH = 5555;
-        public int[] highScoresList = {9999, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int letterChoice = 0;
+        public int[] highScoresList = {9999, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
+        public string[] highScoreNames = {"STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_"};
+      
 
         Thread th;
         public UserMode()
@@ -33,13 +28,9 @@ namespace Synergy_Solutions_App
             scoreText.ReadOnly = true;
             scoreText.Text = scorePH.ToString();
 
-            highScores.Items.Add("hello");
-
             for (int k = 0; k <= 10; k++) {
-                highScores.Items.Add(highScoresList[k].ToString());
+                highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
             }
-
-            highScores.Items.Add("goodbye");
 
         }
 
@@ -81,17 +72,18 @@ namespace Synergy_Solutions_App
             for (int j = 0; j < listLength; j++)
             {
                 //highScoresList[j] = 22;
-                int checker = 99;
-                if (checker >= highScoresList[j]) {
+                if (scorePH >= highScoresList[j]) {
 
                     for (int l = 1; l < (listLength - j); l++)
                     {
-                        highScoresList[listLength - 1] = -1;
-                        highScoresList[listLength - l] = -2;
+                         highScoresList[listLength - l] = highScoresList[listLength - 1 - l];
+                        highScoreNames[listLength - l] = highScoreNames[listLength - 1 - l];
+                        // = -2;
                     }
 
 
-                    highScoresList[j] = checker;
+                    highScoresList[j] = scorePH;
+                    highScoreNames[j] = userName;
                     break;
                 }
 
@@ -101,11 +93,75 @@ namespace Synergy_Solutions_App
 
             for (int k = 0; k <= 10; k++)
             {
-                highScores.Items.Add(highScoresList[k].ToString());
+
+                string nameAndScoreTogether = highScoreNames[k] + "         " + highScoresList[k].ToString();
+
+                highScores.Items.Add(nameAndScoreTogether);
+
             }
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            switch (letterChoice)
+            {
 
+                case 0:
+                    letter1.UpButton();
+                    break;
+                case 1:
+                    letter2.UpButton();
+                    break;
+                case 2:
+                    letter3.UpButton();
+                    break;
+                case 3:
+                    letter4.UpButton();
+                    break;
+                default:
+                    Console.WriteLine("out of letters");
+                    letterChoice = 0;
+                    break;
+
+
+            }
+        }
+
+        private void debugButton2_Click(object sender, EventArgs e)
+        {
+
+
+                switch (letterChoice)
+                {
+                    
+                case 0:
+                    letter1.DownButton();
+                    break;
+                case 1:
+                    letter2.DownButton();
+                    break;
+                case 2:
+                    letter3.DownButton();
+                    break;
+                case 3:
+                    letter4.DownButton();
+                    break;
+                default:
+                    Console.WriteLine("out of letters");
+                    letterChoice = 0;
+                    break;
+            
+            
+                }
+
+
+      
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            letterChoice++;
+        }
     }
 }
