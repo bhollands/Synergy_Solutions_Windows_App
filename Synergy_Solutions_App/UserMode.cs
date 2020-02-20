@@ -10,6 +10,7 @@ namespace Synergy_Solutions_App
 
     public partial class UserMode : Form
     {
+        //setting up. scorePH should be changed to the player's score but it is set to 5555 for now
         public int scorePH = 5555;
         int letterChoice = 0;
         public int[] highScoresList = {101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
@@ -24,7 +25,7 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            //box holding the player's score is loaded at the end of the game as well as the high scores of other users
             scoreText.ReadOnly = true;
             scoreText.Text = scorePH.ToString();
 
@@ -52,23 +53,24 @@ namespace Synergy_Solutions_App
             Application.Run(new Authorization());
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
+
+            //initializing everything 
             int listLength = highScoresList.Length;
             string userName = " ";
+
+            //on click read in all the letters and write them into the user name variable
             string[] letterList = { letter1.Text, letter2.Text, letter3.Text, letter4.Text };
+
             for (int i = 0; i < 4; i++) {
                 userName = userName + letterList[i];
             }
 
            
 
-
+            //go down the high scores and check to see if the player's score is a high score if it is add it to the leader board in
+            //the correct place (PLAYER NAME       PLAYER SCORE)
             for (int j = 0; j < listLength; j++)
             {
                 //highScoresList[j] = 22;
@@ -89,6 +91,7 @@ namespace Synergy_Solutions_App
 
             }
 
+            //update the scoreboard to show the new order
            highScores.Items.Clear();
 
             for (int k = 0; k <= 10; k++)
@@ -101,7 +104,7 @@ namespace Synergy_Solutions_App
             }
 
         }
-
+        //button to move through letters in the options box (will be implimented into a hardware button soon)
         private void button2_Click(object sender, EventArgs e)
         {
             switch (letterChoice)
@@ -127,7 +130,7 @@ namespace Synergy_Solutions_App
 
             }
         }
-
+        //button to move through letters in the options box (will be implimented into a hardware button soon)
         private void debugButton2_Click(object sender, EventArgs e)
         {
 
@@ -158,7 +161,7 @@ namespace Synergy_Solutions_App
 
       
         }
-
+        //button to move into the next letter selection
         private void button2_Click_1(object sender, EventArgs e)
         {
             letterChoice++;
