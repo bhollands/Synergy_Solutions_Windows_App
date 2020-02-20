@@ -19,6 +19,7 @@ namespace Synergy_Solutions_App
         bool isConnected = false;
         string lastWritten;
         string lastRecived;
+        string rxType;
         string log;
 
         Thread th;
@@ -82,10 +83,9 @@ namespace Synergy_Solutions_App
                 port.Write(mesg);
                 lastWritten = mesg;
             }
-            catch (System.InvalidOperationException)
+            catch (Exception e)
             {
-
-                string send = "ERROR: No Connected Port";
+                string send = "ERROR: No Connected Port" + e.Message;
                 logTraffic(TX_traffic_window, send, Color.Red);
                 return;
             }
@@ -94,29 +94,39 @@ namespace Synergy_Solutions_App
             logTraffic(TX_traffic_window, sent, Color.Black);
         }
 
-        private string readFromPort()
+        private int[] getPacket(string buffer)
         {
+            char[] bufferArray = buffer.ToCharArray();
+
+            int[] returnArray = {0,0};
+            for (int i = 0; i < bufferArray.Length; i++)
+            {
+                if (bufferArray[i] == '#')
+                {
+                    returnArray[0] = i;
+                }
+                if (bufferArray[i] == ';')
+                {
+                    returnArray[1] = i + 1;
+                    break;
+                }
+            }
+            return returnArray;
+        }
+        private void readFromPort()
+        {
+
             try
             {
-                lastRecived = port.ReadLine();
-                if (lastRecived != "")
-                {
-                    logTraffic(RX_traffic_window, lastRecived, Color.Black);
-                }
-                return lastRecived;
-                
+                string buffer = port.ReadExisting();
+                lastRecived = buffer.Substring(getPacket(buffer)[0], getPacket(buffer)[1]);
+                logTraffic(RX_traffic_window, lastRecived, Color.Black);
             }
-            catch
+            catch(Exception e)
             {
-                string send = "ERROR: No Connected Port";
+                string send = "ERROR: " + e.Message;
                 logTraffic(RX_traffic_window, send, Color.Red);
-                return null;
             }
-
-        }
-
-        private void f()
-        {
 
         }
 
@@ -189,19 +199,6 @@ namespace Synergy_Solutions_App
 
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                lastRecived = port.ReadExisting();
-                string a = e.ToString();
-               if (lastRecived != "")
-               {
-                    logTraffic(RX_traffic_window, lastRecived, Color.Black);
-               }
-            }
-            catch
-            {
-                return;
-            }
         }
        
         private void button1_Click(object sender, EventArgs e)
@@ -252,7 +249,7 @@ namespace Synergy_Solutions_App
         private void connect()
         {
 
-            isConnected = true;
+            
             string selectedPort = comboBox1.GetItemText(comboBox1.SelectedItem);
             Dbug_window.Text = "";
  
@@ -260,6 +257,7 @@ namespace Synergy_Solutions_App
             Dbug_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
             try
             {
+                isConnected = true;
                 port.PortName = selectedPort;
                 port.Open();
                 string start = "#STAR\n";
@@ -307,53 +305,44 @@ namespace Synergy_Solutions_App
 
         private void dist_button_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < Dist_Sen_Clk.Value; i++)
+            readFromPort();
+            if (RxDataType() == "d")
             {
-                readFromPort();
-
-                if (RX_id() == "ds")
-                {
-                    textBox8.Text = RX_Data();
-                }
+                textBox8.Text = RxData();
             }
         }
 
-        private string RX_Data()
-        {
-            //logTraffic(TX_traffic_window, "RX_Data = " + lastRecived, Color.Black);
-            try
-            {
-                int srt_pos = lastRecived.IndexOf("~");
-                int end_pos = lastRecived.IndexOf(";");
-                string a = lastRecived.Substring(srt_pos+1, end_pos - 4);
-                //logTraffic(TX_traffic_window, "RX_Data1 = " + a, Color.Black);
-                return a;
-            }
-            catch
-            {
-                return "null";
-            }
-
-            
-
-
-        }
-        private string RX_id()
+        private string RxDataType()
         {
             try
             {
                 int srt_pos = lastRecived.IndexOf("#");
                 int end_pos = lastRecived.IndexOf("~");
-                string a = lastRecived.Substring(srt_pos+1, end_pos-1);
-               // logTraffic(TX_traffic_window, "RX_id = " + a, Color.Black);
-                return lastRecived.Substring(srt_pos+1, end_pos-1);
+                string data = lastRecived.Substring(srt_pos + 1, end_pos - 1);
+                return data;
             }
             catch
             {
                 return "null";
             }
-
         }
+
+        private string RxData()
+        {
+            try
+            {
+                int srt_pos = lastRecived.IndexOf("~");
+                int end_pos = lastRecived.IndexOf(";");
+                string data = lastRecived.Substring(srt_pos, end_pos - 2);
+                logTraffic(TX_traffic_window, data, Color.Black);
+                return data;
+            }
+            catch
+            {
+                return "null";
+            }
+        }
+
         private void label19_Click(object sender, EventArgs e)
         {
 
@@ -367,6 +356,32 @@ namespace Synergy_Solutions_App
         private void RX_Clear_Click(object sender, EventArgs e)
         {
             RX_traffic_window.Text = "";
+        }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void servo_btn_Click(object sender, EventArgs e)
+        {
+            string mesg = null;
+            writeToPort(mesg);
+        }
+
+        private void servoCommands()
+        {
+
         }
     }
 }

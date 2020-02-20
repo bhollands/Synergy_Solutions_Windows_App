@@ -53,18 +53,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.Dbug_window = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBox15 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.connectBtn = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -100,10 +95,8 @@
             this.TX_Clear = new System.Windows.Forms.Button();
             this.RX_Clear = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
@@ -344,17 +337,6 @@
             this.label7.TabIndex = 48;
             this.label7.Text = "Button 2";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.DarkGray;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(217, 292);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 16);
-            this.label5.TabIndex = 49;
-            this.label5.Text = "Move";
-            // 
             // Dbug_window
             // 
             this.Dbug_window.BackColor = System.Drawing.Color.White;
@@ -368,13 +350,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(220, 372);
+            this.button1.Location = new System.Drawing.Point(239, 343);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 56;
             this.button1.Text = "Move";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.servo_btn_Click);
             // 
             // textBox15
             // 
@@ -385,16 +367,6 @@
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(147, 90);
             this.textBox15.TabIndex = 57;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(220, 433);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 27);
-            this.button2.TabIndex = 58;
-            this.button2.Text = "Read";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label9
             // 
@@ -417,52 +389,25 @@
             this.connectBtn.UseVisualStyleBackColor = true;
             this.connectBtn.Click += new System.EventHandler(this.button5_Click_1);
             // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(218, 314);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown1.TabIndex = 62;
-            // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(218, 346);
+            this.numericUpDown2.Location = new System.Drawing.Point(207, 309);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown2.TabIndex = 63;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.DarkGray;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(197, 414);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(123, 16);
-            this.label10.TabIndex = 64;
-            this.label10.Text = "Last Servo Number";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.DarkGray;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(265, 316);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(94, 16);
-            this.label11.TabIndex = 65;
-            this.label11.Text = "Servo no. (0-3)";
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.DarkGray;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(265, 350);
+            this.label12.Location = new System.Drawing.Point(254, 313);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 16);
             this.label12.TabIndex = 66;
             this.label12.Text = "Angle (0-90)";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // textBox16
             // 
@@ -471,7 +416,7 @@
             this.textBox16.Location = new System.Drawing.Point(192, 265);
             this.textBox16.Multiline = true;
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(198, 203);
+            this.textBox16.Size = new System.Drawing.Size(198, 152);
             this.textBox16.TabIndex = 67;
             // 
             // label13
@@ -595,6 +540,7 @@
             // 
             // port
             // 
+            this.port.BaudRate = 115200;
             this.port.PortName = "COM5";
             // 
             // LEDbox7
@@ -726,6 +672,7 @@
             this.textBox8.Size = new System.Drawing.Size(109, 24);
             this.textBox8.TabIndex = 86;
             this.textBox8.Text = "0";
+            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // label20
             // 
@@ -747,7 +694,7 @@
             // 
             // dist_button
             // 
-            this.dist_button.Location = new System.Drawing.Point(448, 377);
+            this.dist_button.Location = new System.Drawing.Point(441, 377);
             this.dist_button.Name = "dist_button";
             this.dist_button.Size = new System.Drawing.Size(75, 23);
             this.dist_button.TabIndex = 89;
@@ -797,24 +744,12 @@
             this.label21.TabIndex = 93;
             this.label21.Text = "Clear Log:";
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.LightCoral;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(401, 353);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(74, 16);
-            this.label22.TabIndex = 94;
-            this.label22.Text = "Clk Cycles:";
-            // 
             // MaintenceMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(670, 612);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.RX_Clear);
             this.Controls.Add(this.TX_Clear);
@@ -824,7 +759,6 @@
             this.Controls.Add(this.RX_traffic_window);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TX_traffic_window);
@@ -841,15 +775,10 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.Dbug_window);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -880,6 +809,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.textBox17);
+            this.Controls.Add(this.textBox7);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MaintenceMode";
             this.Text = "Maintence Mode";
@@ -887,7 +817,6 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
@@ -923,18 +852,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox Dbug_window;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button connectBtn;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label13;
@@ -970,6 +894,5 @@
         private System.Windows.Forms.Button TX_Clear;
         private System.Windows.Forms.Button RX_Clear;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
     }
 }
