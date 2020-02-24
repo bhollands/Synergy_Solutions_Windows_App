@@ -38,7 +38,7 @@ namespace Synergy_Solutions_App
         private void readOnly()
         {
             TextBox[] textBox = {textBox1, textBox2, textBox3, textBox4, textBox5,
-                                textBox6, LEDbox1, LEDbox4,Dbug_window, LEDbox6, LEDbox5, LEDbox7,
+                                textBox6, LEDbox1, LEDbox4,Connection_window, LEDbox6, LEDbox5, LEDbox7,
                                 LEDbox3, LEDbox2, textBox8};
             foreach (TextBox textbox in textBox)
             {
@@ -85,12 +85,12 @@ namespace Synergy_Solutions_App
             }
             catch (Exception e)
             {
-                string send = "ERROR: No Connected Port" + e.Message;
-                logTraffic(TX_traffic_window, send, Color.Red);
+                string send = "ERROR: "+ e.Message;
+                logTraffic(Debug_W, send, Color.Red);
                 return;
             }
 
-            string sent = port.PortName + "_Tx: " + mesg;
+            string sent = mesg;
             logTraffic(TX_traffic_window, sent, Color.Black);
         }
 
@@ -125,7 +125,7 @@ namespace Synergy_Solutions_App
             catch(Exception e)
             {
                 string send = "ERROR: " + e.Message;
-                logTraffic(RX_traffic_window, send, Color.Red);
+                logTraffic(Debug_W, send, Color.Red);
             }
 
         }
@@ -215,8 +215,8 @@ namespace Synergy_Solutions_App
         {
             TextBox[] ledBox = {LEDbox1, LEDbox2, LEDbox3, LEDbox4,
                                 LEDbox5, LEDbox6, LEDbox7};
-            string Oncommand = "#LED" + no + "ON\n";
-            string OFFcommand = "#LED" + no + "OF\n";
+            string Oncommand = "#LED~" + no + "ON;\n";
+            string OFFcommand = "#LED~" + no + "OF;\n";
             TextBox activeBox;
             activeBox = ledBox[no-1];
 
@@ -232,7 +232,6 @@ namespace Synergy_Solutions_App
             }
         }
     
-
         private void button5_Click_1(object sender, EventArgs e)
         {
             if (!isConnected)
@@ -251,10 +250,10 @@ namespace Synergy_Solutions_App
 
             
             string selectedPort = comboBox1.GetItemText(comboBox1.SelectedItem);
-            Dbug_window.Text = "";
+            Connection_window.Text = "";
  
-            Dbug_window.AppendText("Selected COM Port = " + selectedPort + Environment.NewLine);
-            Dbug_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
+            Connection_window.AppendText("Selected COM Port = " + selectedPort + Environment.NewLine);
+            Connection_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
             try
             {
                 isConnected = true;
@@ -264,15 +263,15 @@ namespace Synergy_Solutions_App
                 port.Write(start);
                 logTraffic(TX_traffic_window, start, Color.Black);
                 connectBtn.Text = "Disconnect";
-                Dbug_window.AppendText("--------------------------------------" + Environment.NewLine);
+                Connection_window.AppendText("--------------------------------------" + Environment.NewLine);
             }
             catch
             {
-                Dbug_window.AppendText("Cannot open " + selectedPort + Environment.NewLine);
+                Connection_window.AppendText("Cannot open " + selectedPort + Environment.NewLine);
                 return;
             }
-            Dbug_window.AppendText(selectedPort + " now open" + Environment.NewLine);
-            Dbug_window.AppendText("--------------------------------------" + Environment.NewLine);
+            Connection_window.AppendText(selectedPort + " now open" + Environment.NewLine);
+            Connection_window.AppendText("--------------------------------------" + Environment.NewLine);
         }
 
         private void disconnect()
@@ -289,8 +288,8 @@ namespace Synergy_Solutions_App
                 return;
             }
 
-            Dbug_window.AppendText(port.PortName + " is now closed" + Environment.NewLine);
-            Dbug_window.AppendText("--------------------------------------" + Environment.NewLine);
+            Connection_window.AppendText(port.PortName + " is now closed" + Environment.NewLine);
+            Connection_window.AppendText("--------------------------------------" + Environment.NewLine);
 
         }
 
@@ -334,7 +333,7 @@ namespace Synergy_Solutions_App
                 int srt_pos = lastRecived.IndexOf("~");
                 int end_pos = lastRecived.IndexOf(";");
                 string data = lastRecived.Substring(srt_pos, end_pos - 2);
-                logTraffic(TX_traffic_window, data, Color.Black);
+                //logTraffic(TX_traffic_window, data, Color.Black);
                 return data;
             }
             catch
@@ -375,11 +374,16 @@ namespace Synergy_Solutions_App
 
         private void servo_btn_Click(object sender, EventArgs e)
         {
-            string mesg = null;
+            string mesg = servoCommand(servoAngel.Value);
             writeToPort(mesg);
         }
 
-        private void servoCommands()
+        private string servoCommand(decimal angel)
+        {
+            return "#sm~"+ angel + ";";
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
         {
 
         }

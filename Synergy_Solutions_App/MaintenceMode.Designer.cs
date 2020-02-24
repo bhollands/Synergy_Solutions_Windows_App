@@ -53,13 +53,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.Dbug_window = new System.Windows.Forms.TextBox();
+            this.Connection_window = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.connectBtn = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.servoAngel = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.DCdirection = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
@@ -95,9 +95,12 @@
             this.TX_Clear = new System.Windows.Forms.Button();
             this.RX_Clear = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
+            this.Debug_W = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.servoAngel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dist_Sen_Clk)).BeginInit();
@@ -122,7 +125,7 @@
             this.fileToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(670, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(796, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -337,16 +340,16 @@
             this.label7.TabIndex = 48;
             this.label7.Text = "Button 2";
             // 
-            // Dbug_window
+            // Connection_window
             // 
-            this.Dbug_window.BackColor = System.Drawing.Color.White;
-            this.Dbug_window.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Dbug_window.Location = new System.Drawing.Point(476, 149);
-            this.Dbug_window.Multiline = true;
-            this.Dbug_window.Name = "Dbug_window";
-            this.Dbug_window.Size = new System.Drawing.Size(142, 97);
-            this.Dbug_window.TabIndex = 50;
-            this.Dbug_window.Text = "No Connection";
+            this.Connection_window.BackColor = System.Drawing.Color.White;
+            this.Connection_window.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Connection_window.Location = new System.Drawing.Point(476, 149);
+            this.Connection_window.Multiline = true;
+            this.Connection_window.Name = "Connection_window";
+            this.Connection_window.Size = new System.Drawing.Size(147, 97);
+            this.Connection_window.TabIndex = 50;
+            this.Connection_window.Text = "No Connection";
             // 
             // button1
             // 
@@ -389,13 +392,13 @@
             this.connectBtn.UseVisualStyleBackColor = true;
             this.connectBtn.Click += new System.EventHandler(this.button5_Click_1);
             // 
-            // numericUpDown2
+            // servoAngel
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(207, 309);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown2.TabIndex = 63;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            this.servoAngel.Location = new System.Drawing.Point(207, 309);
+            this.servoAngel.Name = "servoAngel";
+            this.servoAngel.Size = new System.Drawing.Size(41, 20);
+            this.servoAngel.TabIndex = 63;
+            this.servoAngel.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // label12
             // 
@@ -468,28 +471,32 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(75, 313);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(98, 16);
+            this.label15.Size = new System.Drawing.Size(106, 16);
             this.label15.TabIndex = 73;
-            this.label15.Text = "Motor no. (0 - 3)";
+            this.label15.Text = "Motor no. (0 or 1)";
             // 
             // numericUpDown3
             // 
             this.numericUpDown3.Location = new System.Drawing.Point(28, 311);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown3.TabIndex = 72;
             // 
-            // comboBox2
+            // DCdirection
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Thing 1",
-            "Thing 2",
-            "Thing 3"});
-            this.comboBox2.Location = new System.Drawing.Point(28, 396);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 74;
+            this.DCdirection.FormattingEnabled = true;
+            this.DCdirection.Items.AddRange(new object[] {
+            "Forwards",
+            "Backwards"});
+            this.DCdirection.Location = new System.Drawing.Point(28, 396);
+            this.DCdirection.Name = "DCdirection";
+            this.DCdirection.Size = new System.Drawing.Size(121, 21);
+            this.DCdirection.TabIndex = 74;
             // 
             // label16
             // 
@@ -516,6 +523,11 @@
             // numericUpDown4
             // 
             this.numericUpDown4.Location = new System.Drawing.Point(28, 350);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            254,
+            0,
+            0,
+            0});
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(41, 20);
             this.numericUpDown4.TabIndex = 76;
@@ -615,7 +627,7 @@
             // 
             // TX_traffic_window
             // 
-            this.TX_traffic_window.Location = new System.Drawing.Point(12, 485);
+            this.TX_traffic_window.Location = new System.Drawing.Point(251, 485);
             this.TX_traffic_window.Name = "TX_traffic_window";
             this.TX_traffic_window.Size = new System.Drawing.Size(222, 115);
             this.TX_traffic_window.TabIndex = 81;
@@ -625,7 +637,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(9, 469);
+            this.label8.Location = new System.Drawing.Point(248, 469);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 16);
             this.label8.TabIndex = 82;
@@ -678,7 +690,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(245, 469);
+            this.label20.Location = new System.Drawing.Point(484, 469);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(69, 16);
             this.label20.TabIndex = 88;
@@ -686,7 +698,7 @@
             // 
             // RX_traffic_window
             // 
-            this.RX_traffic_window.Location = new System.Drawing.Point(248, 485);
+            this.RX_traffic_window.Location = new System.Drawing.Point(487, 485);
             this.RX_traffic_window.Name = "RX_traffic_window";
             this.RX_traffic_window.Size = new System.Drawing.Size(222, 115);
             this.RX_traffic_window.TabIndex = 87;
@@ -716,7 +728,7 @@
             // 
             // TX_Clear
             // 
-            this.TX_Clear.Location = new System.Drawing.Point(475, 507);
+            this.TX_Clear.Location = new System.Drawing.Point(715, 497);
             this.TX_Clear.Name = "TX_Clear";
             this.TX_Clear.Size = new System.Drawing.Size(75, 23);
             this.TX_Clear.TabIndex = 91;
@@ -726,7 +738,7 @@
             // 
             // RX_Clear
             // 
-            this.RX_Clear.Location = new System.Drawing.Point(476, 552);
+            this.RX_Clear.Location = new System.Drawing.Point(715, 526);
             this.RX_Clear.Name = "RX_Clear";
             this.RX_Clear.Size = new System.Drawing.Size(75, 23);
             this.RX_Clear.TabIndex = 92;
@@ -738,18 +750,49 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(473, 469);
+            this.label21.Location = new System.Drawing.Point(721, 478);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(69, 16);
             this.label21.TabIndex = 93;
             this.label21.Text = "Clear Log:";
+            // 
+            // Debug_W
+            // 
+            this.Debug_W.Location = new System.Drawing.Point(20, 485);
+            this.Debug_W.Name = "Debug_W";
+            this.Debug_W.Size = new System.Drawing.Size(222, 115);
+            this.Debug_W.TabIndex = 94;
+            this.Debug_W.Text = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(20, 469);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 16);
+            this.label5.TabIndex = 95;
+            this.label5.Text = "Debug";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(715, 555);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 96;
+            this.button2.Text = "Debug";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // MaintenceMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(670, 612);
+            this.ClientSize = new System.Drawing.Size(796, 612);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Debug_W);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.RX_Clear);
             this.Controls.Add(this.TX_Clear);
@@ -767,15 +810,15 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.numericUpDown4);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.DCdirection);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.Dbug_window);
+            this.Controls.Add(this.Connection_window);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.servoAngel);
             this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button1);
@@ -817,7 +860,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.servoAngel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dist_Sen_Clk)).EndInit();
@@ -852,13 +895,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox Dbug_window;
+        private System.Windows.Forms.TextBox Connection_window;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button connectBtn;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown servoAngel;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label13;
@@ -867,7 +910,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox DCdirection;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
@@ -894,5 +937,8 @@
         private System.Windows.Forms.Button TX_Clear;
         private System.Windows.Forms.Button RX_Clear;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.RichTextBox Debug_W;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }
