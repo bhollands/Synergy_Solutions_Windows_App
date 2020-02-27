@@ -37,8 +37,8 @@ namespace Synergy_Solutions_App
 
         private void readOnly()
         {
-            TextBox[] textBox = {textBox1, textBox2, textBox3, textBox4, textBox5,
-                                textBox6, LEDbox1, LEDbox4,Connection_window, LEDbox6, LEDbox5, LEDbox7,
+            TextBox[] textBox = {textBox1, textBox2, textBox3, textBox4, slider1,
+                                slider2, LEDbox1, LEDbox4,Connection_window, LEDbox6, LEDbox5, LEDbox7,
                                 LEDbox3, LEDbox2, textBox8};
             foreach (TextBox textbox in textBox)
             {
@@ -76,8 +76,9 @@ namespace Synergy_Solutions_App
 
         }
 
-        private void writeToPort(string mesg)
+        private void writeToPort(string id, int devNo, string info,  int direction)
         {
+            string mesg = "#" + id + ":" + devNo + ":" + info + ":" +direction +";";
             try
             {
                 port.Write(mesg);
@@ -215,19 +216,19 @@ namespace Synergy_Solutions_App
         {
             TextBox[] ledBox = {LEDbox1, LEDbox2, LEDbox3, LEDbox4,
                                 LEDbox5, LEDbox6, LEDbox7};
-            string Oncommand = "#LED~" + no + "ON;\n";
-            string OFFcommand = "#LED~" + no + "OF;\n";
+            string Oncommand = no + "ON;";
+            string OFFcommand = no + "OF;";
             TextBox activeBox;
             activeBox = ledBox[no-1];
 
-            if (isConnected && Oncommand != lastWritten)
+            if (isConnected && activeBox.Text != "Active")
             {
-                writeToPort(Oncommand);
+                writeToPort("l",no,1.ToString(),0);
                 activeBox.Text = "Active";
             }
             else
             {
-                writeToPort(OFFcommand);
+                writeToPort("l",no,0.ToString(),0);
                 activeBox.Text = "Inactive";
             }
         }
@@ -374,16 +375,26 @@ namespace Synergy_Solutions_App
 
         private void servo_btn_Click(object sender, EventArgs e)
         {
-            string mesg = servoCommand(servoAngel.Value);
-            writeToPort(mesg);
-        }
-
-        private string servoCommand(decimal angel)
-        {
-            return "#sm~"+ angel + ";";
+            int servoNo = (int)ServoNumber.Value;
+            string servoAngle = servoAngel.Value.ToString();
+            writeToPort("s",servoNo, servoAngle, 0);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MotorBtn_CLick(object sender, EventArgs e)
+        {
+            int mtrNo = (int)motorNo.Value;
+            string speed = MotorSpeed.Value.ToString();
+            string direction = null;
+
+            writeToPort("m",mtrNo,speed,DCdirection.SelectedIndex+1);
+        }
+
+        private void LEDbox1_TextChanged(object sender, EventArgs e)
         {
 
         }

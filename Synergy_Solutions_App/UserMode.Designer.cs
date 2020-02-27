@@ -53,6 +53,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.Dbug = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -132,7 +133,6 @@
             this.label2.Size = new System.Drawing.Size(117, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "High Scores!!";
-;
             // 
             // letter1
             // 
@@ -377,11 +377,20 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Delete after this section is integrated";
             // 
+            // Dbug
+            // 
+            this.Dbug.Location = new System.Drawing.Point(200, 283);
+            this.Dbug.Name = "Dbug";
+            this.Dbug.Size = new System.Drawing.Size(100, 96);
+            this.Dbug.TabIndex = 21;
+            this.Dbug.Text = "";
+            // 
             // UserMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 478);
+            this.Controls.Add(this.Dbug);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.debugButton1);
             this.Controls.Add(this.label1);
@@ -440,6 +449,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox Dbug;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -18,9 +19,32 @@ namespace Synergy_Solutions_App
       
 
         Thread th;
+        private bool grey;
+
         public UserMode()
         {
             InitializeComponent();
+        }
+
+        private void logTraffic(RichTextBox box, string text, Color color)
+        {
+            box.SelectionStart = box.TextLength;
+            box.SelectionLength = 0;
+            box.SelectionColor = color;
+            //string time = GetTimeStamp(DateTime.Now) + " | ";
+            box.AppendText(text + Environment.NewLine);
+            if (grey == true)
+            {
+                box.SelectionBackColor = Color.White;
+                grey = false;
+            }
+            else
+            {
+                box.SelectionBackColor = Color.LightGray;
+                grey = true;
+            }
+            box.SelectionColor = box.ForeColor;
+            box.ScrollToCaret();
         }
 
         private void Form1_Load(object sender, EventArgs e)

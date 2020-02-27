@@ -45,8 +45,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.slider1 = new System.Windows.Forms.TextBox();
+            this.slider2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -67,12 +67,12 @@
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.motorNo = new System.Windows.Forms.NumericUpDown();
             this.DCdirection = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.button8 = new System.Windows.Forms.Button();
+            this.MotorSpeed = new System.Windows.Forms.NumericUpDown();
+            this.MotonBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.port = new System.IO.Ports.SerialPort(this.components);
             this.LEDbox7 = new System.Windows.Forms.TextBox();
@@ -98,12 +98,15 @@
             this.Debug_W = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.ServoNumber = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servoAngel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.motorNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MotorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dist_Sen_Clk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ServoNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -254,25 +257,25 @@
             this.textBox4.TabIndex = 31;
             this.textBox4.Text = "Inactive";
             // 
-            // textBox5
+            // slider1
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(89, 183);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(109, 24);
-            this.textBox5.TabIndex = 32;
-            this.textBox5.Text = "Inactive";
+            this.slider1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.slider1.Location = new System.Drawing.Point(89, 183);
+            this.slider1.Multiline = true;
+            this.slider1.Name = "slider1";
+            this.slider1.Size = new System.Drawing.Size(109, 24);
+            this.slider1.TabIndex = 32;
+            this.slider1.Text = "Inactive";
             // 
-            // textBox6
+            // slider2
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(89, 212);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(109, 24);
-            this.textBox6.TabIndex = 33;
-            this.textBox6.Text = "Inactive";
+            this.slider2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.slider2.Location = new System.Drawing.Point(89, 212);
+            this.slider2.Multiline = true;
+            this.slider2.Name = "slider2";
+            this.slider2.Size = new System.Drawing.Size(109, 24);
+            this.slider2.TabIndex = 33;
+            this.slider2.Text = "Inactive";
             // 
             // label1
             // 
@@ -301,7 +304,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Gold;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(25, 186);
+            this.label3.Location = new System.Drawing.Point(31, 187);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 44;
@@ -353,7 +356,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(239, 343);
+            this.button1.Location = new System.Drawing.Point(257, 377);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 27);
             this.button1.TabIndex = 56;
@@ -405,7 +408,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.DarkGray;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(254, 313);
+            this.label12.Location = new System.Drawing.Point(254, 311);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 16);
             this.label12.TabIndex = 66;
@@ -475,20 +478,23 @@
             this.label15.TabIndex = 73;
             this.label15.Text = "Motor no. (0 or 1)";
             // 
-            // numericUpDown3
+            // motorNo
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(28, 311);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.motorNo.Location = new System.Drawing.Point(28, 311);
+            this.motorNo.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown3.TabIndex = 72;
+            this.motorNo.Name = "motorNo";
+            this.motorNo.Size = new System.Drawing.Size(41, 20);
+            this.motorNo.TabIndex = 72;
             // 
             // DCdirection
             // 
+            this.DCdirection.AutoCompleteCustomSource.AddRange(new string[] {
+            "Direction 1",
+            "Direction 2"});
             this.DCdirection.FormattingEnabled = true;
             this.DCdirection.Items.AddRange(new object[] {
             "Forwards",
@@ -520,27 +526,27 @@
             this.label17.TabIndex = 77;
             this.label17.Text = "Speed (0 - 254)";
             // 
-            // numericUpDown4
+            // MotorSpeed
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(28, 350);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.MotorSpeed.Location = new System.Drawing.Point(28, 350);
+            this.MotorSpeed.Maximum = new decimal(new int[] {
             254,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(41, 20);
-            this.numericUpDown4.TabIndex = 76;
+            this.MotorSpeed.Name = "MotorSpeed";
+            this.MotorSpeed.Size = new System.Drawing.Size(41, 20);
+            this.MotorSpeed.TabIndex = 76;
             // 
-            // button8
+            // MotonBtn
             // 
-            this.button8.Location = new System.Drawing.Point(47, 423);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 27);
-            this.button8.TabIndex = 78;
-            this.button8.Text = "Go";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.MotonBtn.Location = new System.Drawing.Point(47, 423);
+            this.MotonBtn.Name = "MotonBtn";
+            this.MotonBtn.Size = new System.Drawing.Size(75, 27);
+            this.MotonBtn.TabIndex = 78;
+            this.MotonBtn.Text = "Go";
+            this.MotonBtn.UseVisualStyleBackColor = true;
+            this.MotonBtn.Click += new System.EventHandler(this.MotorBtn_CLick);
             // 
             // comboBox1
             // 
@@ -614,6 +620,7 @@
             this.LEDbox1.Size = new System.Drawing.Size(109, 24);
             this.LEDbox1.TabIndex = 34;
             this.LEDbox1.Text = "Inactive";
+            this.LEDbox1.TextChanged += new System.EventHandler(this.LEDbox1_TextChanged);
             // 
             // LEDbox4
             // 
@@ -784,12 +791,47 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // ServoNumber
+            // 
+            this.ServoNumber.Location = new System.Drawing.Point(207, 335);
+            this.ServoNumber.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.ServoNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ServoNumber.Name = "ServoNumber";
+            this.ServoNumber.Size = new System.Drawing.Size(41, 20);
+            this.ServoNumber.TabIndex = 97;
+            this.ServoNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.DarkGray;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(254, 337);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 16);
+            this.label10.TabIndex = 98;
+            this.label10.Text = "Servo no. (1/2)";
+            // 
             // MaintenceMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(796, 612);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.ServoNumber);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Debug_W);
@@ -806,13 +848,13 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TX_traffic_window);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.MotonBtn);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.numericUpDown4);
+            this.Controls.Add(this.MotorSpeed);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.DCdirection);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.numericUpDown3);
+            this.Controls.Add(this.motorNo);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox18);
             this.Controls.Add(this.label13);
@@ -836,8 +878,8 @@
             this.Controls.Add(this.LEDbox6);
             this.Controls.Add(this.LEDbox4);
             this.Controls.Add(this.LEDbox1);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.slider2);
+            this.Controls.Add(this.slider1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -861,9 +903,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servoAngel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.motorNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MotorSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dist_Sen_Clk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ServoNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -887,8 +930,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox slider1;
+        private System.Windows.Forms.TextBox slider2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -909,12 +952,12 @@
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown motorNo;
         private System.Windows.Forms.ComboBox DCdirection;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.NumericUpDown MotorSpeed;
+        private System.Windows.Forms.Button MotonBtn;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.IO.Ports.SerialPort port;
         private System.Windows.Forms.TextBox LEDbox7;
@@ -940,5 +983,7 @@
         private System.Windows.Forms.RichTextBox Debug_W;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown ServoNumber;
+        private System.Windows.Forms.Label label10;
     }
 }
