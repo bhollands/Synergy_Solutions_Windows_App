@@ -54,9 +54,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Dbug = new System.Windows.Forms.RichTextBox();
+            this.AlienImage = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -385,11 +387,22 @@
             this.Dbug.TabIndex = 21;
             this.Dbug.Text = "";
             // 
+            // AlienImage
+            // 
+            this.AlienImage.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
+            this.AlienImage.Location = new System.Drawing.Point(573, 133);
+            this.AlienImage.Name = "AlienImage";
+            this.AlienImage.Size = new System.Drawing.Size(155, 101);
+            this.AlienImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AlienImage.TabIndex = 22;
+            this.AlienImage.TabStop = false;
+            // 
             // UserMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 478);
+            this.Controls.Add(this.AlienImage);
             this.Controls.Add(this.Dbug);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.debugButton1);
@@ -415,8 +428,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            //((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,6 +464,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox Dbug;
+        private System.Windows.Forms.PictureBox AlienImage;
     }
 }
 

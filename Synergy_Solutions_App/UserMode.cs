@@ -56,7 +56,7 @@ namespace Synergy_Solutions_App
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
             }
-
+            
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
