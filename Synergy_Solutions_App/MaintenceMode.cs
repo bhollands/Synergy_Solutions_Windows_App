@@ -31,13 +31,11 @@ namespace Synergy_Solutions_App
             getComPorts();
             TX_traffic_window.ReadOnly = true;
             TX_traffic_window.BackColor = Color.White;
-
-
         }
 
         private void readOnly()
         {
-            TextBox[] textBox = {textBox1, textBox2, textBox3, textBox4, slider1,
+            TextBox[] textBox = {button1Text,switch1Text, switch2Text, slider1,
                                 slider2, LEDbox1, LEDbox4,Connection_window, LEDbox6, LEDbox5, LEDbox7,
                                 LEDbox3, LEDbox2, textBox8};
             foreach (TextBox textbox in textBox)
@@ -116,7 +114,6 @@ namespace Synergy_Solutions_App
         }
         private void readFromPort()
         {
-
             try
             {
                 string buffer = port.ReadExisting();
@@ -215,7 +212,7 @@ namespace Synergy_Solutions_App
         private void ledButton(int no)
         {
             TextBox[] ledBox = {LEDbox1, LEDbox2, LEDbox3, LEDbox4,
-                                LEDbox5, LEDbox6, LEDbox7};
+                                LEDbox5, LEDbox6, LEDbox7, LEDbox8};
             string Oncommand = no + "ON;";
             string OFFcommand = no + "OF;";
             TextBox activeBox;
@@ -312,6 +309,50 @@ namespace Synergy_Solutions_App
             }
         }
 
+
+        private void writeRequest(string key, int no)
+        {
+            port.Write("#" + key +":"+ no + ";");
+        }
+        private void request(string component, int no)
+        {
+            switch (component)
+            {
+                case "distance":
+                    writeRequest("d",0);
+                    break;
+                case "LDR":
+                    switch (no)
+                    {
+                        case 1:
+                            writeRequest("",1);
+                            break;
+                        case 2:
+                            writeRequest("", 2);
+                            break;
+                        case 3:
+                            writeRequest("", 3);
+                            break;
+                        case 4:
+                            writeRequest("", 4);
+                            break;
+                        case 5:
+                            writeRequest("", 5);
+                            break;
+                        case 6:
+                            writeRequest("", 6);
+                            break;
+
+                    }
+                    break;
+            }
+
+        }
+
+        private void LDR_Number(int no)
+        {
+
+        }
         private string RxDataType()
         {
             try
@@ -388,15 +429,100 @@ namespace Synergy_Solutions_App
         private void MotorBtn_CLick(object sender, EventArgs e)
         {
             int mtrNo = (int)motorNo.Value;
-            string speed = MotorSpeed.Value.ToString();
-            string direction = null;
+            string speed = motorSpeed.SelectedIndex.ToString();
+            int direction = DCdirection.SelectedIndex + 1;
 
-            writeToPort("m",mtrNo,speed,DCdirection.SelectedIndex+1);
+            writeToPort("m",mtrNo,speed, direction);
         }
 
         private void LEDbox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void control_panel_Read(object sender, EventArgs e)
+        {
+            readFromPort();
+            switch (RxDataType())
+            {
+                case "s1":
+                    slider1.Text = RxData();
+                    break;
+                case "s2":
+                    slider2.Text = RxData();
+                    break;
+                case "ldr1":
+                    LDR1.Text = RxData();
+                    break;
+                case "ldr2":
+                    LDR2.Text = RxData();
+                    break;
+                case "btn":
+                    serialDigitalLogic(button1Text);
+                    break;
+                case "swtc1":
+                    serialDigitalLogic(switch1Text);
+                    break;
+                case "swtc2":
+                    serialDigitalLogic(switch2Text);
+                    break;
+            }
+
+        }
+
+        private void serialDigitalLogic(TextBox textBox)
+        {
+            if (RxData() == "h")
+            {
+                textBox.Text = "Active";
+            }
+            else
+            {
+                textBox.Text = "Inactive";
+            }
+        }
+        private void serial_data_in(object sender, SerialDataReceivedEventArgs e)
+        {
+            readFromPort();
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_2(object sender, EventArgs e)
+        {
+            ledButton(8);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            readFromPort();
+            switch (RxDataType())
+            {
+                case "ldr3":
+                    LDR3.Text = RxData();
+                    break;
+                case "ldr4":
+                    LDR4.Text = RxData();
+                    break;
+                case "ldr5":
+                    LDR5.Text = RxData();
+                    break;
+                case "ldr6":
+                    LDR6.Text = RxData();
+                    break;
+                case "ls":
+                    serialDigitalLogic(limitSwitch);
+                    break;
+            }
         }
     }
 }
