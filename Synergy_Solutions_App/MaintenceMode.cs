@@ -505,5 +505,10 @@ namespace Synergy_Solutions_App
                     break;
             }
         }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -121,11 +121,13 @@
             this.label29 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.LEDbox8 = new System.Windows.Forms.TextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servoAngel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.motorNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -1067,6 +1069,10 @@
             this.LEDbox8.TabIndex = 125;
             this.LEDbox8.Text = "Inactive";
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
             // MaintenceMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1169,6 +1175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.servoAngel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.motorNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ServoNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1268,5 +1275,6 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox LEDbox8;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

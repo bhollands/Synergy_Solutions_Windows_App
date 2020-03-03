@@ -2,6 +2,7 @@
 {
     partial class UserMode
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maintainceModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,10 +55,17 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Dbug = new System.Windows.Forms.RichTextBox();
-            this.AlienImage = new System.Windows.Forms.PictureBox();
+            this.AlienImage1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.AlienImage2 = new System.Windows.Forms.PictureBox();
+            this.AlienImage4 = new System.Windows.Forms.PictureBox();
+            this.AlienImage3 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage3)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -384,22 +393,58 @@
             this.Dbug.TabIndex = 21;
             this.Dbug.Text = "";
             // 
-            // AlienImage
+            // AlienImage1
             // 
-            this.AlienImage.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
-            this.AlienImage.Location = new System.Drawing.Point(573, 133);
-            this.AlienImage.Name = "AlienImage";
-            this.AlienImage.Size = new System.Drawing.Size(155, 101);
-            this.AlienImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.AlienImage.TabIndex = 22;
-            this.AlienImage.TabStop = false;
+            this.AlienImage1.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
+            this.AlienImage1.Location = new System.Drawing.Point(573, 133);
+            this.AlienImage1.Name = "AlienImage1";
+            this.AlienImage1.Size = new System.Drawing.Size(155, 101);
+            this.AlienImage1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AlienImage1.TabIndex = 22;
+            this.AlienImage1.TabStop = false;
+            // 
+            // AlienImage2
+            // 
+            this.AlienImage2.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
+            this.AlienImage2.Location = new System.Drawing.Point(329, 316);
+            this.AlienImage2.Name = "AlienImage2";
+            this.AlienImage2.Size = new System.Drawing.Size(155, 101);
+            this.AlienImage2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AlienImage2.TabIndex = 24;
+            this.AlienImage2.TabStop = false;
+            this.AlienImage2.Visible = false;
+            // 
+            // AlienImage4
+            // 
+            this.AlienImage4.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
+            this.AlienImage4.Location = new System.Drawing.Point(202, 27);
+            this.AlienImage4.Name = "AlienImage4";
+            this.AlienImage4.Size = new System.Drawing.Size(155, 101);
+            this.AlienImage4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AlienImage4.TabIndex = 25;
+            this.AlienImage4.TabStop = false;
+            this.AlienImage4.Visible = false;
+            // 
+            // AlienImage3
+            // 
+            this.AlienImage3.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
+            this.AlienImage3.Location = new System.Drawing.Point(219, 167);
+            this.AlienImage3.Name = "AlienImage3";
+            this.AlienImage3.Size = new System.Drawing.Size(155, 101);
+            this.AlienImage3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AlienImage3.TabIndex = 26;
+            this.AlienImage3.TabStop = false;
+            this.AlienImage3.Visible = false;
             // 
             // UserMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 478);
-            this.Controls.Add(this.AlienImage);
+            this.Controls.Add(this.AlienImage3);
+            this.Controls.Add(this.AlienImage4);
+            this.Controls.Add(this.AlienImage2);
+            this.Controls.Add(this.AlienImage1);
             this.Controls.Add(this.Dbug);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.debugButton1);
@@ -426,7 +471,10 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AlienImage3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,7 +507,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox Dbug;
-        private System.Windows.Forms.PictureBox AlienImage;
+        private System.Windows.Forms.PictureBox AlienImage1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox AlienImage2;
+        private System.Windows.Forms.PictureBox AlienImage4;
+        private System.Windows.Forms.PictureBox AlienImage3;
     }
 }
 
