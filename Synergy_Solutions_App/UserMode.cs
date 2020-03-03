@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
 
 
@@ -16,7 +17,12 @@ namespace Synergy_Solutions_App
         int letterChoice = 0;
         public int[] highScoresList = {101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
         public string[] highScoreNames = {"STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_"};
-      
+        
+        
+        byte alienAlpha = 255;
+        bool fade = true;
+        //Debugging string
+        String dug = "hello ";
 
         Thread th;
         private bool grey;
@@ -61,6 +67,9 @@ namespace Synergy_Solutions_App
             //box holding the player's score is loaded at the end of the game as well as the high scores of other users
             scoreText.ReadOnly = true;
             scoreText.Text = scorePH.ToString();
+
+           
+            
 
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
@@ -194,5 +203,8 @@ namespace Synergy_Solutions_App
         {
             letterChoice++;
         }
+
+        //This method will get called every second until the timer stops or the program exits.
+
     }
 }
