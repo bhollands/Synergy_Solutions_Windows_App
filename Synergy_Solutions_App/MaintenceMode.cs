@@ -302,13 +302,13 @@ namespace Synergy_Solutions_App
 
         private void dist_button_Click(object sender, EventArgs e)
         {
+            writeRequest("d",0);
             readFromPort();
             if (RxDataType() == "d")
             {
                 textBox8.Text = RxData();
             }
         }
-
 
         private void writeRequest(string key, int no)
         {
@@ -422,9 +422,9 @@ namespace Synergy_Solutions_App
         }
 
         private void control_panel_Read(object sender, EventArgs e)
-        {
+        { 
             readFromPort();
-            switch (RxDataType())
+/*            switch (RxDataType())
             {
                 case "s1":
                     slider1.Text = RxData();
@@ -447,7 +447,7 @@ namespace Synergy_Solutions_App
                 case "swtc2":
                     serialDigitalLogic(switch2Text);
                     break;
-            }
+            }*/
 
         }
 

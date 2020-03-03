@@ -132,9 +132,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(107, 20);
             this.label2.TabIndex = 3;
-            this.label2.Text = "High Scores!!";
+            this.label2.Text = "High Scores";
             // 
             // letter1
             // 
@@ -389,7 +389,6 @@
             // 
             // AlienImage
             // 
-            this.AlienImage.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
             this.AlienImage.Location = new System.Drawing.Point(573, 133);
             this.AlienImage.Name = "AlienImage";
             this.AlienImage.Size = new System.Drawing.Size(155, 101);
