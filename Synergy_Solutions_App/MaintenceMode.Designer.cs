@@ -526,7 +526,7 @@
             // 
             // MotonBtn
             // 
-            this.MotonBtn.Location = new System.Drawing.Point(495, 430);
+            this.MotonBtn.Location = new System.Drawing.Point(483, 430);
             this.MotonBtn.Name = "MotonBtn";
             this.MotonBtn.Size = new System.Drawing.Size(75, 27);
             this.MotonBtn.TabIndex = 78;

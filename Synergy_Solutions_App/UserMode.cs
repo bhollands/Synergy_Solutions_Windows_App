@@ -91,7 +91,7 @@ namespace Synergy_Solutions_App
             
             //InitTimer();
 
-            labelName.BackColor = System.Drawing.Color.Transparent;
+            //labelName.BackColor = System.Drawing.Color.Transparent;
 
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
@@ -218,14 +218,16 @@ namespace Synergy_Solutions_App
             
             
                 }
-
-
-      
         }
         //button to move into the next letter selection
         private void button2_Click_1(object sender, EventArgs e)
         {
             letterChoice++;
+        }
+
+        private void maintenceModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

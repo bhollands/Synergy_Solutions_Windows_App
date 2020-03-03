@@ -322,37 +322,18 @@ namespace Synergy_Solutions_App
                     writeRequest("d",0);
                     break;
                 case "LDR":
-                    switch (no)
-                    {
-                        case 1:
-                            writeRequest("",1);
-                            break;
-                        case 2:
-                            writeRequest("", 2);
-                            break;
-                        case 3:
-                            writeRequest("", 3);
-                            break;
-                        case 4:
-                            writeRequest("", 4);
-                            break;
-                        case 5:
-                            writeRequest("", 5);
-                            break;
-                        case 6:
-                            writeRequest("", 6);
-                            break;
-
-                    }
+                    writeRequest("l",no);
+                    break;
+                case "button":
+                    writeRequest("b",0);
+                    break;
+                case "switch":
+                    writeRequest("s",no);
                     break;
             }
 
         }
 
-        private void LDR_Number(int no)
-        {
-
-        }
         private string RxDataType()
         {
             try
