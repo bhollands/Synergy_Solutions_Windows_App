@@ -2,8 +2,6 @@
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
-using System.Timers;
-
 
 
 
@@ -13,47 +11,20 @@ namespace Synergy_Solutions_App
 
     public partial class UserMode : Form
     {
-
         //setting up. scorePH should be changed to the player's score but it is set to 5555 for now
         public int scorePH = 5555;
         int letterChoice = 0;
-        public int[] highScoresList = { 101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
-        public string[] highScoreNames = { "STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_" };
-        public byte alienAlpha = 255;
-        
+        public int[] highScoresList = {101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
+        public string[] highScoreNames = {"STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_"};
+      
+
         Thread th;
-        public bool grey;
+        private bool grey;
 
-        //Method to change the alpha value of a chosen image
-        public static Bitmap changeTransparacy(Image image, Byte alpha)
+        public UserMode()
         {
-            Bitmap inputImage = new Bitmap(image);
-            Bitmap outputImage = new Bitmap(image.Width, image.Height);
-            Color orignalPixel = Color.Black;
-            Color newPixel = Color.Black;
-
-
-            for (int w = 0; w < image.Width; w++)
-            {
-                for (int h = 0; h < image.Height; h++)
-                {
-                    orignalPixel = inputImage.GetPixel(w, h);
-                    if (orignalPixel == Color.FromArgb(0,orignalPixel.R,orignalPixel.G,orignalPixel.B)) { 
-                        continue;
-                    }
-                    else
-                    {
-                        newPixel = Color.FromArgb(alpha, orignalPixel.R, orignalPixel.G, orignalPixel.B);
-
-                        outputImage.SetPixel(w, h, newPixel);
-                    }
-                }
-
-            }
-
-            return outputImage;
+            InitializeComponent();
         }
-
 
         private void logTraffic(RichTextBox box, string text, Color color)
         {
@@ -76,28 +47,22 @@ namespace Synergy_Solutions_App
             box.ScrollToCaret();
         }
 
-            public UserMode()
-        {
-            InitializeComponent();
-        }
-        
-
         private void Form1_Load(object sender, EventArgs e)
         {
             //box holding the player's score is loaded at the end of the game as well as the high scores of other users
             scoreText.ReadOnly = true;
             scoreText.Text = scorePH.ToString();
 
-            
-            //InitTimer();
-
-            //labelName.BackColor = System.Drawing.Color.Transparent;
-
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
             }
+            
         }
 
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void maintainceModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -112,10 +77,8 @@ namespace Synergy_Solutions_App
             Application.Run(new Authorization());
         }
 
-        private void buttonSubmit_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-           
 
             //initializing everything 
             int listLength = highScoresList.Length;
@@ -218,16 +181,14 @@ namespace Synergy_Solutions_App
             
             
                 }
+
+
+      
         }
         //button to move into the next letter selection
         private void button2_Click_1(object sender, EventArgs e)
         {
             letterChoice++;
-        }
-
-        private void maintenceModeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
