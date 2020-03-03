@@ -49,14 +49,12 @@
             this.debugButton1 = new System.Windows.Forms.Button();
             this.debugButton2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Dbug = new System.Windows.Forms.RichTextBox();
             this.AlienImage = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).BeginInit();
             this.SuspendLayout();
@@ -79,7 +77,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // maintainceModeToolStripMenuItem
             // 
@@ -428,7 +425,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).EndInit();
             this.ResumeLayout(false);
@@ -459,7 +455,6 @@
         private System.Windows.Forms.Button debugButton1;
         private System.Windows.Forms.Button debugButton2;
         private System.Windows.Forms.Button button2;
-        private System.Diagnostics.PerformanceCounter performanceCounter1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;

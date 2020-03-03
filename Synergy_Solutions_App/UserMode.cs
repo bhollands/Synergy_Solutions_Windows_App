@@ -21,30 +21,39 @@ namespace Synergy_Solutions_App
         Thread th;
         private bool grey;
 
+        public static Bitmap changeTransparacy(Image image, Byte alpha)
+        {
+            Bitmap inputImage = new Bitmap(image);
+            Bitmap outputImage = new Bitmap(image.Width, image.Height);
+            Color orignalPixel = Color.Black;
+            Color newPixel = Color.Black;
+
+
+            for (int w = 0; w < image.Width; w++)
+            {
+                for (int h = 0; h < image.Height; h++)
+                {
+                    orignalPixel = inputImage.GetPixel(w, h);
+                    if (orignalPixel == Color.FromArgb(0, orignalPixel.R, orignalPixel.G, orignalPixel.B))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        newPixel = Color.FromArgb(alpha, orignalPixel.R, orignalPixel.G, orignalPixel.B);
+
+                        outputImage.SetPixel(w, h, newPixel);
+                    }
+                }
+
+            }
+
+            return outputImage;
+        }
+
         public UserMode()
         {
             InitializeComponent();
-        }
-
-        private void logTraffic(RichTextBox box, string text, Color color)
-        {
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-            box.SelectionColor = color;
-            //string time = GetTimeStamp(DateTime.Now) + " | ";
-            box.AppendText(text + Environment.NewLine);
-            if (grey == true)
-            {
-                box.SelectionBackColor = Color.White;
-                grey = false;
-            }
-            else
-            {
-                box.SelectionBackColor = Color.LightGray;
-                grey = true;
-            }
-            box.SelectionColor = box.ForeColor;
-            box.ScrollToCaret();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,11 +66,6 @@ namespace Synergy_Solutions_App
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
             }
             
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void maintainceModeToolStripMenuItem_Click(object sender, EventArgs e)
