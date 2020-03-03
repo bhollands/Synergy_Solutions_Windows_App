@@ -28,27 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maintainceModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.youreOnYourOwnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noHelpHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getGudM8ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.highScores = new System.Windows.Forms.ListBox();
-            this.labelHighScore = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.letter1 = new System.Windows.Forms.DomainUpDown();
             this.letter3 = new System.Windows.Forms.DomainUpDown();
             this.letter2 = new System.Windows.Forms.DomainUpDown();
             this.letter4 = new System.Windows.Forms.DomainUpDown();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelScore = new System.Windows.Forms.Label();
-            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.scoreText = new System.Windows.Forms.TextBox();
             this.debugButton1 = new System.Windows.Forms.Button();
             this.debugButton2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.Dbug = new System.Windows.Forms.RichTextBox();
             this.AlienImage = new System.Windows.Forms.PictureBox();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).BeginInit();
             this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(722, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.maintainceModeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            // 
+            // maintainceModeToolStripMenuItem
+            // 
+            this.maintainceModeToolStripMenuItem.Name = "maintainceModeToolStripMenuItem";
+            this.maintainceModeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.maintainceModeToolStripMenuItem.Text = "Maintaince Mode";
+            this.maintainceModeToolStripMenuItem.Click += new System.EventHandler(this.maintainceModeToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.youreOnYourOwnToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // youreOnYourOwnToolStripMenuItem
+            // 
+            this.youreOnYourOwnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noHelpHereToolStripMenuItem});
+            this.youreOnYourOwnToolStripMenuItem.Name = "youreOnYourOwnToolStripMenuItem";
+            this.youreOnYourOwnToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.youreOnYourOwnToolStripMenuItem.Text = "You\'re on your own";
+            // 
+            // noHelpHereToolStripMenuItem
+            // 
+            this.noHelpHereToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.getGudM8ToolStripMenuItem});
+            this.noHelpHereToolStripMenuItem.Name = "noHelpHereToolStripMenuItem";
+            this.noHelpHereToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.noHelpHereToolStripMenuItem.Text = "No help here";
+            // 
+            // getGudM8ToolStripMenuItem
+            // 
+            this.getGudM8ToolStripMenuItem.Name = "getGudM8ToolStripMenuItem";
+            this.getGudM8ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.getGudM8ToolStripMenuItem.Text = "Get gud m8";
             // 
             // highScores
             // 
@@ -58,15 +126,15 @@
             this.highScores.Size = new System.Drawing.Size(160, 316);
             this.highScores.TabIndex = 1;
             // 
-            // labelHighScore
+            // label2
             // 
-            this.labelHighScore.AutoSize = true;
-            this.labelHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHighScore.Location = new System.Drawing.Point(12, 24);
-            this.labelHighScore.Name = "labelHighScore";
-            this.labelHighScore.Size = new System.Drawing.Size(117, 20);
-            this.labelHighScore.TabIndex = 3;
-            this.labelHighScore.Text = "High Scores!!";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "High Scores!!";
             // 
             // letter1
             // 
@@ -209,34 +277,33 @@
             this.letter4.TabIndex = 7;
             this.letter4.Text = "_";
             // 
-            // labelName
+            // label3
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.BackColor = System.Drawing.Color.White;
-            this.labelName.Location = new System.Drawing.Point(430, 173);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(38, 13);
-            this.labelName.TabIndex = 8;
-            this.labelName.Text = "Name:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(430, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Name:";
             // 
-            // labelScore
+            // label4
             // 
-            this.labelScore.AutoSize = true;
-            this.labelScore.Location = new System.Drawing.Point(421, 79);
-            this.labelScore.Name = "labelScore";
-            this.labelScore.Size = new System.Drawing.Size(63, 13);
-            this.labelScore.TabIndex = 9;
-            this.labelScore.Text = "Your Score:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(421, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Your Score:";
             // 
-            // buttonSubmit
+            // button1
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(380, 234);
-            this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(138, 34);
-            this.buttonSubmit.TabIndex = 10;
-            this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = true;
-            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
+            this.button1.Location = new System.Drawing.Point(380, 234);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(138, 34);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Submit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -312,10 +379,18 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Delete after this section is integrated";
             // 
+            // Dbug
+            // 
+            this.Dbug.Location = new System.Drawing.Point(200, 283);
+            this.Dbug.Name = "Dbug";
+            this.Dbug.Size = new System.Drawing.Size(100, 96);
+            this.Dbug.TabIndex = 21;
+            this.Dbug.Text = "";
+            // 
             // AlienImage
             // 
             this.AlienImage.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
-            this.AlienImage.Location = new System.Drawing.Point(535, 85);
+            this.AlienImage.Location = new System.Drawing.Point(573, 133);
             this.AlienImage.Name = "AlienImage";
             this.AlienImage.Size = new System.Drawing.Size(155, 101);
             this.AlienImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -327,6 +402,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 478);
+            this.Controls.Add(this.AlienImage);
+            this.Controls.Add(this.Dbug);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.debugButton1);
             this.Controls.Add(this.label1);
@@ -334,20 +411,24 @@
             this.Controls.Add(this.scoreText);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.buttonSubmit);
-            this.Controls.Add(this.labelScore);
-            this.Controls.Add(this.labelName);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.letter4);
             this.Controls.Add(this.letter2);
             this.Controls.Add(this.letter3);
             this.Controls.Add(this.letter1);
-            this.Controls.Add(this.labelHighScore);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.highScores);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.AlienImage);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserMode";
             this.Text = "UserMode";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage)).EndInit();
             this.ResumeLayout(false);
@@ -356,23 +437,33 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maintainceModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem youreOnYourOwnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noHelpHereToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem getGudM8ToolStripMenuItem;
         private System.Windows.Forms.ListBox highScores;
-        private System.Windows.Forms.Label labelHighScore;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DomainUpDown letter1;
         private System.Windows.Forms.DomainUpDown letter3;
         private System.Windows.Forms.DomainUpDown letter2;
         private System.Windows.Forms.DomainUpDown letter4;
-        private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Label labelScore;
-        private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox scoreText;
         private System.Windows.Forms.Button debugButton1;
         private System.Windows.Forms.Button debugButton2;
         private System.Windows.Forms.Button button2;
+        private System.Diagnostics.PerformanceCounter performanceCounter1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RichTextBox Dbug;
         private System.Windows.Forms.PictureBox AlienImage;
     }
 }
