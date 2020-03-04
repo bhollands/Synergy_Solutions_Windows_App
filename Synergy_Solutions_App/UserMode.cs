@@ -91,7 +91,7 @@ namespace Synergy_Solutions_App
 
             //connectToSerial();
 
-            //runTimer();
+            runTimer();
 
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
@@ -232,13 +232,13 @@ namespace Synergy_Solutions_App
                     alienAlpha-=20;
                 }
                 
-        
+       */ 
         public void runTimer()
         {
             System.Timers.Timer aTimer = new System.Timers.Timer(10000);
 
             aTimer.Elapsed += new ElapsedEventHandler(RunEvent);
-            aTimer.Interval = 1000;
+            aTimer.Interval = 2;
             aTimer.Enabled = true;
             if (AA == 0)
             {
@@ -257,7 +257,7 @@ namespace Synergy_Solutions_App
               
                 if (AA >= 45 )
                 {
-                    AA -= 40;
+                    AA -= 30;
 
                     ph = changeTransparacy(ph, AA, ph.Width, ph.Height);
                     AlienImage1.Image = ph;
