@@ -91,7 +91,7 @@ namespace Synergy_Solutions_App
 
             //connectToSerial();
 
-            runTimer();
+            //runTimer();
 
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
@@ -232,7 +232,7 @@ namespace Synergy_Solutions_App
                     alienAlpha-=20;
                 }
                 
-       */ 
+       
         public void runTimer()
         {
             System.Timers.Timer aTimer = new System.Timers.Timer(10000);
@@ -244,11 +244,6 @@ namespace Synergy_Solutions_App
             {
                 aTimer.Stop();
             }
-        }
-
-        private void AlienImage_Click(object sender, EventArgs e)
-        {
-
         }
 
         //This method will get called every second until the timer stops or the program exits.
