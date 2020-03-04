@@ -464,7 +464,6 @@ namespace Synergy_Solutions_App
         }
         private void serial_data_in(object sender, SerialDataReceivedEventArgs e)
         {
-            readFromPort();
 
         }
 
