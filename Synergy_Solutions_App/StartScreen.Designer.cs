@@ -48,7 +48,7 @@
             // 
             // startGame
             // 
-            this.startGame.Location = new System.Drawing.Point(269, 495);
+            this.startGame.Location = new System.Drawing.Point(12, 480);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(318, 81);
             this.startGame.TabIndex = 0;
@@ -65,41 +65,45 @@
             // action
             // 
             this.action.AutoSize = true;
-            this.action.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.action.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.action.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.action.Location = new System.Drawing.Point(384, 117);
+            this.action.Location = new System.Drawing.Point(535, 27);
             this.action.Name = "action";
-            this.action.Size = new System.Drawing.Size(89, 25);
+            this.action.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.action.Size = new System.Drawing.Size(203, 55);
             this.action.TabIndex = 3;
             this.action.Text = "Loading";
+            this.action.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.action.Visible = false;
             // 
             // img_action
             // 
-            this.img_action.Location = new System.Drawing.Point(194, 154);
+            this.img_action.Location = new System.Drawing.Point(483, 149);
             this.img_action.Name = "img_action";
             this.img_action.Size = new System.Drawing.Size(455, 325);
             this.img_action.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_action.TabIndex = 4;
             this.img_action.TabStop = false;
             this.img_action.Visible = false;
+            this.img_action.Click += new System.EventHandler(this.img_action_Click);
             // 
             // img_arrow
             // 
             this.img_arrow.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.img_arrow.Image = ((System.Drawing.Image)(resources.GetObject("img_arrow.Image")));
-            this.img_arrow.Location = new System.Drawing.Point(269, 117);
+            this.img_arrow.Location = new System.Drawing.Point(12, 84);
             this.img_arrow.Name = "img_arrow";
-            this.img_arrow.Size = new System.Drawing.Size(318, 168);
+            this.img_arrow.Size = new System.Drawing.Size(257, 168);
             this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_arrow.TabIndex = 2;
             this.img_arrow.TabStop = false;
+            this.img_arrow.Click += new System.EventHandler(this.img_arrow_Click);
             // 
             // img_button
             // 
             this.img_button.Image = ((System.Drawing.Image)(resources.GetObject("img_button.Image")));
             this.img_button.InitialImage = null;
-            this.img_button.Location = new System.Drawing.Point(269, 252);
+            this.img_button.Location = new System.Drawing.Point(12, 247);
             this.img_button.Name = "img_button";
             this.img_button.Size = new System.Drawing.Size(318, 227);
             this.img_button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -108,7 +112,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(712, 477);
+            this.button1.Location = new System.Drawing.Point(49, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -121,16 +125,17 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(684, 461);
+            this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Debug button to UI mode";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(677, 450);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(143, 67);
             this.pictureBox1.TabIndex = 7;
@@ -139,14 +144,15 @@
             // instruction
             // 
             this.instruction.AutoSize = true;
-            this.instruction.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instruction.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.instruction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.instruction.Location = new System.Drawing.Point(417, 288);
+            this.instruction.Location = new System.Drawing.Point(394, 247);
             this.instruction.Name = "instruction";
-            this.instruction.Size = new System.Drawing.Size(24, 25);
+            this.instruction.Size = new System.Drawing.Size(39, 42);
             this.instruction.TabIndex = 8;
             this.instruction.Text = "1";
             this.instruction.Visible = false;
+            this.instruction.Click += new System.EventHandler(this.instruction_Click);
             // 
             // StartScreen
             // 

@@ -114,6 +114,8 @@ namespace Synergy_Solutions_App
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //can only be pressed once
+            button1.Enabled = false;
 
             //initializing everything 
             int listLength = highScoresList.Length;

@@ -55,8 +55,56 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
+            int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - 10;
+            int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height -10;
 
+            //set UI to screen size and put it in top corner of screen
+            this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
+            this.Location = new Point(0, 0);
+
+            //update UI
+            manualUIUpdate();
+            
         }
+
+        public void manualUIUpdate() {
+
+            startGame.Location = new Point(centerElement(startGame.Location.X, startGame.Size.Width)
+                , startGame.Location.Y);
+            startGame.Refresh();
+
+            img_action.Location = new Point(centerElement(img_action.Location.X, img_action.Size.Width)
+                , img_action.Location.Y);
+            img_action.Refresh();
+
+            img_arrow.Location = new Point(centerElement(img_arrow.Location.X, img_arrow.Size.Width)
+                , img_arrow.Location.Y);
+            img_arrow.Refresh();
+
+            img_button.Location = new Point(centerElement(img_button.Location.X, img_button.Size.Width)
+                , img_button.Location.Y);
+            img_button.Refresh();
+
+            instruction.Location = new Point(centerElement(instruction.Location.X, instruction.Size.Width)
+                , instruction.Location.Y);
+            instruction.Refresh();
+            action.Location = new Point(centerElement(action.Location.X, action.Size.Width)
+                , action.Location.Y);
+            action.Refresh();
+        }
+
+        private int centerElement(int Xcor, int elementWidth)
+        {
+            Xcor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2) - (elementWidth/2);
+            return Xcor;
+        }
+
+        public void centerElement(Button startGame) { 
+        
+        
+        
+        }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -84,18 +132,32 @@ namespace Synergy_Solutions_App
             img_button.Visible = false;
             startGame.Visible = false;
             Thread.Sleep(300);
-            loadActions();
             runGame();
         }
 
         private void runGame()
         {
+            
+            String[] instructions = loadActions();
+            int numInstructions = instructions.Length;
+
             ready321();
+            instruction.Visible = true;
+            for (int dis = 0; dis < numInstructions; dis++) {
+
+                instruction.Text = instructions[dis];
+                instruction.Refresh();
+                Thread.Sleep(1000);
+
+            }
+
+            openUI();
+            this.Close();
 
 
         }
 
-        private void loadActions() {
+        private string[] loadActions() {
             Stopwatch timingP = new Stopwatch();
             action.Visible = true;
             img_action.Image = Synergy_Solutions_App.Properties.Resources.ufo;
@@ -104,7 +166,7 @@ namespace Synergy_Solutions_App
             action.Refresh();
 
             timingP.Start();
-            getActionsFromSerial();
+            String[] instructionsFromMBED = getActionsFromSerial();
             timingP.Stop();
 
             Console.WriteLine(timingP.ElapsedMilliseconds);
@@ -119,17 +181,31 @@ namespace Synergy_Solutions_App
             action.Refresh();
             img_action.Refresh();
 
+            return instructionsFromMBED;
         }
 
-        private void getActionsFromSerial() {
+        private string[] getActionsFromSerial() {
+            int numOfCommands = 4;
+            string[] MBEDcommands = new string[numOfCommands];
 
-            Thread.Sleep(250);
+            /*
+            for (int c = 0; c < numOfCommands;) { 
+                
+                MBEDcommands[c] = 
+            
+            }
+            */
+            MBEDcommands[0] = "button1";
+            MBEDcommands[1] = "sliderUp";
+            MBEDcommands[2] = "sliderDown";
+            MBEDcommands[3] = "button1";
 
+            return MBEDcommands;
         }
 
         private void ready321(){
 
-            action.Text = "Ready?";
+            action.Text = "Ready";
             action.Visible = true;
             action.Refresh();
 
@@ -163,14 +239,40 @@ namespace Synergy_Solutions_App
         private void button1_Click(object sender, EventArgs e)
         {
             //this.Close();
+            openUI();
+        }
+
+        private void openUI() {
+
             thUI = new Thread(opennewform);
             thUI.SetApartmentState(ApartmentState.STA);
             thUI.Start();
+
         }
 
         private void opennewform()
         {
             Application.Run(new UserMode());
+        }
+
+        private void img_arrow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void img_action_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void instruction_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
