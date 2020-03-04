@@ -546,6 +546,7 @@
             // 
             this.port.BaudRate = 115200;
             this.port.PortName = "COM5";
+            this.port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_data_in);
             // 
             // LEDbox7
             // 
@@ -606,7 +607,6 @@
             this.LEDbox1.Size = new System.Drawing.Size(109, 24);
             this.LEDbox1.TabIndex = 34;
             this.LEDbox1.Text = "Inactive";
-            this.LEDbox1.TextChanged += new System.EventHandler(this.LEDbox1_TextChanged);
             // 
             // LEDbox4
             // 

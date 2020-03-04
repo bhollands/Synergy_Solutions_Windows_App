@@ -386,12 +386,14 @@
             // 
             // AlienImage
             // 
+            this.AlienImage.Image = global::Synergy_Solutions_App.Properties.Resources.alien1;
             this.AlienImage.Location = new System.Drawing.Point(573, 133);
             this.AlienImage.Name = "AlienImage";
             this.AlienImage.Size = new System.Drawing.Size(155, 101);
             this.AlienImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AlienImage.TabIndex = 22;
             this.AlienImage.TabStop = false;
+            this.AlienImage.Click += new System.EventHandler(this.AlienImage_Click);
             // 
             // UserMode
             // 

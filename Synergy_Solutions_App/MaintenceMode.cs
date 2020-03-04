@@ -26,11 +26,7 @@ namespace Synergy_Solutions_App
 
         public MaintenceMode()
         {
-            InitializeComponent();
-            readOnly();
-            getComPorts();
-            TX_traffic_window.ReadOnly = true;
-            TX_traffic_window.BackColor = Color.White;
+            InitializeComponent(); 
         }
 
         private void readOnly()
@@ -71,7 +67,10 @@ namespace Synergy_Solutions_App
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            readOnly();
+            getComPorts();
+            TX_traffic_window.ReadOnly = true;
+            TX_traffic_window.BackColor = Color.White;
         }
 
         private void writeToPort(string id, int devNo, string info,  int direction)
@@ -116,8 +115,9 @@ namespace Synergy_Solutions_App
         {
             try
             {
-                string buffer = port.ReadExisting();
-                lastRecived = buffer.Substring(getPacket(buffer)[0], getPacket(buffer)[1]);
+                string buffer = port.ReadLine();
+                lastRecived = buffer;
+                //lastRecived = buffer.Substring(getPacket(buffer)[0], getPacket(buffer)[1]);
                 logTraffic(RX_traffic_window, lastRecived, Color.Black);
             }
             catch(Exception e)
@@ -302,7 +302,7 @@ namespace Synergy_Solutions_App
 
         private void dist_button_Click(object sender, EventArgs e)
         {
-            writeRequest("d",0);
+            request("distance", 0);
             readFromPort();
             if (RxDataType() == "d")
             {
@@ -312,7 +312,17 @@ namespace Synergy_Solutions_App
 
         private void writeRequest(string key, int no)
         {
-            port.Write("#" + key +":"+ no + ";");
+            try
+            {
+                string msg = "#" + key + ":" + no + ";";
+                port.Write(msg);
+                logTraffic(TX_traffic_window,msg , Color.Black);
+            }
+            catch (Exception e)
+            {
+                logTraffic(Debug_W, "Error: " + e, Color.Red);
+            }
+            
         }
         private void request(string component, int no)
         {
@@ -329,6 +339,8 @@ namespace Synergy_Solutions_App
                     break;
                 case "switch":
                     writeRequest("s",no);
+                    break;
+                default:
                     break;
             }
 
@@ -356,7 +368,6 @@ namespace Synergy_Solutions_App
                 int srt_pos = lastRecived.IndexOf("~");
                 int end_pos = lastRecived.IndexOf(";");
                 string data = lastRecived.Substring(srt_pos, end_pos - 2);
-                //logTraffic(TX_traffic_window, data, Color.Black);
                 return data;
             }
             catch
@@ -373,6 +384,7 @@ namespace Synergy_Solutions_App
         private void TX_Clear_Click(object sender, EventArgs e)
         {
             TX_traffic_window.Text = "";
+            LEDbox1.Text = change;
         }
 
         private void RX_Clear_Click(object sender, EventArgs e)
@@ -404,7 +416,7 @@ namespace Synergy_Solutions_App
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-
+            Debug_W.Text = "";
         }
 
         private void MotorBtn_CLick(object sender, EventArgs e)
@@ -424,30 +436,6 @@ namespace Synergy_Solutions_App
         private void control_panel_Read(object sender, EventArgs e)
         { 
             readFromPort();
-/*            switch (RxDataType())
-            {
-                case "s1":
-                    slider1.Text = RxData();
-                    break;
-                case "s2":
-                    slider2.Text = RxData();
-                    break;
-                case "ldr1":
-                    LDR1.Text = RxData();
-                    break;
-                case "ldr2":
-                    LDR2.Text = RxData();
-                    break;
-                case "btn":
-                    serialDigitalLogic(button1Text);
-                    break;
-                case "swtc1":
-                    serialDigitalLogic(switch1Text);
-                    break;
-                case "swtc2":
-                    serialDigitalLogic(switch2Text);
-                    break;
-            }*/
 
         }
 
@@ -462,9 +450,19 @@ namespace Synergy_Solutions_App
                 textBox.Text = "Inactive";
             }
         }
+
+        string change = "";
         private void serial_data_in(object sender, SerialDataReceivedEventArgs e)
         {
-            readFromPort();
+            try
+            {
+                button1Text.Text = "Active";
+            }
+            catch(Exception c)
+            {
+                
+               // logTraffic(Debug_W,"Error : "+c.Message, Color.Red);
+            }
 
         }
 
@@ -505,5 +503,6 @@ namespace Synergy_Solutions_App
                     break;
             }
         }
+
     }
 }
