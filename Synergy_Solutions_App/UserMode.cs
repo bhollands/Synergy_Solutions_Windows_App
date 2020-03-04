@@ -91,7 +91,7 @@ namespace Synergy_Solutions_App
 
             //connectToSerial();
 
-            runTimer();
+            //runTimer();
 
             for (int k = 0; k <= 10; k++) {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
@@ -232,7 +232,7 @@ namespace Synergy_Solutions_App
                     alienAlpha-=20;
                 }
                 
-       */ 
+       
         public void runTimer()
         {
             System.Timers.Timer aTimer = new System.Timers.Timer(10000);
@@ -244,11 +244,6 @@ namespace Synergy_Solutions_App
             {
                 aTimer.Stop();
             }
-        }
-
-        private void AlienImage_Click(object sender, EventArgs e)
-        {
-
         }
 
         //This method will get called every second until the timer stops or the program exits.
@@ -281,29 +276,30 @@ namespace Synergy_Solutions_App
 
             
         }
+
         /*
-        private void AlienImage_MouseEnter(object sender, EventArgs e)
-        {
-            /*
+private void AlienImage_MouseEnter(object sender, EventArgs e)
+{
+   /*
 
-            DoubleAnimation da = new DoubleAnimation
-            {
-                From = 0,
-                To = 1,
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
-                AutoReverse = true
-            };
-            Logo.BeginAnimation(OpacityProperty, da);
+   DoubleAnimation da = new DoubleAnimation
+   {
+       From = 0,
+       To = 1,
+       Duration = new Duration(TimeSpan.FromSeconds(1)),
+       AutoReverse = true
+   };
+   Logo.BeginAnimation(OpacityProperty, da);
 
-            
-            Image ing = (Image)sender;
-            DoubleAnimation animate = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
-            ing.BeginAnimation(Opacity, animate);
-            
 
-           /// this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).Start();
-           // await this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).StartAsync();  //Fade animation can be awaited
-           */
-        }
+   Image ing = (Image)sender;
+   DoubleAnimation animate = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
+   ing.BeginAnimation(Opacity, animate);
+
+
+  /// this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).Start();
+  // await this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).StartAsync();  //Fade animation can be awaited
+  */
+    }
     }
 //}

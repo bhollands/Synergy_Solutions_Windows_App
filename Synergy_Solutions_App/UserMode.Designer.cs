@@ -393,7 +393,6 @@
             this.Dbug.TabIndex = 21;
             this.Dbug.Text = "";
             // 
-
             // AlienImage1
             // 
             this.AlienImage1.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
@@ -436,7 +435,6 @@
             this.AlienImage3.TabIndex = 26;
             this.AlienImage3.TabStop = false;
             this.AlienImage3.Visible = false;
-
             // 
             // UserMode
             // 
