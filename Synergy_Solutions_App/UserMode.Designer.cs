@@ -403,6 +403,10 @@
             this.AlienImage1.TabIndex = 22;
             this.AlienImage1.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 50;
+            // 
             // AlienImage2
             // 
             this.AlienImage2.Image = global::Synergy_Solutions_App.Properties.Resources.alien;
