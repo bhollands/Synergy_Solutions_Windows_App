@@ -276,29 +276,30 @@ namespace Synergy_Solutions_App
 
             
         }
+
         /*
-        private void AlienImage_MouseEnter(object sender, EventArgs e)
-        {
-            /*
+private void AlienImage_MouseEnter(object sender, EventArgs e)
+{
+   /*
 
-            DoubleAnimation da = new DoubleAnimation
-            {
-                From = 0,
-                To = 1,
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
-                AutoReverse = true
-            };
-            Logo.BeginAnimation(OpacityProperty, da);
+   DoubleAnimation da = new DoubleAnimation
+   {
+       From = 0,
+       To = 1,
+       Duration = new Duration(TimeSpan.FromSeconds(1)),
+       AutoReverse = true
+   };
+   Logo.BeginAnimation(OpacityProperty, da);
 
-            
-            Image ing = (Image)sender;
-            DoubleAnimation animate = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
-            ing.BeginAnimation(Opacity, animate);
-            
 
-           /// this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).Start();
-           // await this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).StartAsync();  //Fade animation can be awaited
-           */
-        }
+   Image ing = (Image)sender;
+   DoubleAnimation animate = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
+   ing.BeginAnimation(Opacity, animate);
+
+
+  /// this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).Start();
+  // await this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).StartAsync();  //Fade animation can be awaited
+  */
+    }
     }
 //}
