@@ -246,6 +246,11 @@ namespace Synergy_Solutions_App
             }
         }
 
+        private void AlienImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //This method will get called every second until the timer stops or the program exits.
         public void RunEvent(object source, ElapsedEventArgs e)
         {
