@@ -18,10 +18,11 @@ namespace Synergy_Solutions_App
     {
         bool isConnected = false;
         string lastWritten;
-        string lastRecived;
+        string lastRecived = "";
         string rxType;
         string log;
-
+        bool requestSent = false;
+        string a = "Inactive";
         Thread th;
 
         public MaintenceMode()
@@ -71,7 +72,8 @@ namespace Synergy_Solutions_App
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            
+            switch1Text.Text = a;
         }
 
         private void writeToPort(string id, int devNo, string info,  int direction)
@@ -81,16 +83,16 @@ namespace Synergy_Solutions_App
             {
                 port.Write(mesg);
                 lastWritten = mesg;
+                logTraffic(TX_traffic_window, mesg, Color.Black);
             }
             catch (Exception e)
             {
-                string send = "ERROR: "+ e.Message;
+                string send = "ERROR: "+ e.Message ;
                 logTraffic(Debug_W, send, Color.Red);
                 return;
             }
 
-            string sent = mesg;
-            logTraffic(TX_traffic_window, sent, Color.Black);
+            
         }
 
         private int[] getPacket(string buffer)
@@ -104,28 +106,30 @@ namespace Synergy_Solutions_App
                 {
                     returnArray[0] = i;
                 }
-                if (bufferArray[i] == ';')
+                if (bufferArray[i] == ':')
                 {
-                    returnArray[1] = i + 1;
+                    returnArray[1] = i;
                     break;
                 }
             }
             return returnArray;
         }
+        
         private void readFromPort()
         {
             try
             {
-                string buffer = port.ReadExisting();
-                lastRecived = buffer.Substring(getPacket(buffer)[0], getPacket(buffer)[1]);
-                logTraffic(RX_traffic_window, lastRecived, Color.Black);
+                    string lastRecived = port.ReadLine();
+                    logTraffic(RX_traffic_window, lastRecived, Color.Black);
+                
+                //lastRecived = buffer.Substring(getPacket(buffer)[0], getPacket(buffer)[1]);
+                
             }
             catch(Exception e)
             {
-                string send = "ERROR: " + e.Message;
+                string send = "ERROR: " + e.Message + e.StackTrace;
                 logTraffic(Debug_W, send, Color.Red);
             }
-
         }
 
         private string GetTimeStamp(DateTime value)
@@ -304,15 +308,26 @@ namespace Synergy_Solutions_App
         {
             writeRequest("d",0);
             readFromPort();
-            if (RxDataType() == "d")
+            if (lastRecived.Contains("d")&& requestSent)
             {
-                textBox8.Text = RxData();
+                textBox8.Text = lastRecived.Substring(getPacket(lastRecived)[0], getPacket(lastRecived)[1]);
             }
         }
 
         private void writeRequest(string key, int no)
         {
-            port.Write("#" + key +":"+ no + ";");
+            try
+            {
+                string mesg = "#" + key +":"+ no + ";";
+                port.Write(mesg);
+                requestSent = true;
+                logTraffic(TX_traffic_window, mesg, Color.Black);
+            }
+            catch(Exception e)
+            {
+                logTraffic(Debug_W, e.Source+"Error: :" + e.Message,Color.Red);
+            }
+
         }
         private void request(string component, int no)
         {
@@ -424,31 +439,6 @@ namespace Synergy_Solutions_App
         private void control_panel_Read(object sender, EventArgs e)
         { 
             readFromPort();
-/*            switch (RxDataType())
-            {
-                case "s1":
-                    slider1.Text = RxData();
-                    break;
-                case "s2":
-                    slider2.Text = RxData();
-                    break;
-                case "ldr1":
-                    LDR1.Text = RxData();
-                    break;
-                case "ldr2":
-                    LDR2.Text = RxData();
-                    break;
-                case "btn":
-                    serialDigitalLogic(button1Text);
-                    break;
-                case "swtc1":
-                    serialDigitalLogic(switch1Text);
-                    break;
-                case "swtc2":
-                    serialDigitalLogic(switch2Text);
-                    break;
-            }*/
-
         }
 
         private void serialDigitalLogic(TextBox textBox)
@@ -462,9 +452,12 @@ namespace Synergy_Solutions_App
                 textBox.Text = "Inactive";
             }
         }
+
+        
         private void serial_data_in(object sender, SerialDataReceivedEventArgs e)
         {
-
+            
+            MessageBox.Show("switch flicked");
         }
 
         private void label25_Click(object sender, EventArgs e)
@@ -484,24 +477,11 @@ namespace Synergy_Solutions_App
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+            writeRequest("l", 0);
             readFromPort();
-            switch (RxDataType())
+            if (lastRecived.Contains("d") && requestSent)
             {
-                case "ldr3":
-                    LDR3.Text = RxData();
-                    break;
-                case "ldr4":
-                    LDR4.Text = RxData();
-                    break;
-                case "ldr5":
-                    LDR5.Text = RxData();
-                    break;
-                case "ldr6":
-                    LDR6.Text = RxData();
-                    break;
-                case "ls":
-                    serialDigitalLogic(limitSwitch);
-                    break;
+                textBox8.Text = lastRecived.Substring(getPacket(lastRecived)[0], getPacket(lastRecived)[1]);
             }
         }
 
