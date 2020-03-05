@@ -40,10 +40,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.instruction = new System.Windows.Forms.Label();
+            this.lanuage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lanuage)).BeginInit();
             this.SuspendLayout();
             // 
             // startGame
@@ -85,7 +87,6 @@
             this.img_action.TabIndex = 4;
             this.img_action.TabStop = false;
             this.img_action.Visible = false;
-            this.img_action.Click += new System.EventHandler(this.img_action_Click);
             // 
             // img_arrow
             // 
@@ -97,7 +98,6 @@
             this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_arrow.TabIndex = 2;
             this.img_arrow.TabStop = false;
-            this.img_arrow.Click += new System.EventHandler(this.img_arrow_Click);
             // 
             // img_button
             // 
@@ -130,7 +130,6 @@
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Debug button to UI mode";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -152,7 +151,18 @@
             this.instruction.TabIndex = 8;
             this.instruction.Text = "1";
             this.instruction.Visible = false;
-            this.instruction.Click += new System.EventHandler(this.instruction_Click);
+            // 
+            // lanuage
+            // 
+            this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
+            this.lanuage.Location = new System.Drawing.Point(25, 0);
+            this.lanuage.Name = "lanuage";
+            this.lanuage.Size = new System.Drawing.Size(124, 82);
+            this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.lanuage.TabIndex = 9;
+            this.lanuage.TabStop = false;
+            this.lanuage.Click += new System.EventHandler(this.lanuage_Click);
             // 
             // StartScreen
             // 
@@ -160,6 +170,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(832, 631);
+            this.Controls.Add(this.lanuage);
             this.Controls.Add(this.instruction);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.img_action);
@@ -176,6 +187,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lanuage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +205,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label instruction;
+        private System.Windows.Forms.PictureBox lanuage;
     }
 }
