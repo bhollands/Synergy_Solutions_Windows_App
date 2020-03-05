@@ -87,7 +87,6 @@
             this.img_action.TabIndex = 4;
             this.img_action.TabStop = false;
             this.img_action.Visible = false;
-            this.img_action.Click += new System.EventHandler(this.img_action_Click);
             // 
             // img_arrow
             // 
@@ -99,7 +98,6 @@
             this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_arrow.TabIndex = 2;
             this.img_arrow.TabStop = false;
-            this.img_arrow.Click += new System.EventHandler(this.img_arrow_Click);
             // 
             // img_button
             // 
@@ -132,7 +130,6 @@
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Debug button to UI mode";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -154,7 +151,6 @@
             this.instruction.TabIndex = 8;
             this.instruction.Text = "1";
             this.instruction.Visible = false;
-            this.instruction.Click += new System.EventHandler(this.instruction_Click);
             // 
             // lanuage
             // 
@@ -166,6 +162,7 @@
             this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lanuage.TabIndex = 9;
             this.lanuage.TabStop = false;
+            this.lanuage.Click += new System.EventHandler(this.lanuage_Click);
             // 
             // StartScreen
             // 

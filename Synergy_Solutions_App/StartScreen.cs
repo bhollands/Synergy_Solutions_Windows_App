@@ -13,10 +13,19 @@ namespace Synergy_Solutions_App
 {
     public partial class StartScreen : Form
     {
+        //all displayed text with a lanuage select varible
+        int lanSelect = 0;
+        String readyFReady = "Ready";
+        String readyFGo = "Go";
+        String loadingText = "Loading";
+
+        //fade for the image
         public byte alpha = 255;
-        string[] actions = { null, null, null, null };
         bool inOut = true;
+
+        //thread to move into UI mode
         Thread thUI;
+
         private static Bitmap changeTransparacy(Image image, Byte alpha)
         {
             Bitmap inputImage = new Bitmap(image);
@@ -58,7 +67,7 @@ namespace Synergy_Solutions_App
             int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - 10;
             int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height -10;
 
-            //set UI to screen size and put it in top corner of screen
+            //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
             this.Location = new Point(0, 0);
 
@@ -67,6 +76,7 @@ namespace Synergy_Solutions_App
             
         }
 
+        //manually move UI elements
         public void manualUIUpdate() {
 
             startGame.Location = new Point(centerElement(startGame.Location.X, startGame.Size.Width)
@@ -103,13 +113,7 @@ namespace Synergy_Solutions_App
             return Xcor;
         }
 
-        public void centerElement(Button startGame) { 
-        
-        
-        
-        }
-
-
+        //timer to fade arrow in and out on start screen
         private void timer1_Tick(object sender, EventArgs e)
         {
             img_arrow.Image = changeTransparacy(img_arrow.Image, alpha);
@@ -130,6 +134,7 @@ namespace Synergy_Solutions_App
 
         }
 
+
         private void startGame_Click(object sender, EventArgs e)
         {
             img_arrow.Visible = false;
@@ -139,6 +144,7 @@ namespace Synergy_Solutions_App
             runGame();
         }
 
+
         private void runGame()
         {
             
@@ -147,6 +153,7 @@ namespace Synergy_Solutions_App
 
             ready321();
             instruction.Visible = true;
+            instruction.Refresh();
             for (int dis = 0; dis < numInstructions; dis++) {
 
                 instruction.Text = instructions[dis];
@@ -161,8 +168,10 @@ namespace Synergy_Solutions_App
 
         }
 
+        //dummy method to load data from MBED
         private string[] loadActions() {
             Stopwatch timingP = new Stopwatch();
+            action.Text = loadingText;
             action.Visible = true;
             img_action.Image = Synergy_Solutions_App.Properties.Resources.ufo;
             img_action.Visible = true;
@@ -207,9 +216,10 @@ namespace Synergy_Solutions_App
             return MBEDcommands;
         }
 
+
         private void ready321(){
 
-            action.Text = "Ready";
+            action.Text = readyFReady;
             action.Visible = true;
             action.Refresh();
 
@@ -222,7 +232,7 @@ namespace Synergy_Solutions_App
                 }
                 else
                 {
-                    instruction.Text = "Go!";
+                    instruction.Text = readyFGo;
                 }
 
                 instruction.Visible = true;
@@ -237,8 +247,6 @@ namespace Synergy_Solutions_App
 
 
         }
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -259,24 +267,27 @@ namespace Synergy_Solutions_App
             Application.Run(new UserMode());
         }
 
-        private void img_arrow_Click(object sender, EventArgs e)
+        private void lanuage_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("mee");
+            lanSelect++;
+            if (lanSelect == 0) {
+                startGame.Text = "Start Game";
+                readyFGo = "Go";
+                readyFReady = "Ready";
+                loadingText = "Loading";
+            
+            }
+            if (lanSelect == 1) {
+                startGame.Text = "Start Game in Spanish";
+                readyFReady = "Ready in Spanish";
+                readyFGo = "Go in Spanish";
+                loadingText = "Loading in Spanish";
 
-        }
-
-        private void img_action_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void instruction_Click(object sender, EventArgs e)
-        {
-
+                lanSelect = 0;
+            
+            }
+            
         }
     }
 }
