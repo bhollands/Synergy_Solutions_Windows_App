@@ -88,9 +88,13 @@ namespace Synergy_Solutions_App
             instruction.Location = new Point(centerElement(instruction.Location.X, instruction.Size.Width)
                 , instruction.Location.Y);
             instruction.Refresh();
-            action.Location = new Point(centerElement(action.Location.X, action.Size.Width)
-                , action.Location.Y);
-            action.Refresh();
+
+            int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width) - 50;
+            int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height)- 50;
+
+            lanuage.Location = new Point(bottomCW,bottomCH);
+            lanuage.Refresh();
+
         }
 
         private int centerElement(int Xcor, int elementWidth)
