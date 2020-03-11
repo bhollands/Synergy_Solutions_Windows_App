@@ -413,7 +413,7 @@ namespace Synergy_Solutions_App
             textBoxDetermin(txt);
             SetText(txt.ToString());
         }
-
+        bool switchActive;
         private void textBoxDetermin(string txt)
         {
             if (txt.Contains("d"))
@@ -446,30 +446,45 @@ namespace Synergy_Solutions_App
             }
             else if (txt.Contains("sw1"))
             {
-                if (switch1Active)
-                {
-                    switch1Active = false;
-                }
                 textBox = switch1;
-                switch1Active = true;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+                
+               // switch1Active = true;
             }
             else if (txt.Contains("sw2"))
             {
-                if (switch2Active)
-                {
-                    switch2Active = false;
-                }
                 textBox = switch2;
-                switch2Active = true;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+                
+
             }
             else if (txt.Contains("sw3"))
             {
-                if (switch3Active)
-                {
-                    switch3Active = false;
-                }
                 textBox = button1Text;
-                switch3Active = true;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+                
+               // switch3Active = true;
             }
         }
 
@@ -503,28 +518,22 @@ namespace Synergy_Solutions_App
             else
             {
                 logTraffic(RX_traffic_window, text, Color.Black);
-                if (!switch1Active || !switch2Active || !switch3Active) // if its not a switch
+                if (switchActive == false) // if its not a switch
                 {
                     string displayText = getData(text);
-                    this.textBox.Text = displayText;
-                }
-                else
-                {
-                    if (switch1Active)
-                    {
-                        this.textBox.Text = "Active";
-                    }
-                    else if (switch2Active)
-                    {
-                        this.textBox.Text = "Active";
-                    }
-                    else if (switch3Active)
-                    {
-                        this.textBox.Text = "Active";
-                    }else
+                    
+                    if (text.Contains("sw"))//if last recived is a switch
                     {
                         this.textBox.Text = "Inactive";
                     }
+                    else
+                    {
+                        this.textBox.Text = displayText;
+                    }
+                }
+                else
+                {
+                    this.textBox.Text = "Active";
                 }
 
                 

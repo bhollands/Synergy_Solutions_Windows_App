@@ -622,6 +622,7 @@
             // 
             // TX_traffic_window
             // 
+            this.TX_traffic_window.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TX_traffic_window.Location = new System.Drawing.Point(247, 534);
             this.TX_traffic_window.Name = "TX_traffic_window";
             this.TX_traffic_window.Size = new System.Drawing.Size(222, 115);
@@ -682,6 +683,7 @@
             // 
             // RX_traffic_window
             // 
+            this.RX_traffic_window.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RX_traffic_window.Location = new System.Drawing.Point(483, 534);
             this.RX_traffic_window.Name = "RX_traffic_window";
             this.RX_traffic_window.Size = new System.Drawing.Size(222, 115);
