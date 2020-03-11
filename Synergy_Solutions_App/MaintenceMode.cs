@@ -343,7 +343,6 @@ namespace Synergy_Solutions_App
                 return null;
             }
         }
-        }
 
         private void label19_Click(object sender, EventArgs e)
         {
@@ -447,16 +446,28 @@ namespace Synergy_Solutions_App
             }
             else if (txt.Contains("sw1"))
             {
+                if (switch1Active)
+                {
+                    switch1Active = false;
+                }
                 textBox = switch1;
                 switch1Active = true;
             }
             else if (txt.Contains("sw2"))
             {
+                if (switch2Active)
+                {
+                    switch2Active = false;
+                }
                 textBox = switch2;
                 switch2Active = true;
             }
             else if (txt.Contains("sw3"))
             {
+                if (switch3Active)
+                {
+                    switch3Active = false;
+                }
                 textBox = button1Text;
                 switch3Active = true;
             }
@@ -491,9 +502,32 @@ namespace Synergy_Solutions_App
             }
             else
             {
-                string displayText = getData(text);
-                this.textBox.Text = displayText;
                 logTraffic(RX_traffic_window, text, Color.Black);
+                if (!switch1Active || !switch2Active || !switch3Active) // if its not a switch
+                {
+                    string displayText = getData(text);
+                    this.textBox.Text = displayText;
+                }
+                else
+                {
+                    if (switch1Active)
+                    {
+                        this.textBox.Text = "Active";
+                    }
+                    else if (switch2Active)
+                    {
+                        this.textBox.Text = "Active";
+                    }
+                    else if (switch3Active)
+                    {
+                        this.textBox.Text = "Active";
+                    }else
+                    {
+                        this.textBox.Text = "Inactive";
+                    }
+                }
+
+                
             }
         }
     }
