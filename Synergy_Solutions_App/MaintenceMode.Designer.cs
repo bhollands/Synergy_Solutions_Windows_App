@@ -42,8 +42,8 @@
             this.LED_4 = new System.Windows.Forms.Button();
             this.LED_3 = new System.Windows.Forms.Button();
             this.LED_2 = new System.Windows.Forms.Button();
-            this.switch1Text = new System.Windows.Forms.TextBox();
-            this.switch2Text = new System.Windows.Forms.TextBox();
+            this.switch1 = new System.Windows.Forms.TextBox();
+            this.switch2 = new System.Windows.Forms.TextBox();
             this.slider1 = new System.Windows.Forms.TextBox();
             this.slider2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.distTextBox = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.RX_traffic_window = new System.Windows.Forms.RichTextBox();
             this.dist_button = new System.Windows.Forms.Button();
@@ -248,25 +248,25 @@
             this.LED_2.UseVisualStyleBackColor = true;
             this.LED_2.Click += new System.EventHandler(this.button13_Click);
             // 
-            // switch1Text
+            // switch1
             // 
-            this.switch1Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switch1Text.Location = new System.Drawing.Point(324, 119);
-            this.switch1Text.Multiline = true;
-            this.switch1Text.Name = "switch1Text";
-            this.switch1Text.Size = new System.Drawing.Size(109, 24);
-            this.switch1Text.TabIndex = 30;
-            this.switch1Text.Text = "Inactive";
+            this.switch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.switch1.Location = new System.Drawing.Point(324, 119);
+            this.switch1.Multiline = true;
+            this.switch1.Name = "switch1";
+            this.switch1.Size = new System.Drawing.Size(109, 24);
+            this.switch1.TabIndex = 30;
+            this.switch1.Text = "Inactive";
             // 
-            // switch2Text
+            // switch2
             // 
-            this.switch2Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switch2Text.Location = new System.Drawing.Point(324, 147);
-            this.switch2Text.Multiline = true;
-            this.switch2Text.Name = "switch2Text";
-            this.switch2Text.Size = new System.Drawing.Size(109, 24);
-            this.switch2Text.TabIndex = 31;
-            this.switch2Text.Text = "Inactive";
+            this.switch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.switch2.Location = new System.Drawing.Point(324, 147);
+            this.switch2.Multiline = true;
+            this.switch2.Name = "switch2";
+            this.switch2.Size = new System.Drawing.Size(109, 24);
+            this.switch2.TabIndex = 31;
+            this.switch2.Text = "Inactive";
             // 
             // slider1
             // 
@@ -660,16 +660,15 @@
             this.label19.Text = "Dist. Sensor";
             this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
-            // textBox8
+            // distTextBox
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(297, 432);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(109, 24);
-            this.textBox8.TabIndex = 86;
-            this.textBox8.Text = "0";
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.distTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.distTextBox.Location = new System.Drawing.Point(297, 432);
+            this.distTextBox.Multiline = true;
+            this.distTextBox.Name = "distTextBox";
+            this.distTextBox.Size = new System.Drawing.Size(109, 24);
+            this.distTextBox.TabIndex = 86;
+            this.distTextBox.Text = "Null";
             // 
             // label20
             // 
@@ -921,7 +920,6 @@
             this.label25.Size = new System.Drawing.Size(76, 16);
             this.label25.TabIndex = 111;
             this.label25.Text = "Limit Switch";
-            this.label25.Click += new System.EventHandler(this.label25_Click);
             // 
             // limitSwitch
             // 
@@ -932,7 +930,6 @@
             this.limitSwitch.Size = new System.Drawing.Size(109, 24);
             this.limitSwitch.TabIndex = 110;
             this.limitSwitch.Text = "Inactive";
-            this.limitSwitch.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label24
             // 
@@ -1115,7 +1112,7 @@
             this.Controls.Add(this.dist_button);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.RX_traffic_window);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.distTextBox);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TX_traffic_window);
@@ -1150,8 +1147,8 @@
             this.Controls.Add(this.LEDbox1);
             this.Controls.Add(this.slider2);
             this.Controls.Add(this.slider1);
-            this.Controls.Add(this.switch2Text);
-            this.Controls.Add(this.switch1Text);
+            this.Controls.Add(this.switch2);
+            this.Controls.Add(this.switch1);
             this.Controls.Add(this.LED_2);
             this.Controls.Add(this.LED_3);
             this.Controls.Add(this.LED_4);
@@ -1196,8 +1193,8 @@
         private System.Windows.Forms.Button LED_4;
         private System.Windows.Forms.Button LED_3;
         private System.Windows.Forms.Button LED_2;
-        private System.Windows.Forms.TextBox switch1Text;
-        private System.Windows.Forms.TextBox switch2Text;
+        private System.Windows.Forms.TextBox switch1;
+        private System.Windows.Forms.TextBox switch2;
         private System.Windows.Forms.TextBox slider1;
         private System.Windows.Forms.TextBox slider2;
         private System.Windows.Forms.Label label1;
@@ -1237,7 +1234,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox distTextBox;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.RichTextBox RX_traffic_window;
         private System.Windows.Forms.Button dist_button;
