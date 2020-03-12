@@ -423,10 +423,26 @@ namespace Synergy_Solutions_App
             else if (txt.Contains("ldr1"))
             {
                 textBox = LDR1;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
             }
             else if (txt.Contains("ldr2"))
             {
                 textBox = LDR2;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
             }
             else if (txt.Contains("ldr3"))
             {
@@ -509,35 +525,43 @@ namespace Synergy_Solutions_App
         delegate void SetTextCallback(string text);
         private void SetText(string text)
         {
-
-            if (this.textBox.InvokeRequired)
+            try
             {
-                SetTextCallback d = new SetTextCallback(SetText);
-                this.Invoke(d, new object[] { text });
-            }
-            else
-            {
-                logTraffic(RX_traffic_window, text, Color.Black);
-                if (switchActive == false) // if its not a switch
+                if (this.textBox.InvokeRequired)
                 {
-                    string displayText = getData(text);
-                    
-                    if (text.Contains("sw"))//if last recived is a switch
-                    {
-                        this.textBox.Text = "Inactive";
-                    }
-                    else
-                    {
-                        this.textBox.Text = displayText;
-                    }
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    this.Invoke(d, new object[] { text });
                 }
                 else
                 {
-                    this.textBox.Text = "Active";
+                    logTraffic(RX_traffic_window, text, Color.Black);
+                    if (switchActive == false) // if its not a switch
+                    {
+                        string displayText = getData(text);
+
+                        if (text.Contains("sw") || text.Contains("ldr"))//if last recived is a switch
+                        {
+                            this.textBox.Text = "Inactive";
+                        }
+                        else
+                        {
+                            this.textBox.Text = displayText;
+                        }
+                    }
+                    else
+                    {
+                        this.textBox.Text = "Active";
+                    }
                 }
+            }
+            catch
+            {
+
+            }
+
+
 
                 
             }
         }
     }
-}
