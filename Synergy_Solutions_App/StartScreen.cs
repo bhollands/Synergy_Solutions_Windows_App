@@ -64,8 +64,8 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-            int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - 10;
-            int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height -10;
+            int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+            int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
@@ -79,37 +79,46 @@ namespace Synergy_Solutions_App
         //manually move UI elements
         public void manualUIUpdate() {
 
-            startGame.Location = new Point(centerElement(startGame.Location.X, startGame.Size.Width)
-                , startGame.Location.Y);
+            startGame.Location = new Point(centerElementXcor(startGame.Location.X, startGame.Size.Width)
+                , centerElementYcor(startGame.Location.Y, startGame.Size.Height));
             startGame.Refresh();
 
-            img_action.Location = new Point(centerElement(img_action.Location.X, img_action.Size.Width)
-                , img_action.Location.Y);
+            img_action.Location = new Point(centerElementXcor(img_action.Location.X, img_action.Size.Width)
+                , centerElementYcor(img_action.Location.Y, img_action.Size.Height));
             img_action.Refresh();
 
-            img_arrow.Location = new Point(centerElement(img_arrow.Location.X, img_arrow.Size.Width)
-                , img_arrow.Location.Y);
+            img_arrow.Location = new Point(centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)
+                , centerElementYcor(img_arrow.Location.Y, img_arrow.Size.Height));
             img_arrow.Refresh();
 
-            img_button.Location = new Point(centerElement(img_button.Location.X, img_button.Size.Width)
-                , img_button.Location.Y);
+            img_button.Location = new Point(centerElementXcor(img_button.Location.X, img_button.Size.Width)
+                , centerElementYcor(img_button.Location.Y, img_button.Size.Height));
             img_button.Refresh();
 
-            instruction.Location = new Point(centerElement(instruction.Location.X, instruction.Size.Width)
-                , instruction.Location.Y);
+            instruction.Location = new Point(centerElementXcor(instruction.Location.X, instruction.Size.Width)
+                , centerElementYcor(instruction.Location.Y, instruction.Size.Height));
             instruction.Refresh();
 
-            int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width) - 50;
-            int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height)- 50;
+            int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
+            int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
 
             lanuage.Location = new Point(bottomCW,bottomCH);
             lanuage.Refresh();
         }
 
-        private int centerElement(int Xcor, int elementWidth)
+        private int centerElementXcor(int Xcor, int elementWidth)
         {
+
+
+
             Xcor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2) - (elementWidth/2);
             return Xcor;
+        }
+
+        private int centerElementYcor(int Ycor, int elementHight)
+        {
+            Ycor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 2) - (elementHight / 2);
+            return Ycor;
         }
 
         //timer to fade arrow in and out on start screen
