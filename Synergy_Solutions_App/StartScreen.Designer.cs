@@ -170,6 +170,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(832, 631);
+            this.Controls.Add(this.startGame);
             this.Controls.Add(this.lanuage);
             this.Controls.Add(this.instruction);
             this.Controls.Add(this.label1);
@@ -177,7 +178,6 @@
             this.Controls.Add(this.action);
             this.Controls.Add(this.img_arrow);
             this.Controls.Add(this.img_button);
-            this.Controls.Add(this.startGame);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "StartScreen";
