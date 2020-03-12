@@ -22,6 +22,7 @@ namespace Synergy_Solutions_App
         int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
         double getScreenHightInPixels = Screen.PrimaryScreen.Bounds.Height;
+        double getScreenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
 
         //fade for the image
         public byte alpha = 255;
@@ -82,49 +83,61 @@ namespace Synergy_Solutions_App
         //manually move UI elements
         public void manualUIUpdate() {
 
-            /*
-             startGame - button to start game
-             img_action - an image to show user what to do (used for loading image)
-             img_arrow - the fading in/out arrow
-             img_button - the odd looking white button under the fading arrow the goes once the startGame button is pressed
-             instruction - used for loading/ready? labels
-             action - place holder should be replaced with images of the instruction
-              
-           */
-            double A = getScreenHightInPixels * 0;
-            int placeHolder = Convert.ToInt32(Math.Floor(A));
+            //edit to *0 to change position relitive to center
+            //startGame - button to start game
+            int startGameMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int startGameMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_action - an image to show user what to do (used for loading image)
+            int img_actionMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_actionMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_arrow - the fading in/out arrow
+            int img_arrowMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_arrowMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_button - the odd looking white button under the fading arrow the goes once the startGame button is pressed
+            int img_buttonMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_buttonMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //instruction - used for loading/ready? labels
+            int instructionMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int instructionMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //action - place holder should be replaced with images of the instruction
+            int actionMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int actionMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
 
-            
-            /*
-            int sGY = getScreenHight;
-            sGY -= Convert.ToInt32(Math.Floor(getScreenHight * 0.5));
-           
-            sGY.//centerElementYcor(startGame.Location.Y, startGame.Size.Height);
-            //sGY += 150;
-            startGame.Location = new Point(centerElementXcor(startGame.Location.X, startGame.Size.Width)
-                , );
+
+            startGame.Location = new Point(
+                centerElementXcor(startGame.Location.X, startGame.Size.Width)+ startGameMoveX,
+                centerElementYcor(startGame.Location.Y, startGame.Size.Height)+startGameMoveY);
             startGame.Refresh();
-            */
-            img_action.Location = new Point(centerElementXcor(img_action.Location.X, img_action.Size.Width)
-                , centerElementYcor(img_action.Location.Y, img_action.Size.Height));
+
+            img_action.Location = new Point(
+                centerElementXcor(img_action.Location.X, img_action.Size.Width) + img_actionMoveX,
+                centerElementYcor(img_action.Location.Y, img_action.Size.Height) + img_actionMoveY);
             img_action.Refresh();
 
-            int arrowLocationY = placeHolder;
-                    img_arrow.Location = new Point(centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)
-                        ,placeHolder);
+            img_arrow.Location = new Point(
+                centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)+img_arrowMoveX,
+                centerElementYcor(img_button.Location.Y, img_button.Size.Height)+img_arrowMoveY);
                     img_arrow.Refresh();
 
-            img_button.Location = new Point(centerElementXcor(img_button.Location.X, img_button.Size.Width)
-                , centerElementYcor(img_button.Location.Y, img_button.Size.Height));
+            img_button.Location = new Point(
+                centerElementXcor(img_button.Location.X, img_button.Size.Width)+img_buttonMoveX,
+                centerElementYcor(img_button.Location.Y, img_button.Size.Height)+img_buttonMoveY);
             img_button.Refresh();
 
-            instruction.Location = new Point(centerElementXcor(instruction.Location.X, instruction.Size.Width)
-                , centerElementYcor(instruction.Location.Y, instruction.Size.Height));
+            instruction.Location = new Point(
+                centerElementXcor(instruction.Location.X, instruction.Size.Width)+instructionMoveX,
+                centerElementYcor(instruction.Location.Y, instruction.Size.Height)+instructionMoveY);
             instruction.Refresh();
 
-            action.Location = new Point(centerElementXcor(action.Location.X, action.Size.Width)
-                , centerElementYcor(action.Location.Y, action.Size.Height));
+            action.Location = new Point(
+                centerElementXcor(action.Location.X, action.Size.Width)+actionMoveY,
+                centerElementYcor(action.Location.Y, action.Size.Height)+actionMoveX);
             action.Refresh();
 
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
