@@ -104,7 +104,6 @@ namespace Synergy_Solutions_App
 
             lanuage.Location = new Point(bottomCW,bottomCH);
             lanuage.Refresh();
-
         }
 
         private int centerElement(int Xcor, int elementWidth)
@@ -288,6 +287,11 @@ namespace Synergy_Solutions_App
             
             }
             
+        }
+
+        private void img_arrow_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
