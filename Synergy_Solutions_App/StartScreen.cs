@@ -21,6 +21,8 @@ namespace Synergy_Solutions_App
         int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
         int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
+        double getScreenHightInPixels = Screen.PrimaryScreen.Bounds.Height;
+
         //fade for the image
         public byte alpha = 255;
         bool inOut = true;
@@ -89,18 +91,29 @@ namespace Synergy_Solutions_App
              action - place holder should be replaced with images of the instruction
               
            */
+            double A = getScreenHightInPixels * 0;
+            int placeHolder = Convert.ToInt32(Math.Floor(A));
 
+
+            
+            /*
+            int sGY = getScreenHight;
+            sGY -= Convert.ToInt32(Math.Floor(getScreenHight * 0.5));
+           
+            sGY.//centerElementYcor(startGame.Location.Y, startGame.Size.Height);
+            //sGY += 150;
             startGame.Location = new Point(centerElementXcor(startGame.Location.X, startGame.Size.Width)
-                , centerElementYcor(startGame.Location.Y, startGame.Size.Height));
+                , );
             startGame.Refresh();
-
+            */
             img_action.Location = new Point(centerElementXcor(img_action.Location.X, img_action.Size.Width)
                 , centerElementYcor(img_action.Location.Y, img_action.Size.Height));
             img_action.Refresh();
 
-            img_arrow.Location = new Point(centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)
-                , centerElementYcor(img_arrow.Location.Y, img_arrow.Size.Height));
-            img_arrow.Refresh();
+            int arrowLocationY = placeHolder;
+                    img_arrow.Location = new Point(centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)
+                        ,placeHolder);
+                    img_arrow.Refresh();
 
             img_button.Location = new Point(centerElementXcor(img_button.Location.X, img_button.Size.Width)
                 , centerElementYcor(img_button.Location.Y, img_button.Size.Height));
