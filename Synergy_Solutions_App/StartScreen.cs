@@ -18,6 +18,8 @@ namespace Synergy_Solutions_App
         String readyFReady = "Ready";
         String readyFGo = "Go";
         String loadingText = "Loading";
+        int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+        int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
         //fade for the image
         public byte alpha = 255;
@@ -64,8 +66,7 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-            int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
-            int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+
 
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
@@ -78,6 +79,16 @@ namespace Synergy_Solutions_App
 
         //manually move UI elements
         public void manualUIUpdate() {
+
+            /*
+             startGame - button to start game
+             img_action - an image to show user what to do (used for loading image)
+             img_arrow - the fading in/out arrow
+             img_button - the odd looking white button under the fading arrow the goes once the startGame button is pressed
+             instruction - used for loading/ready? labels
+             action - place holder should be replaced with images of the instruction
+              
+           */
 
             startGame.Location = new Point(centerElementXcor(startGame.Location.X, startGame.Size.Width)
                 , centerElementYcor(startGame.Location.Y, startGame.Size.Height));
@@ -101,7 +112,7 @@ namespace Synergy_Solutions_App
 
             action.Location = new Point(centerElementXcor(action.Location.X, action.Size.Width)
                 , centerElementYcor(action.Location.Y, action.Size.Height));
-            instruction.Refresh();
+            action.Refresh();
 
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
