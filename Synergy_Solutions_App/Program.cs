@@ -16,7 +16,7 @@ namespace Synergy_Solutions_App
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MaintenceMode());
+            Application.Run(new StartScreen());
         }
     }
 }
