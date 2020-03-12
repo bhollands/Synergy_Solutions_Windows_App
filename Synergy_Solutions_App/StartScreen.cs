@@ -99,6 +99,10 @@ namespace Synergy_Solutions_App
                 , centerElementYcor(instruction.Location.Y, instruction.Size.Height));
             instruction.Refresh();
 
+            action.Location = new Point(centerElementXcor(action.Location.X, action.Size.Width)
+                , centerElementYcor(action.Location.Y, action.Size.Height));
+            instruction.Refresh();
+
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
 
