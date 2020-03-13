@@ -657,5 +657,21 @@ namespace Synergy_Solutions_App
         {
 
         }
+
+ 
+        private void PartyMode_Click(object sender, EventArgs e)
+        {
+            TextBox[] boxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox };
+            for (int i = 0; i < boxes.Length; i++)
+            {
+                RandoColor(boxes[i]);
+            }
+        }
+        private Random rnd = new Random();
+        private void RandoColor(TextBox t)
+        {
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            t.BackColor = randomColor;
+        }
     }
     }
