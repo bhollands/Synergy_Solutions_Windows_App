@@ -74,7 +74,7 @@ namespace Synergy_Solutions_App
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+            //yeet
             switch1.Text = a;
         }
 
