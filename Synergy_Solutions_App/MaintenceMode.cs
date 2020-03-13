@@ -658,20 +658,55 @@ namespace Synergy_Solutions_App
 
         }
 
- 
         private void PartyMode_Click(object sender, EventArgs e)
         {
-            TextBox[] boxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox };
+
+            int n = 0;
+            TextBox[] boxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox,
+            LEDbox1, LEDbox2, LEDbox3, LEDbox4, LEDbox5, LEDbox6, LEDbox7, button1Text, switch1, switch2,
+                slider1, slider2, LDR1, LDR2, limitSwitch, LDR3, LDR4, LDR5, LDR6, RedBox, GreenBox, BlueBox, ClearBox,
+                Connection_window, LEDbox8};
+
+            RichTextBox[] richBox = { Debug_W, TX_traffic_window, RX_traffic_window };
+            for (int j = 0; j < richBox.Length; j++)
+            {
+                RichRandoColor(richBox[j]);
+            }
             for (int i = 0; i < boxes.Length; i++)
             {
                 RandoColor(boxes[i]);
             }
         }
+
+
         private Random rnd = new Random();
+        private void RichRandoColor(RichTextBox t)
+        {
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            this.BackColor = randomColor;
+            t.BackColor = randomColor;
+        }
         private void RandoColor(TextBox t)
         {
             Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            this.BackColor = randomColor;
             t.BackColor = randomColor;
+        }
+        private void DarkMode(TextBox t)
+        {
+            this.BackColor = Color.Gray;
+            t.BackColor = Color.DimGray;
+        }
+        private void DarkModeBtn_Click(object sender, EventArgs e)
+        {
+            TextBox[] backBoxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox };
+            TextBox[] textBoxes = {LEDbox1, LEDbox2, LEDbox3, LEDbox4, LEDbox5, LEDbox6, LEDbox7, button1Text, switch1, switch2,
+                slider1, slider2, LDR1, LDR2, limitSwitch, LDR3, LDR4, LDR5, LDR6, RedBox, GreenBox, BlueBox, ClearBox, 
+                Connection_window};
+            for (int i = 0; i < backBoxes.Length; i++)
+            {
+                DarkMode(backBoxes[i]);
+            }
         }
     }
     }

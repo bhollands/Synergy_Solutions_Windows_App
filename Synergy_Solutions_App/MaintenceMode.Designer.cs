@@ -124,16 +124,16 @@
             this.DistBox = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.ClearBox = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.BlueBox = new System.Windows.Forms.TextBox();
+            this.GreenBox = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.RedBox = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.ColourBox = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.DarkModeBtn = new System.Windows.Forms.Button();
             this.PartyMode = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -1107,16 +1107,16 @@
             this.label34.Text = "Clear:";
             this.label34.Click += new System.EventHandler(this.label34_Click);
             // 
-            // textBox6
+            // ClearBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(667, 386);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(109, 24);
-            this.textBox6.TabIndex = 142;
-            this.textBox6.Text = "Inactive";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.ClearBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearBox.Location = new System.Drawing.Point(667, 386);
+            this.ClearBox.Multiline = true;
+            this.ClearBox.Name = "ClearBox";
+            this.ClearBox.Size = new System.Drawing.Size(109, 24);
+            this.ClearBox.TabIndex = 142;
+            this.ClearBox.Text = "Inactive";
+            this.ClearBox.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label35
             // 
@@ -1142,27 +1142,27 @@
             this.label36.Text = "Green:";
             this.label36.Click += new System.EventHandler(this.label36_Click);
             // 
-            // textBox7
+            // BlueBox
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(667, 356);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(109, 24);
-            this.textBox7.TabIndex = 139;
-            this.textBox7.Text = "Inactive";
-            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            this.BlueBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BlueBox.Location = new System.Drawing.Point(667, 356);
+            this.BlueBox.Multiline = true;
+            this.BlueBox.Name = "BlueBox";
+            this.BlueBox.Size = new System.Drawing.Size(109, 24);
+            this.BlueBox.TabIndex = 139;
+            this.BlueBox.Text = "Inactive";
+            this.BlueBox.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
-            // textBox8
+            // GreenBox
             // 
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(667, 327);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(109, 24);
-            this.textBox8.TabIndex = 138;
-            this.textBox8.Text = "Inactive";
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged_1);
+            this.GreenBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GreenBox.Location = new System.Drawing.Point(667, 327);
+            this.GreenBox.Multiline = true;
+            this.GreenBox.Name = "GreenBox";
+            this.GreenBox.Size = new System.Drawing.Size(109, 24);
+            this.GreenBox.TabIndex = 138;
+            this.GreenBox.Text = "Inactive";
+            this.GreenBox.TextChanged += new System.EventHandler(this.textBox8_TextChanged_1);
             // 
             // label37
             // 
@@ -1176,16 +1176,16 @@
             this.label37.Text = "Red:";
             this.label37.Click += new System.EventHandler(this.label37_Click);
             // 
-            // textBox9
+            // RedBox
             // 
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(667, 297);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(109, 24);
-            this.textBox9.TabIndex = 136;
-            this.textBox9.Text = "Inactive";
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.RedBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RedBox.Location = new System.Drawing.Point(667, 297);
+            this.RedBox.Multiline = true;
+            this.RedBox.Name = "RedBox";
+            this.RedBox.Size = new System.Drawing.Size(109, 24);
+            this.RedBox.TabIndex = 136;
+            this.RedBox.Text = "Inactive";
+            this.RedBox.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // label38
             // 
@@ -1210,14 +1210,15 @@
             this.ColourBox.TabIndex = 134;
             this.ColourBox.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
-            // button7
+            // DarkModeBtn
             // 
-            this.button7.Location = new System.Drawing.Point(858, 80);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(91, 43);
-            this.button7.TabIndex = 147;
-            this.button7.Text = "Dark Mode";
-            this.button7.UseVisualStyleBackColor = true;
+            this.DarkModeBtn.Location = new System.Drawing.Point(858, 80);
+            this.DarkModeBtn.Name = "DarkModeBtn";
+            this.DarkModeBtn.Size = new System.Drawing.Size(91, 43);
+            this.DarkModeBtn.TabIndex = 147;
+            this.DarkModeBtn.Text = "Dark Mode";
+            this.DarkModeBtn.UseVisualStyleBackColor = true;
+            this.DarkModeBtn.Click += new System.EventHandler(this.DarkModeBtn_Click);
             // 
             // PartyMode
             // 
@@ -1236,16 +1237,16 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(987, 677);
             this.Controls.Add(this.PartyMode);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.DarkModeBtn);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label34);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.ClearBox);
             this.Controls.Add(this.label35);
             this.Controls.Add(this.label36);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.BlueBox);
+            this.Controls.Add(this.GreenBox);
             this.Controls.Add(this.label37);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.RedBox);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.ColourBox);
             this.Controls.Add(this.LEDbox8);
@@ -1447,16 +1448,16 @@
         private System.Windows.Forms.TextBox DistBox;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox ClearBox;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox BlueBox;
+        private System.Windows.Forms.TextBox GreenBox;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox RedBox;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox ColourBox;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button DarkModeBtn;
         private System.Windows.Forms.Button PartyMode;
     }
 }
