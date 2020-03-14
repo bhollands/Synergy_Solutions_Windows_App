@@ -74,7 +74,6 @@ namespace Synergy_Solutions_App
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
             switch1.Text = a;
         }
 
@@ -563,5 +562,151 @@ namespace Synergy_Solutions_App
 
                 
             }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
         }
+
+        private void button5_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label35_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PartyMode_Click(object sender, EventArgs e)
+        {
+
+            int n = 0;
+            TextBox[] boxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox,
+            LEDbox1, LEDbox2, LEDbox3, LEDbox4, LEDbox5, LEDbox6, LEDbox7, button1Text, switch1, switch2,
+                slider1, slider2, LDR1, LDR2, limitSwitch, LDR3, LDR4, LDR5, LDR6, RedBox, GreenBox, BlueBox, ClearBox,
+                Connection_window, LEDbox8};
+
+            RichTextBox[] richBox = { Debug_W, TX_traffic_window, RX_traffic_window };
+            for (int j = 0; j < richBox.Length; j++)
+            {
+                RichRandoColor(richBox[j]);
+            }
+            for (int i = 0; i < boxes.Length; i++)
+            {
+                RandoColor(boxes[i]);
+            }
+        }
+
+
+        private Random rnd = new Random();
+        private void RichRandoColor(RichTextBox t)
+        {
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            this.BackColor = randomColor;
+            t.BackColor = randomColor;
+        }
+        private void RandoColor(TextBox t)
+        {
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            this.BackColor = randomColor;
+            t.BackColor = randomColor;
+        }
+        private void DarkMode(TextBox t)
+        {
+            this.BackColor = Color.Gray;
+            t.BackColor = Color.DimGray;
+        }
+        private void DarkModeBtn_Click(object sender, EventArgs e)
+        {
+            TextBox[] backBoxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox };
+            TextBox[] textBoxes = {LEDbox1, LEDbox2, LEDbox3, LEDbox4, LEDbox5, LEDbox6, LEDbox7, button1Text, switch1, switch2,
+                slider1, slider2, LDR1, LDR2, limitSwitch, LDR3, LDR4, LDR5, LDR6, RedBox, GreenBox, BlueBox, ClearBox, 
+                Connection_window};
+            for (int i = 0; i < backBoxes.Length; i++)
+            {
+                DarkMode(backBoxes[i]);
+            }
+        }
+    }
     }
