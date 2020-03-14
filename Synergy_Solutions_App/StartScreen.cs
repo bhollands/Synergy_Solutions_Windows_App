@@ -85,7 +85,7 @@ namespace Synergy_Solutions_App
 
             //edit to *0 to change position relitive to center
             //startGame - button to start game
-            int startGameMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int startGameMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.35));
             int startGameMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
             //img_action - an image to show user what to do (used for loading image)
@@ -93,12 +93,12 @@ namespace Synergy_Solutions_App
             int img_actionMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
             //img_arrow - the fading in/out arrow
-            int img_arrowMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_arrowMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.28));
             int img_arrowMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
             //img_button - the odd looking white button under the fading arrow the goes once the startGame button is pressed
-            int img_buttonMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_buttonMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_UFOMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_UFOMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
             //instruction - used for loading/ready? labels
             int instructionMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
@@ -122,13 +122,13 @@ namespace Synergy_Solutions_App
 
             img_arrow.Location = new Point(
                 centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)+img_arrowMoveX,
-                centerElementYcor(img_button.Location.Y, img_button.Size.Height)+img_arrowMoveY);
+                centerElementYcor(img_arrow.Location.Y, img_arrow.Size.Height)+img_arrowMoveY);
                     img_arrow.Refresh();
 
-            img_button.Location = new Point(
-                centerElementXcor(img_button.Location.X, img_button.Size.Width)+img_buttonMoveX,
-                centerElementYcor(img_button.Location.Y, img_button.Size.Height)+img_buttonMoveY);
-            img_button.Refresh();
+            img_UFO.Location = new Point(
+                centerElementXcor(img_UFO.Location.X, img_UFO.Size.Width)+img_UFOMoveX,
+                centerElementYcor(img_UFO.Location.Y, img_UFO.Size.Height)+img_UFOMoveY);
+            img_UFO.Refresh();
 
             instruction.Location = new Point(
                 centerElementXcor(instruction.Location.X, instruction.Size.Width)+instructionMoveX,
@@ -187,7 +187,7 @@ namespace Synergy_Solutions_App
         private void startGame_Click(object sender, EventArgs e)
         {
             img_arrow.Visible = false;
-            img_button.Visible = false;
+            img_UFO.Visible = false;
             startGame.Visible = false;
             Thread.Sleep(300);
             runGame();
@@ -340,6 +340,11 @@ namespace Synergy_Solutions_App
         }
 
         private void img_arrow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
