@@ -51,7 +51,7 @@
             // startGame
             // 
             this.startGame.Location = new System.Drawing.Point(16, 591);
-            this.startGame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startGame.Margin = new System.Windows.Forms.Padding(4);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(424, 100);
             this.startGame.TabIndex = 0;
@@ -83,7 +83,7 @@
             // img_action
             // 
             this.img_action.Location = new System.Drawing.Point(644, 183);
-            this.img_action.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.img_action.Margin = new System.Windows.Forms.Padding(4);
             this.img_action.Name = "img_action";
             this.img_action.Size = new System.Drawing.Size(607, 400);
             this.img_action.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -96,7 +96,7 @@
             this.img_arrow.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.img_arrow.Image = ((System.Drawing.Image)(resources.GetObject("img_arrow.Image")));
             this.img_arrow.Location = new System.Drawing.Point(16, 103);
-            this.img_arrow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.img_arrow.Margin = new System.Windows.Forms.Padding(4);
             this.img_arrow.Name = "img_arrow";
             this.img_arrow.Size = new System.Drawing.Size(63, 77);
             this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -105,12 +105,12 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(65, 49);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(54, 51);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 5;
-            this.button1.Text = "button1";
+            this.button1.Text = "Debug";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -130,7 +130,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox1.Location = new System.Drawing.Point(8, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(191, 82);
             this.pictureBox1.TabIndex = 7;
@@ -153,8 +153,8 @@
             // 
             this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
-            this.lanuage.Location = new System.Drawing.Point(33, 0);
-            this.lanuage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lanuage.Location = new System.Drawing.Point(309, 15);
+            this.lanuage.Margin = new System.Windows.Forms.Padding(4);
             this.lanuage.Name = "lanuage";
             this.lanuage.Size = new System.Drawing.Size(165, 101);
             this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -177,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1109, 777);
             this.Controls.Add(this.img_UFO);
             this.Controls.Add(this.startGame);
@@ -189,7 +189,8 @@
             this.Controls.Add(this.img_arrow);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ForeColor = System.Drawing.Color.Black;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StartScreen";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.StartScreen_Load);
