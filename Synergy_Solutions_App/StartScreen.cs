@@ -83,7 +83,7 @@ namespace Synergy_Solutions_App
         //manually move UI elements
         public void manualUIUpdate() {
 
-            //edit to *0 to change position relitive to center
+            //edit to *0 to change position relative to center
             //startGame - button to start game
             int startGameMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.35));
             int startGameMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
@@ -108,37 +108,125 @@ namespace Synergy_Solutions_App
             int actionMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
             int actionMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
+            //img_planet01_1
+            int img_planet01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
+            //img_planet01_2
+            int img_planet01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
+            //img_planet02_1
+            int img_planet02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_planet02_2
+            int img_planet02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_planet02_3
+            int img_planet02_3MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet02_3MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_planet03_1
+            int img_planet03_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet03_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_planet03_2
+            int img_planet03_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet03_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_planet04_1
+            int img_planet04_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet04_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_planet04F_1
+            int img_planet04F_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_planet04F_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_star01_1
+            int img_star01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_star01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_star01_2
+            int img_star01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_star01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_star02_1
+            int img_star02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_star02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            //img_star02_2
+            int img_star02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
+            int img_star02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
+            ///////////////////////////////////////////////////////////////////////////////////////
+
+            //startGame
             startGame.Location = new Point(
                 centerElementXcor(startGame.Location.X, startGame.Size.Width)+ startGameMoveX,
                 centerElementYcor(startGame.Location.Y, startGame.Size.Height)+startGameMoveY);
             startGame.Refresh();
 
+            //img_action
             img_action.Location = new Point(
                 centerElementXcor(img_action.Location.X, img_action.Size.Width) + img_actionMoveX,
                 centerElementYcor(img_action.Location.Y, img_action.Size.Height) + img_actionMoveY);
             img_action.Refresh();
 
+            //img_arrow
             img_arrow.Location = new Point(
                 centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)+img_arrowMoveX,
                 centerElementYcor(img_arrow.Location.Y, img_arrow.Size.Height)+img_arrowMoveY);
                     img_arrow.Refresh();
 
+            //img_UFO
             img_UFO.Location = new Point(
                 centerElementXcor(img_UFO.Location.X, img_UFO.Size.Width)+img_UFOMoveX,
                 centerElementYcor(img_UFO.Location.Y, img_UFO.Size.Height)+img_UFOMoveY);
             img_UFO.Refresh();
 
+            //instruction
             instruction.Location = new Point(
                 centerElementXcor(instruction.Location.X, instruction.Size.Width)+instructionMoveX,
                 centerElementYcor(instruction.Location.Y, instruction.Size.Height)+instructionMoveY);
             instruction.Refresh();
 
+            //action
             action.Location = new Point(
                 centerElementXcor(action.Location.X, action.Size.Width)+actionMoveY,
                 centerElementYcor(action.Location.Y, action.Size.Height)+actionMoveX);
             action.Refresh();
+
+            //img_planet01_1
+            img_planet01_1.Location = new Point(
+               centerElementXcor(startGame.Location.X, startGame.Size.Width) + startGameMoveX,
+               centerElementYcor(startGame.Location.Y, startGame.Size.Height) + startGameMoveY);
+            startGame.Refresh();
+
+            //img_planet01_2
+
+            //img_planet02_1
+
+            //img_planet02_2
+
+            //img_planet02_3
+
+            //img_planet03_1
+
+            //img_planet03_2
+
+            //img_planet04_1
+
+            //img_planet04F_1
+
+            //img_star01_1
+
+            //img_star01_2
+
+            //img_star02_1
+
+            //img_star02_2
 
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
@@ -149,9 +237,6 @@ namespace Synergy_Solutions_App
 
         private int centerElementXcor(int Xcor, int elementWidth)
         {
-
-
-
             Xcor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2) - (elementWidth/2);
             return Xcor;
         }
@@ -222,7 +307,7 @@ namespace Synergy_Solutions_App
             Stopwatch timingP = new Stopwatch();
             action.Text = loadingText;
             action.Visible = true;
-            img_action.Image = Synergy_Solutions_App.Properties.Resources.ufo;
+            //img_action.Image = Synergy_Solutions_App.Properties.Resources.ufo;
             img_action.Visible = true;
             img_action.Refresh();
             action.Refresh();
@@ -345,6 +430,36 @@ namespace Synergy_Solutions_App
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void planet01_2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void planet04_1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void img_planet04F_1_Click(object sender, EventArgs e)
         {
 
         }

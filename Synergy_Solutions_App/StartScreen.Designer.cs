@@ -33,24 +33,51 @@
             this.startGame = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.action = new System.Windows.Forms.Label();
-            this.img_action = new System.Windows.Forms.PictureBox();
-            this.img_arrow = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.instruction = new System.Windows.Forms.Label();
-            this.lanuage = new System.Windows.Forms.PictureBox();
+            this.img_planet02_2 = new System.Windows.Forms.PictureBox();
+            this.img_planet02_3 = new System.Windows.Forms.PictureBox();
+            this.img_star01_1 = new System.Windows.Forms.PictureBox();
+            this.img_planet03_2 = new System.Windows.Forms.PictureBox();
+            this.img_star02_1 = new System.Windows.Forms.PictureBox();
+            this.img_planet04F_1 = new System.Windows.Forms.PictureBox();
+            this.img_planet01_2 = new System.Windows.Forms.PictureBox();
+            this.img_planet04_1 = new System.Windows.Forms.PictureBox();
+            this.img_planet03_1 = new System.Windows.Forms.PictureBox();
+            this.img_planet02_1 = new System.Windows.Forms.PictureBox();
+            this.img_planet01_1 = new System.Windows.Forms.PictureBox();
             this.img_UFO = new System.Windows.Forms.PictureBox();
+            this.lanuage = new System.Windows.Forms.PictureBox();
+            this.img_action = new System.Windows.Forms.PictureBox();
+            this.img_arrow = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.img_star_01_2 = new System.Windows.Forms.PictureBox();
+            this.img_star02_2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet02_3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star01_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet03_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star02_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet04F_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet01_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet04_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet03_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet02_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet01_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_UFO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lanuage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lanuage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_UFO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             this.SuspendLayout();
             // 
             // startGame
             // 
-            this.startGame.Location = new System.Drawing.Point(16, 591);
+            this.startGame.Font = new System.Drawing.Font("Monotxt_IV25", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startGame.Location = new System.Drawing.Point(19, 490);
             this.startGame.Margin = new System.Windows.Forms.Padding(4);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(424, 100);
@@ -70,7 +97,7 @@
             this.action.AutoSize = true;
             this.action.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.action.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.action.Location = new System.Drawing.Point(713, 33);
+            this.action.Location = new System.Drawing.Point(264, 30);
             this.action.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.action.Name = "action";
             this.action.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -79,29 +106,6 @@
             this.action.Text = "Loading";
             this.action.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.action.Visible = false;
-            // 
-            // img_action
-            // 
-            this.img_action.Location = new System.Drawing.Point(644, 183);
-            this.img_action.Margin = new System.Windows.Forms.Padding(4);
-            this.img_action.Name = "img_action";
-            this.img_action.Size = new System.Drawing.Size(607, 400);
-            this.img_action.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_action.TabIndex = 4;
-            this.img_action.TabStop = false;
-            this.img_action.Visible = false;
-            // 
-            // img_arrow
-            // 
-            this.img_arrow.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.img_arrow.Image = ((System.Drawing.Image)(resources.GetObject("img_arrow.Image")));
-            this.img_arrow.Location = new System.Drawing.Point(16, 103);
-            this.img_arrow.Margin = new System.Windows.Forms.Padding(4);
-            this.img_arrow.Name = "img_arrow";
-            this.img_arrow.Size = new System.Drawing.Size(63, 77);
-            this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_arrow.TabIndex = 2;
-            this.img_arrow.TabStop = false;
             // 
             // button1
             // 
@@ -126,16 +130,6 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Debug button to UI mode";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 82);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // instruction
             // 
             this.instruction.AutoSize = true;
@@ -149,18 +143,123 @@
             this.instruction.Text = "1";
             this.instruction.Visible = false;
             // 
-            // lanuage
+            // img_planet02_2
             // 
-            this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
-            this.lanuage.Location = new System.Drawing.Point(309, 15);
-            this.lanuage.Margin = new System.Windows.Forms.Padding(4);
-            this.lanuage.Name = "lanuage";
-            this.lanuage.Size = new System.Drawing.Size(165, 101);
-            this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.lanuage.TabIndex = 9;
-            this.lanuage.TabStop = false;
-            this.lanuage.Click += new System.EventHandler(this.lanuage_Click);
+            this.img_planet02_2.Image = global::Synergy_Solutions_App.Properties.Resources.planet02;
+            this.img_planet02_2.Location = new System.Drawing.Point(1130, 196);
+            this.img_planet02_2.Name = "img_planet02_2";
+            this.img_planet02_2.Size = new System.Drawing.Size(133, 121);
+            this.img_planet02_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet02_2.TabIndex = 21;
+            this.img_planet02_2.TabStop = false;
+            // 
+            // img_planet02_3
+            // 
+            this.img_planet02_3.Image = global::Synergy_Solutions_App.Properties.Resources.planet02;
+            this.img_planet02_3.Location = new System.Drawing.Point(1130, 351);
+            this.img_planet02_3.Name = "img_planet02_3";
+            this.img_planet02_3.Size = new System.Drawing.Size(133, 121);
+            this.img_planet02_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet02_3.TabIndex = 20;
+            this.img_planet02_3.TabStop = false;
+            // 
+            // img_star01_1
+            // 
+            this.img_star01_1.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
+            this.img_star01_1.Location = new System.Drawing.Point(832, 217);
+            this.img_star01_1.Name = "img_star01_1";
+            this.img_star01_1.Size = new System.Drawing.Size(52, 48);
+            this.img_star01_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star01_1.TabIndex = 19;
+            this.img_star01_1.TabStop = false;
+            // 
+            // img_planet03_2
+            // 
+            this.img_planet03_2.Image = global::Synergy_Solutions_App.Properties.Resources.planet03;
+            this.img_planet03_2.Location = new System.Drawing.Point(743, 217);
+            this.img_planet03_2.Name = "img_planet03_2";
+            this.img_planet03_2.Size = new System.Drawing.Size(72, 65);
+            this.img_planet03_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet03_2.TabIndex = 18;
+            this.img_planet03_2.TabStop = false;
+            // 
+            // img_star02_1
+            // 
+            this.img_star02_1.Image = global::Synergy_Solutions_App.Properties.Resources.star02;
+            this.img_star02_1.Location = new System.Drawing.Point(991, 217);
+            this.img_star02_1.Name = "img_star02_1";
+            this.img_star02_1.Size = new System.Drawing.Size(53, 48);
+            this.img_star02_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star02_1.TabIndex = 17;
+            this.img_star02_1.TabStop = false;
+            this.img_star02_1.Click += new System.EventHandler(this.pictureBox2_Click_2);
+            // 
+            // img_planet04F_1
+            // 
+            this.img_planet04F_1.BackColor = System.Drawing.Color.Transparent;
+            this.img_planet04F_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet04F;
+            this.img_planet04F_1.Location = new System.Drawing.Point(816, 288);
+            this.img_planet04F_1.Name = "img_planet04F_1";
+            this.img_planet04F_1.Size = new System.Drawing.Size(268, 222);
+            this.img_planet04F_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet04F_1.TabIndex = 16;
+            this.img_planet04F_1.TabStop = false;
+            this.img_planet04F_1.Click += new System.EventHandler(this.img_planet04F_1_Click);
+            // 
+            // img_planet01_2
+            // 
+            this.img_planet01_2.Image = ((System.Drawing.Image)(resources.GetObject("img_planet01_2.Image")));
+            this.img_planet01_2.Location = new System.Drawing.Point(743, 40);
+            this.img_planet01_2.Name = "img_planet01_2";
+            this.img_planet01_2.Size = new System.Drawing.Size(61, 59);
+            this.img_planet01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet01_2.TabIndex = 15;
+            this.img_planet01_2.TabStop = false;
+            this.img_planet01_2.Click += new System.EventHandler(this.planet01_2_Click);
+            // 
+            // img_planet04_1
+            // 
+            this.img_planet04_1.BackColor = System.Drawing.Color.Transparent;
+            this.img_planet04_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet04;
+            this.img_planet04_1.Location = new System.Drawing.Point(796, 51);
+            this.img_planet04_1.Name = "img_planet04_1";
+            this.img_planet04_1.Size = new System.Drawing.Size(122, 96);
+            this.img_planet04_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet04_1.TabIndex = 14;
+            this.img_planet04_1.TabStop = false;
+            this.img_planet04_1.Click += new System.EventHandler(this.planet04_1_Click);
+            // 
+            // img_planet03_1
+            // 
+            this.img_planet03_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet03;
+            this.img_planet03_1.Location = new System.Drawing.Point(608, 183);
+            this.img_planet03_1.Name = "img_planet03_1";
+            this.img_planet03_1.Size = new System.Drawing.Size(112, 99);
+            this.img_planet03_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet03_1.TabIndex = 13;
+            this.img_planet03_1.TabStop = false;
+            // 
+            // img_planet02_1
+            // 
+            this.img_planet02_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet02;
+            this.img_planet02_1.Location = new System.Drawing.Point(1130, 55);
+            this.img_planet02_1.Name = "img_planet02_1";
+            this.img_planet02_1.Size = new System.Drawing.Size(133, 121);
+            this.img_planet02_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet02_1.TabIndex = 12;
+            this.img_planet02_1.TabStop = false;
+            this.img_planet02_1.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // img_planet01_1
+            // 
+            this.img_planet01_1.Image = ((System.Drawing.Image)(resources.GetObject("img_planet01_1.Image")));
+            this.img_planet01_1.Location = new System.Drawing.Point(577, 15);
+            this.img_planet01_1.Name = "img_planet01_1";
+            this.img_planet01_1.Size = new System.Drawing.Size(143, 136);
+            this.img_planet01_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_planet01_1.TabIndex = 11;
+            this.img_planet01_1.TabStop = false;
+            this.img_planet01_1.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // img_UFO
             // 
@@ -173,12 +272,91 @@
             this.img_UFO.TabStop = false;
             this.img_UFO.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // lanuage
+            // 
+            this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
+            this.lanuage.Location = new System.Drawing.Point(537, -157);
+            this.lanuage.Margin = new System.Windows.Forms.Padding(4);
+            this.lanuage.Name = "lanuage";
+            this.lanuage.Size = new System.Drawing.Size(165, 101);
+            this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.lanuage.TabIndex = 9;
+            this.lanuage.TabStop = false;
+            this.lanuage.Click += new System.EventHandler(this.lanuage_Click);
+            // 
+            // img_action
+            // 
+            this.img_action.Location = new System.Drawing.Point(644, 183);
+            this.img_action.Margin = new System.Windows.Forms.Padding(4);
+            this.img_action.Name = "img_action";
+            this.img_action.Size = new System.Drawing.Size(607, 400);
+            this.img_action.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_action.TabIndex = 4;
+            this.img_action.TabStop = false;
+            this.img_action.Visible = false;
+            // 
+            // img_arrow
+            // 
+            this.img_arrow.BackColor = System.Drawing.Color.Transparent;
+            this.img_arrow.Image = ((System.Drawing.Image)(resources.GetObject("img_arrow.Image")));
+            this.img_arrow.Location = new System.Drawing.Point(16, 103);
+            this.img_arrow.Margin = new System.Windows.Forms.Padding(4);
+            this.img_arrow.Name = "img_arrow";
+            this.img_arrow.Size = new System.Drawing.Size(63, 77);
+            this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_arrow.TabIndex = 2;
+            this.img_arrow.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.Location = new System.Drawing.Point(8, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(191, 82);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // img_star_01_2
+            // 
+            this.img_star_01_2.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
+            this.img_star_01_2.Location = new System.Drawing.Point(890, 217);
+            this.img_star_01_2.Name = "img_star_01_2";
+            this.img_star_01_2.Size = new System.Drawing.Size(52, 48);
+            this.img_star_01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star_01_2.TabIndex = 22;
+            this.img_star_01_2.TabStop = false;
+            // 
+            // img_star02_2
+            // 
+            this.img_star02_2.Image = global::Synergy_Solutions_App.Properties.Resources.star02;
+            this.img_star02_2.Location = new System.Drawing.Point(1050, 217);
+            this.img_star02_2.Name = "img_star02_2";
+            this.img_star02_2.Size = new System.Drawing.Size(53, 48);
+            this.img_star02_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star02_2.TabIndex = 23;
+            this.img_star02_2.TabStop = false;
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(1109, 777);
+            this.ClientSize = new System.Drawing.Size(1337, 605);
+            this.Controls.Add(this.img_star02_2);
+            this.Controls.Add(this.img_star_01_2);
+            this.Controls.Add(this.img_planet02_2);
+            this.Controls.Add(this.img_planet02_3);
+            this.Controls.Add(this.img_star01_1);
+            this.Controls.Add(this.img_planet03_2);
+            this.Controls.Add(this.img_star02_1);
+            this.Controls.Add(this.img_planet04F_1);
+            this.Controls.Add(this.img_planet01_2);
+            this.Controls.Add(this.img_planet04_1);
+            this.Controls.Add(this.img_planet03_1);
+            this.Controls.Add(this.img_planet02_1);
+            this.Controls.Add(this.img_planet01_1);
             this.Controls.Add(this.img_UFO);
             this.Controls.Add(this.startGame);
             this.Controls.Add(this.lanuage);
@@ -194,11 +372,24 @@
             this.Name = "StartScreen";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.StartScreen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet02_3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star01_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet03_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star02_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet04F_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet01_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet04_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet03_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet02_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_planet01_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_UFO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lanuage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lanuage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_UFO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +408,18 @@
         private System.Windows.Forms.Label instruction;
         private System.Windows.Forms.PictureBox lanuage;
         private System.Windows.Forms.PictureBox img_UFO;
+        private System.Windows.Forms.PictureBox img_planet01_1;
+        public System.Windows.Forms.PictureBox img_planet02_1;
+        private System.Windows.Forms.PictureBox img_planet03_1;
+        private System.Windows.Forms.PictureBox img_planet04_1;
+        private System.Windows.Forms.PictureBox img_planet01_2;
+        private System.Windows.Forms.PictureBox img_planet04F_1;
+        private System.Windows.Forms.PictureBox img_star02_1;
+        private System.Windows.Forms.PictureBox img_planet03_2;
+        private System.Windows.Forms.PictureBox img_star01_1;
+        public System.Windows.Forms.PictureBox img_planet02_3;
+        public System.Windows.Forms.PictureBox img_planet02_2;
+        private System.Windows.Forms.PictureBox img_star_01_2;
+        private System.Windows.Forms.PictureBox img_star02_2;
     }
 }
