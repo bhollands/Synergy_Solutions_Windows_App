@@ -36,6 +36,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.instruction = new System.Windows.Forms.Label();
+            this.img_star02_2 = new System.Windows.Forms.PictureBox();
+            this.img_star_01_2 = new System.Windows.Forms.PictureBox();
             this.img_planet02_2 = new System.Windows.Forms.PictureBox();
             this.img_planet02_3 = new System.Windows.Forms.PictureBox();
             this.img_star01_1 = new System.Windows.Forms.PictureBox();
@@ -52,8 +54,9 @@
             this.img_action = new System.Windows.Forms.PictureBox();
             this.img_arrow = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.img_star_01_2 = new System.Windows.Forms.PictureBox();
-            this.img_star02_2 = new System.Windows.Forms.PictureBox();
+            this.settingUpSerial = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_1)).BeginInit();
@@ -70,17 +73,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             this.SuspendLayout();
             // 
             // startGame
             // 
-            this.startGame.Font = new System.Drawing.Font("Monotxt_IV25", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startGame.Location = new System.Drawing.Point(19, 490);
-            this.startGame.Margin = new System.Windows.Forms.Padding(4);
+            this.startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startGame.Location = new System.Drawing.Point(14, 398);
             this.startGame.Name = "startGame";
-            this.startGame.Size = new System.Drawing.Size(424, 100);
+            this.startGame.Size = new System.Drawing.Size(318, 81);
             this.startGame.TabIndex = 0;
             this.startGame.Text = "Start";
             this.startGame.UseVisualStyleBackColor = true;
@@ -97,11 +97,10 @@
             this.action.AutoSize = true;
             this.action.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.action.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.action.Location = new System.Drawing.Point(264, 30);
-            this.action.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.action.Location = new System.Drawing.Point(198, 24);
             this.action.Name = "action";
             this.action.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.action.Size = new System.Drawing.Size(248, 69);
+            this.action.Size = new System.Drawing.Size(203, 55);
             this.action.TabIndex = 3;
             this.action.Text = "Loading";
             this.action.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,10 +108,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 51);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(40, 41);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Debug";
             this.button1.UseVisualStyleBackColor = true;
@@ -123,10 +121,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(16, 30);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 17);
+            this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Debug button to UI mode";
             // 
@@ -135,20 +132,42 @@
             this.instruction.AutoSize = true;
             this.instruction.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.instruction.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.instruction.Location = new System.Drawing.Point(525, 304);
-            this.instruction.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.instruction.Location = new System.Drawing.Point(394, 247);
             this.instruction.Name = "instruction";
-            this.instruction.Size = new System.Drawing.Size(49, 54);
+            this.instruction.Size = new System.Drawing.Size(39, 42);
             this.instruction.TabIndex = 8;
             this.instruction.Text = "1";
             this.instruction.Visible = false;
             // 
+            // img_star02_2
+            // 
+            this.img_star02_2.Image = global::Synergy_Solutions_App.Properties.Resources.star02;
+            this.img_star02_2.Location = new System.Drawing.Point(788, 176);
+            this.img_star02_2.Margin = new System.Windows.Forms.Padding(2);
+            this.img_star02_2.Name = "img_star02_2";
+            this.img_star02_2.Size = new System.Drawing.Size(40, 39);
+            this.img_star02_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star02_2.TabIndex = 23;
+            this.img_star02_2.TabStop = false;
+            // 
+            // img_star_01_2
+            // 
+            this.img_star_01_2.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
+            this.img_star_01_2.Location = new System.Drawing.Point(668, 176);
+            this.img_star_01_2.Margin = new System.Windows.Forms.Padding(2);
+            this.img_star_01_2.Name = "img_star_01_2";
+            this.img_star_01_2.Size = new System.Drawing.Size(39, 39);
+            this.img_star_01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star_01_2.TabIndex = 22;
+            this.img_star_01_2.TabStop = false;
+            // 
             // img_planet02_2
             // 
             this.img_planet02_2.Image = global::Synergy_Solutions_App.Properties.Resources.planet02;
-            this.img_planet02_2.Location = new System.Drawing.Point(1130, 196);
+            this.img_planet02_2.Location = new System.Drawing.Point(848, 159);
+            this.img_planet02_2.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet02_2.Name = "img_planet02_2";
-            this.img_planet02_2.Size = new System.Drawing.Size(133, 121);
+            this.img_planet02_2.Size = new System.Drawing.Size(100, 98);
             this.img_planet02_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet02_2.TabIndex = 21;
             this.img_planet02_2.TabStop = false;
@@ -156,9 +175,10 @@
             // img_planet02_3
             // 
             this.img_planet02_3.Image = global::Synergy_Solutions_App.Properties.Resources.planet02;
-            this.img_planet02_3.Location = new System.Drawing.Point(1130, 351);
+            this.img_planet02_3.Location = new System.Drawing.Point(848, 285);
+            this.img_planet02_3.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet02_3.Name = "img_planet02_3";
-            this.img_planet02_3.Size = new System.Drawing.Size(133, 121);
+            this.img_planet02_3.Size = new System.Drawing.Size(100, 98);
             this.img_planet02_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet02_3.TabIndex = 20;
             this.img_planet02_3.TabStop = false;
@@ -166,9 +186,10 @@
             // img_star01_1
             // 
             this.img_star01_1.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
-            this.img_star01_1.Location = new System.Drawing.Point(832, 217);
+            this.img_star01_1.Location = new System.Drawing.Point(624, 176);
+            this.img_star01_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_star01_1.Name = "img_star01_1";
-            this.img_star01_1.Size = new System.Drawing.Size(52, 48);
+            this.img_star01_1.Size = new System.Drawing.Size(39, 39);
             this.img_star01_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_star01_1.TabIndex = 19;
             this.img_star01_1.TabStop = false;
@@ -176,9 +197,10 @@
             // img_planet03_2
             // 
             this.img_planet03_2.Image = global::Synergy_Solutions_App.Properties.Resources.planet03;
-            this.img_planet03_2.Location = new System.Drawing.Point(743, 217);
+            this.img_planet03_2.Location = new System.Drawing.Point(557, 176);
+            this.img_planet03_2.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet03_2.Name = "img_planet03_2";
-            this.img_planet03_2.Size = new System.Drawing.Size(72, 65);
+            this.img_planet03_2.Size = new System.Drawing.Size(54, 53);
             this.img_planet03_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet03_2.TabIndex = 18;
             this.img_planet03_2.TabStop = false;
@@ -186,9 +208,10 @@
             // img_star02_1
             // 
             this.img_star02_1.Image = global::Synergy_Solutions_App.Properties.Resources.star02;
-            this.img_star02_1.Location = new System.Drawing.Point(991, 217);
+            this.img_star02_1.Location = new System.Drawing.Point(743, 176);
+            this.img_star02_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_star02_1.Name = "img_star02_1";
-            this.img_star02_1.Size = new System.Drawing.Size(53, 48);
+            this.img_star02_1.Size = new System.Drawing.Size(40, 39);
             this.img_star02_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_star02_1.TabIndex = 17;
             this.img_star02_1.TabStop = false;
@@ -198,9 +221,10 @@
             // 
             this.img_planet04F_1.BackColor = System.Drawing.Color.Transparent;
             this.img_planet04F_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet04F;
-            this.img_planet04F_1.Location = new System.Drawing.Point(816, 288);
+            this.img_planet04F_1.Location = new System.Drawing.Point(612, 234);
+            this.img_planet04F_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet04F_1.Name = "img_planet04F_1";
-            this.img_planet04F_1.Size = new System.Drawing.Size(268, 222);
+            this.img_planet04F_1.Size = new System.Drawing.Size(201, 180);
             this.img_planet04F_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet04F_1.TabIndex = 16;
             this.img_planet04F_1.TabStop = false;
@@ -209,9 +233,10 @@
             // img_planet01_2
             // 
             this.img_planet01_2.Image = ((System.Drawing.Image)(resources.GetObject("img_planet01_2.Image")));
-            this.img_planet01_2.Location = new System.Drawing.Point(743, 40);
+            this.img_planet01_2.Location = new System.Drawing.Point(557, 32);
+            this.img_planet01_2.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet01_2.Name = "img_planet01_2";
-            this.img_planet01_2.Size = new System.Drawing.Size(61, 59);
+            this.img_planet01_2.Size = new System.Drawing.Size(46, 48);
             this.img_planet01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet01_2.TabIndex = 15;
             this.img_planet01_2.TabStop = false;
@@ -221,9 +246,10 @@
             // 
             this.img_planet04_1.BackColor = System.Drawing.Color.Transparent;
             this.img_planet04_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet04;
-            this.img_planet04_1.Location = new System.Drawing.Point(796, 51);
+            this.img_planet04_1.Location = new System.Drawing.Point(597, 41);
+            this.img_planet04_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet04_1.Name = "img_planet04_1";
-            this.img_planet04_1.Size = new System.Drawing.Size(122, 96);
+            this.img_planet04_1.Size = new System.Drawing.Size(92, 78);
             this.img_planet04_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet04_1.TabIndex = 14;
             this.img_planet04_1.TabStop = false;
@@ -232,9 +258,10 @@
             // img_planet03_1
             // 
             this.img_planet03_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet03;
-            this.img_planet03_1.Location = new System.Drawing.Point(608, 183);
+            this.img_planet03_1.Location = new System.Drawing.Point(456, 149);
+            this.img_planet03_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet03_1.Name = "img_planet03_1";
-            this.img_planet03_1.Size = new System.Drawing.Size(112, 99);
+            this.img_planet03_1.Size = new System.Drawing.Size(84, 80);
             this.img_planet03_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet03_1.TabIndex = 13;
             this.img_planet03_1.TabStop = false;
@@ -242,9 +269,10 @@
             // img_planet02_1
             // 
             this.img_planet02_1.Image = global::Synergy_Solutions_App.Properties.Resources.planet02;
-            this.img_planet02_1.Location = new System.Drawing.Point(1130, 55);
+            this.img_planet02_1.Location = new System.Drawing.Point(848, 45);
+            this.img_planet02_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet02_1.Name = "img_planet02_1";
-            this.img_planet02_1.Size = new System.Drawing.Size(133, 121);
+            this.img_planet02_1.Size = new System.Drawing.Size(100, 98);
             this.img_planet02_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet02_1.TabIndex = 12;
             this.img_planet02_1.TabStop = false;
@@ -253,9 +281,10 @@
             // img_planet01_1
             // 
             this.img_planet01_1.Image = ((System.Drawing.Image)(resources.GetObject("img_planet01_1.Image")));
-            this.img_planet01_1.Location = new System.Drawing.Point(577, 15);
+            this.img_planet01_1.Location = new System.Drawing.Point(433, 12);
+            this.img_planet01_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet01_1.Name = "img_planet01_1";
-            this.img_planet01_1.Size = new System.Drawing.Size(143, 136);
+            this.img_planet01_1.Size = new System.Drawing.Size(107, 110);
             this.img_planet01_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet01_1.TabIndex = 11;
             this.img_planet01_1.TabStop = false;
@@ -264,9 +293,10 @@
             // img_UFO
             // 
             this.img_UFO.Image = ((System.Drawing.Image)(resources.GetObject("img_UFO.Image")));
-            this.img_UFO.Location = new System.Drawing.Point(104, 149);
+            this.img_UFO.Location = new System.Drawing.Point(78, 121);
+            this.img_UFO.Margin = new System.Windows.Forms.Padding(2);
             this.img_UFO.Name = "img_UFO";
-            this.img_UFO.Size = new System.Drawing.Size(485, 334);
+            this.img_UFO.Size = new System.Drawing.Size(364, 271);
             this.img_UFO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_UFO.TabIndex = 10;
             this.img_UFO.TabStop = false;
@@ -276,10 +306,9 @@
             // 
             this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
-            this.lanuage.Location = new System.Drawing.Point(537, -157);
-            this.lanuage.Margin = new System.Windows.Forms.Padding(4);
+            this.lanuage.Location = new System.Drawing.Point(403, -128);
             this.lanuage.Name = "lanuage";
-            this.lanuage.Size = new System.Drawing.Size(165, 101);
+            this.lanuage.Size = new System.Drawing.Size(124, 82);
             this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.lanuage.TabIndex = 9;
             this.lanuage.TabStop = false;
@@ -287,10 +316,9 @@
             // 
             // img_action
             // 
-            this.img_action.Location = new System.Drawing.Point(644, 183);
-            this.img_action.Margin = new System.Windows.Forms.Padding(4);
+            this.img_action.Location = new System.Drawing.Point(483, 149);
             this.img_action.Name = "img_action";
-            this.img_action.Size = new System.Drawing.Size(607, 400);
+            this.img_action.Size = new System.Drawing.Size(455, 325);
             this.img_action.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_action.TabIndex = 4;
             this.img_action.TabStop = false;
@@ -300,10 +328,9 @@
             // 
             this.img_arrow.BackColor = System.Drawing.Color.Transparent;
             this.img_arrow.Image = ((System.Drawing.Image)(resources.GetObject("img_arrow.Image")));
-            this.img_arrow.Location = new System.Drawing.Point(16, 103);
-            this.img_arrow.Margin = new System.Windows.Forms.Padding(4);
+            this.img_arrow.Location = new System.Drawing.Point(12, 84);
             this.img_arrow.Name = "img_arrow";
-            this.img_arrow.Size = new System.Drawing.Size(63, 77);
+            this.img_arrow.Size = new System.Drawing.Size(47, 63);
             this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_arrow.TabIndex = 2;
             this.img_arrow.TabStop = false;
@@ -311,39 +338,27 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(8, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 82);
+            this.pictureBox1.Size = new System.Drawing.Size(143, 67);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // img_star_01_2
+            // settingUpSerial
             // 
-            this.img_star_01_2.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
-            this.img_star_01_2.Location = new System.Drawing.Point(890, 217);
-            this.img_star_01_2.Name = "img_star_01_2";
-            this.img_star_01_2.Size = new System.Drawing.Size(52, 48);
-            this.img_star_01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.img_star_01_2.TabIndex = 22;
-            this.img_star_01_2.TabStop = false;
-            // 
-            // img_star02_2
-            // 
-            this.img_star02_2.Image = global::Synergy_Solutions_App.Properties.Resources.star02;
-            this.img_star02_2.Location = new System.Drawing.Point(1050, 217);
-            this.img_star02_2.Name = "img_star02_2";
-            this.img_star02_2.Size = new System.Drawing.Size(53, 48);
-            this.img_star02_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.img_star02_2.TabIndex = 23;
-            this.img_star02_2.TabStop = false;
+            this.settingUpSerial.FormattingEnabled = true;
+            this.settingUpSerial.Location = new System.Drawing.Point(356, 398);
+            this.settingUpSerial.Name = "settingUpSerial";
+            this.settingUpSerial.Size = new System.Drawing.Size(121, 21);
+            this.settingUpSerial.TabIndex = 24;
             // 
             // StartScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(1337, 605);
+            this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.settingUpSerial);
             this.Controls.Add(this.img_star02_2);
             this.Controls.Add(this.img_star_01_2);
             this.Controls.Add(this.img_planet02_2);
@@ -368,10 +383,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.Color.Black;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StartScreen";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.StartScreen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_1)).EndInit();
@@ -388,8 +404,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,5 +435,6 @@
         public System.Windows.Forms.PictureBox img_planet02_2;
         private System.Windows.Forms.PictureBox img_star_01_2;
         private System.Windows.Forms.PictureBox img_star02_2;
+        private System.Windows.Forms.ComboBox settingUpSerial;
     }
 }

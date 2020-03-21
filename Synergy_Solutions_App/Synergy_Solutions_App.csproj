@@ -115,6 +115,30 @@
   <ItemGroup>
     <None Include="Resources\ufo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alien.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planet04F.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star02.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

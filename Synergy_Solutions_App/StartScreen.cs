@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO.Ports;
 
 namespace Synergy_Solutions_App
 {
@@ -65,6 +66,23 @@ namespace Synergy_Solutions_App
         public StartScreen()
         {
             InitializeComponent();
+            getSerialPorts();
+        }
+
+        public void getSerialPorts() {
+
+            string[] ports;
+            ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                settingUpSerial.Items.Add(port);
+                Console.WriteLine(port);
+                if (ports[0] != null)
+                {
+                    settingUpSerial.SelectedItem = ports[0];
+                }
+            }
+            
         }
 
         private void StartScreen_Load(object sender, EventArgs e)

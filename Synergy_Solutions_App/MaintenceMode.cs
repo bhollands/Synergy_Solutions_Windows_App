@@ -259,7 +259,9 @@ namespace Synergy_Solutions_App
             Connection_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
             try
             {
+                
                 isConnected = true;
+                
                 port.PortName = selectedPort;
                 port.Open();
                 string start = "#STAR\n";
