@@ -54,7 +54,8 @@
             this.img_action = new System.Windows.Forms.PictureBox();
             this.img_arrow = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.settingUpSerial = new System.Windows.Forms.ComboBox();
+            this.gameSerial = new System.IO.Ports.SerialPort(this.components);
+            this.gameDebugWindow = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
@@ -344,13 +345,13 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // settingUpSerial
+            // gameDebugWindow
             // 
-            this.settingUpSerial.FormattingEnabled = true;
-            this.settingUpSerial.Location = new System.Drawing.Point(356, 398);
-            this.settingUpSerial.Name = "settingUpSerial";
-            this.settingUpSerial.Size = new System.Drawing.Size(121, 21);
-            this.settingUpSerial.TabIndex = 24;
+            this.gameDebugWindow.Location = new System.Drawing.Point(483, 378);
+            this.gameDebugWindow.Name = "gameDebugWindow";
+            this.gameDebugWindow.Size = new System.Drawing.Size(100, 96);
+            this.gameDebugWindow.TabIndex = 25;
+            this.gameDebugWindow.Text = "";
             // 
             // StartScreen
             // 
@@ -358,7 +359,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
-            this.Controls.Add(this.settingUpSerial);
+            this.Controls.Add(this.gameDebugWindow);
             this.Controls.Add(this.img_star02_2);
             this.Controls.Add(this.img_star_01_2);
             this.Controls.Add(this.img_planet02_2);
@@ -435,6 +436,7 @@
         public System.Windows.Forms.PictureBox img_planet02_2;
         private System.Windows.Forms.PictureBox img_star_01_2;
         private System.Windows.Forms.PictureBox img_star02_2;
-        private System.Windows.Forms.ComboBox settingUpSerial;
+        private System.IO.Ports.SerialPort gameSerial;
+        private System.Windows.Forms.RichTextBox gameDebugWindow;
     }
 }

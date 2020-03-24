@@ -19,6 +19,8 @@ namespace Synergy_Solutions_App
         String readyFReady = "Ready";
         String readyFGo = "Go";
         String loadingText = "Loading";
+
+        //getting size of the screen (changes depending on screen used)
         int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
         int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
@@ -32,6 +34,7 @@ namespace Synergy_Solutions_App
         //thread to move into UI mode
         Thread thUI;
 
+        //changes the alpha value of each pixel in a screen 
         private static Bitmap changeTransparacy(Image image, Byte alpha)
         {
             Bitmap inputImage = new Bitmap(image);
@@ -63,26 +66,30 @@ namespace Synergy_Solutions_App
             return outputImage;
         }
 
+        //getting serial ports (used from Bernard's code, needs to be modified later)
+        public void getSerialPorts()
+        {
+            string[] ports;
+            ports = SerialPort.GetPortNames();
+            
+           
+
+            try {
+                gameSerial.PortName = ports[0];
+                gameSerial.Open();
+                gameDebugWindow.AppendText("connected to:" + gameSerial.PortName + Environment.NewLine);
+            }
+            catch {
+                gameDebugWindow.AppendText("can't connect to serial bus" + Environment.NewLine);
+            }
+           
+        }
+
+
         public StartScreen()
         {
             InitializeComponent();
             getSerialPorts();
-        }
-
-        public void getSerialPorts() {
-
-            string[] ports;
-            ports = SerialPort.GetPortNames();
-            foreach (string port in ports)
-            {
-                settingUpSerial.Items.Add(port);
-                Console.WriteLine(port);
-                if (ports[0] != null)
-                {
-                    settingUpSerial.SelectedItem = ports[0];
-                }
-            }
-            
         }
 
         private void StartScreen_Load(object sender, EventArgs e)
@@ -98,7 +105,22 @@ namespace Synergy_Solutions_App
             
         }
 
-        //manually move UI elements
+        //----------Starts manually moving UI elements (called in form_load)---
+
+        //Center x-y positiins of a element (next two functions)
+        private int centerElementXcor(int Xcor, int elementWidth)
+        {
+            Xcor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2) - (elementWidth / 2);
+            return Xcor;
+        }
+
+        private int centerElementYcor(int Ycor, int elementHight)
+        {
+            Ycor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 2) - (elementHight / 2);
+            return Ycor;
+        }
+
+        //Updating the user interfance
         public void manualUIUpdate() {
 
             //edit to *0 to change position relative to center
@@ -253,19 +275,10 @@ namespace Synergy_Solutions_App
             lanuage.Refresh();
         }
 
-        private int centerElementXcor(int Xcor, int elementWidth)
-        {
-            Xcor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2) - (elementWidth/2);
-            return Xcor;
-        }
+        //----------Ends UI update----
 
-        private int centerElementYcor(int Ycor, int elementHight)
-        {
-            Ycor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height / 2) - (elementHight / 2);
-            return Ycor;
-        }
 
-        //timer to fade arrow in and out on start screen
+        //Timer to fade arrow in and out on start screen
         private void timer1_Tick(object sender, EventArgs e)
         {
             img_arrow.Image = changeTransparacy(img_arrow.Image, alpha);
@@ -400,6 +413,9 @@ namespace Synergy_Solutions_App
 
         }
 
+        //----Debug button----
+
+        //debug button to move straight to user mode skipping game
         private void button1_Click(object sender, EventArgs e)
         {
             //this.Close();
@@ -407,7 +423,7 @@ namespace Synergy_Solutions_App
         }
 
         private void openUI() {
-
+            gameSerial.Close();
             thUI = new Thread(opennewform);
             thUI.SetApartmentState(ApartmentState.STA);
             thUI.Start();
@@ -418,6 +434,8 @@ namespace Synergy_Solutions_App
         {
             Application.Run(new UserMode());
         }
+
+        //----End of Debug button code----
 
         private void lanuage_Click(object sender, EventArgs e)
         {
@@ -442,6 +460,13 @@ namespace Synergy_Solutions_App
             
         }
 
+
+
+
+
+
+
+        //Basically end of start screen code
         private void img_arrow_Click(object sender, EventArgs e)
         {
 
@@ -478,6 +503,11 @@ namespace Synergy_Solutions_App
         }
 
         private void img_planet04F_1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
