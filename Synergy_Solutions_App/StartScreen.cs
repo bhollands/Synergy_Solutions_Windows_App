@@ -33,6 +33,7 @@ namespace Synergy_Solutions_App
 
         //thread to move into UI mode
         Thread thUI;
+        Thread thSerial;
 
         //changes the alpha value of each pixel in a screen 
         private static Bitmap changeTransparacy(Image image, Byte alpha)
@@ -304,11 +305,23 @@ namespace Synergy_Solutions_App
 
         private void startGame_Click(object sender, EventArgs e)
         {
+
             img_arrow.Visible = false;
             img_UFO.Visible = false;
             startGame.Visible = false;
             Thread.Sleep(300);
             runGame();
+        }
+
+        private void startGameViaSerial() {
+            timer1.Stop();
+            img_arrow.Visible = false;
+            img_UFO.Visible = false;
+            startGame.Visible = false;
+            Thread.Sleep(300);
+            runGame();
+
+
         }
 
 
@@ -425,7 +438,11 @@ namespace Synergy_Solutions_App
         }
 
         private void openUI() {
+
+            //disable data in and close serial port before changing screen
+            gameSerial.DtrEnable = false;
             gameSerial.Close();
+
             thUI = new Thread(opennewform);
             thUI.SetApartmentState(ApartmentState.STA);
             thUI.Start();
@@ -528,7 +545,11 @@ namespace Synergy_Solutions_App
             Console.Write("serial read ");
 
             String testing1 = gameSerial.ReadTo("/n");
-            Console.WriteLine(testing1);
+
+            if (testing1.Contains("start"))
+            {
+                startGame_Click(sender, e);
+            }
         }
     }
 }
