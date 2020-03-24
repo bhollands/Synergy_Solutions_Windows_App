@@ -56,6 +56,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameSerial = new System.IO.Ports.SerialPort(this.components);
             this.gameDebugWindow = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
@@ -345,6 +346,10 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // gameSerial
+            // 
+            this.gameSerial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.gameSerial_DataReceived);
+            // 
             // gameDebugWindow
             // 
             this.gameDebugWindow.Location = new System.Drawing.Point(483, 378);
@@ -353,12 +358,23 @@
             this.gameDebugWindow.TabIndex = 25;
             this.gameDebugWindow.Text = "";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(390, 430);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 44);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "readFromSerial";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.gameDebugWindow);
             this.Controls.Add(this.img_star02_2);
             this.Controls.Add(this.img_star_01_2);
@@ -438,5 +454,6 @@
         private System.Windows.Forms.PictureBox img_star02_2;
         private System.IO.Ports.SerialPort gameSerial;
         private System.Windows.Forms.RichTextBox gameDebugWindow;
+        private System.Windows.Forms.Button button2;
     }
 }

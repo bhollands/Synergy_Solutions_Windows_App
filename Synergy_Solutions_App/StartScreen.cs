@@ -66,7 +66,7 @@ namespace Synergy_Solutions_App
             return outputImage;
         }
 
-        //getting serial ports (used from Bernard's code, needs to be modified later)
+        //getting serial ports (used from Bernard's code, modified to auto connect if a port exists)
         public void getSerialPorts()
         {
             string[] ports;
@@ -77,10 +77,12 @@ namespace Synergy_Solutions_App
             try {
                 gameSerial.PortName = ports[0];
                 gameSerial.Open();
+                gameSerial.DtrEnable = true;
                 gameDebugWindow.AppendText("connected to:" + gameSerial.PortName + Environment.NewLine);
             }
             catch {
                 gameDebugWindow.AppendText("can't connect to serial bus" + Environment.NewLine);
+                System.Windows.Forms.MessageBox.Show("Cannot connect to system please contact park staff");
             }
            
         }
@@ -510,6 +512,23 @@ namespace Synergy_Solutions_App
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (gameSerial.IsOpen)
+            {
+                gameSerial.Write("hello");
+            }
+
+        }
+
+        private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            Console.Write("serial read ");
+
+            String testing1 = gameSerial.ReadTo("/n");
+            Console.WriteLine(testing1);
         }
     }
 }
