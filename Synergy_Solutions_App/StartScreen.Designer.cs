@@ -35,7 +35,6 @@
             this.action = new System.Windows.Forms.Label();
             this.img_action = new System.Windows.Forms.PictureBox();
             this.img_arrow = new System.Windows.Forms.PictureBox();
-            this.img_button = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,14 +42,13 @@
             this.lanuage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lanuage)).BeginInit();
             this.SuspendLayout();
             // 
             // startGame
             // 
-            this.startGame.Location = new System.Drawing.Point(12, 480);
+            this.startGame.Location = new System.Drawing.Point(12, 591);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(318, 81);
             this.startGame.TabIndex = 0;
@@ -92,23 +90,12 @@
             // 
             this.img_arrow.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.img_arrow.Image = ((System.Drawing.Image)(resources.GetObject("img_arrow.Image")));
-            this.img_arrow.Location = new System.Drawing.Point(12, 84);
+            this.img_arrow.Location = new System.Drawing.Point(12, 400);
             this.img_arrow.Name = "img_arrow";
             this.img_arrow.Size = new System.Drawing.Size(257, 168);
             this.img_arrow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_arrow.TabIndex = 2;
             this.img_arrow.TabStop = false;
-            // 
-            // img_button
-            // 
-            this.img_button.Image = ((System.Drawing.Image)(resources.GetObject("img_button.Image")));
-            this.img_button.InitialImage = null;
-            this.img_button.Location = new System.Drawing.Point(12, 247);
-            this.img_button.Name = "img_button";
-            this.img_button.Size = new System.Drawing.Size(318, 227);
-            this.img_button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_button.TabIndex = 1;
-            this.img_button.TabStop = false;
             // 
             // button1
             // 
@@ -156,7 +143,7 @@
             // 
             this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
-            this.lanuage.Location = new System.Drawing.Point(25, 0);
+            this.lanuage.Location = new System.Drawing.Point(639, 42);
             this.lanuage.Name = "lanuage";
             this.lanuage.Size = new System.Drawing.Size(124, 82);
             this.lanuage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -169,14 +156,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(832, 631);
+            this.ClientSize = new System.Drawing.Size(1446, 673);
             this.Controls.Add(this.lanuage);
             this.Controls.Add(this.instruction);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.img_action);
             this.Controls.Add(this.action);
             this.Controls.Add(this.img_arrow);
-            this.Controls.Add(this.img_button);
             this.Controls.Add(this.startGame);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
@@ -185,7 +171,6 @@
             this.Load += new System.EventHandler(this.StartScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lanuage)).EndInit();
             this.ResumeLayout(false);
@@ -196,7 +181,6 @@
         #endregion
 
         private System.Windows.Forms.Button startGame;
-        private System.Windows.Forms.PictureBox img_button;
         private System.Windows.Forms.PictureBox img_arrow;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label action;

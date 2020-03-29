@@ -91,9 +91,9 @@ namespace Synergy_Solutions_App
                 , img_arrow.Location.Y);
             img_arrow.Refresh();
 
-            img_button.Location = new Point(centerElement(img_button.Location.X, img_button.Size.Width)
-                , img_button.Location.Y);
-            img_button.Refresh();
+           // img_button.Location = new Point(centerElement(img_button.Location.X, img_button.Size.Width)
+             //   , img_button.Location.Y);
+            //img_button.Refresh();
 
             instruction.Location = new Point(centerElement(instruction.Location.X, instruction.Size.Width)
                 , instruction.Location.Y);
@@ -138,7 +138,7 @@ namespace Synergy_Solutions_App
         private void startGame_Click(object sender, EventArgs e)
         {
             img_arrow.Visible = false;
-            img_button.Visible = false;
+            //img_button.Visible = false;
             startGame.Visible = false;
             Thread.Sleep(300);
             runGame();
