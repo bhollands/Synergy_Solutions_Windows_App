@@ -18,12 +18,14 @@ namespace Synergy_Solutions_App
     {
         bool isConnected = false;
         string lastWritten;
-        string lastRecived = "";
         string rxType;
         string log;
         bool requestSent = false;
         string a = "Inactive";
         Thread th;
+        bool switch1Active = false;
+        bool switch2Active = false;
+        bool switch3Active = false;
 
         public MaintenceMode()
         {
@@ -36,9 +38,9 @@ namespace Synergy_Solutions_App
 
         private void readOnly()
         {
-            TextBox[] textBox = {button1Text,switch1Text, switch2Text, slider1,
+            TextBox[] textBox = {button1Text,switch1, switch2, slider1,
                                 slider2, LEDbox1, LEDbox4,Connection_window, LEDbox6, LEDbox5, LEDbox7,
-                                LEDbox3, LEDbox2, textBox8};
+                                LEDbox3, LEDbox2, distTextBox};
             foreach (TextBox textbox in textBox)
             {
                 textbox.ReadOnly = true;
@@ -72,13 +74,12 @@ namespace Synergy_Solutions_App
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
-            switch1Text.Text = a;
+            switch1.Text = a;
         }
 
-        private void writeToPort(string id, int devNo, string info,  int direction)
+        private void writeToPort(string id, int deviceNo, string data,  int direction) //direction just for DC motors
         {
-            string mesg = "#" + id + ":" + devNo + ":" + info + ":" +direction +";";
+            string mesg = "#" + id + ":" + deviceNo + ":" + data + ":" + direction +";";
             try
             {
                 port.Write(mesg);
@@ -115,22 +116,22 @@ namespace Synergy_Solutions_App
             return returnArray;
         }
         
-        private void readFromPort()
+/*        private string readFromPort()
         {
             try
             {
-                    string lastRecived = port.ReadLine();
-                    logTraffic(RX_traffic_window, lastRecived, Color.Black);
-                
-                //lastRecived = buffer.Substring(getPacket(buffer)[0], getPacket(buffer)[1]);
-                
+                string lastRecived = port.ReadExisting().ToString();
+                Console.WriteLine(lastRecived);
+                logTraffic(RX_traffic_window, lastRecived, Color.Black);
+                return lastRecived; 
             }
             catch(Exception e)
             {
                 string send = "ERROR: " + e.Message + e.StackTrace;
                 logTraffic(Debug_W, send, Color.Red);
+                return "Null";
             }
-        }
+        }*/
 
         private string GetTimeStamp(DateTime value)
         {
@@ -258,11 +259,14 @@ namespace Synergy_Solutions_App
             Connection_window.AppendText("Trying to open " + selectedPort + Environment.NewLine);
             try
             {
+                
                 isConnected = true;
+                
                 port.PortName = selectedPort;
                 port.Open();
                 string start = "#STAR\n";
                 port.Write(start);
+                port.ReadExisting();
                 logTraffic(TX_traffic_window, start, Color.Black);
                 connectBtn.Text = "Disconnect";
                 Connection_window.AppendText("--------------------------------------" + Environment.NewLine);
@@ -307,11 +311,6 @@ namespace Synergy_Solutions_App
         private void dist_button_Click(object sender, EventArgs e)
         {
             writeRequest("d",0);
-            readFromPort();
-            if (lastRecived.Contains("d")&& requestSent)
-            {
-                textBox8.Text = lastRecived.Substring(getPacket(lastRecived)[0], getPacket(lastRecived)[1]);
-            }
         }
 
         private void writeRequest(string key, int no)
@@ -329,54 +328,20 @@ namespace Synergy_Solutions_App
             }
 
         }
-        private void request(string component, int no)
-        {
-            switch (component)
-            {
-                case "distance":
-                    writeRequest("d",0);
-                    break;
-                case "LDR":
-                    writeRequest("l",no);
-                    break;
-                case "button":
-                    writeRequest("b",0);
-                    break;
-                case "switch":
-                    writeRequest("s",no);
-                    break;
-            }
 
-        }
-
-        private string RxDataType()
+        private string getData(string lastRecived)
         {
             try
             {
-                int srt_pos = lastRecived.IndexOf("#");
-                int end_pos = lastRecived.IndexOf("~");
-                string data = lastRecived.Substring(srt_pos + 1, end_pos - 1);
-                return data;
-            }
-            catch
-            {
-                return "null";
-            }
-        }
-
-        private string RxData()
-        {
-            try
-            {
-                int srt_pos = lastRecived.IndexOf("~");
+                int srt_pos = lastRecived.IndexOf(":") + 1;
                 int end_pos = lastRecived.IndexOf(";");
-                string data = lastRecived.Substring(srt_pos, end_pos - 2);
-                //logTraffic(TX_traffic_window, data, Color.Black);
+                int goToPos = end_pos - srt_pos;
+                string data = lastRecived.Substring(srt_pos, goToPos);
                 return data;
             }
             catch
             {
-                return "null";
+                return null;
             }
         }
 
@@ -438,36 +403,106 @@ namespace Synergy_Solutions_App
 
         private void control_panel_Read(object sender, EventArgs e)
         { 
-            readFromPort();
+           // readFromPort();
         }
 
-        private void serialDigitalLogic(TextBox textBox)
-        {
-            if (RxData() == "h")
-            {
-                textBox.Text = "Active";
-            }
-            else
-            {
-                textBox.Text = "Inactive";
-            }
-        }
-
-        
+        TextBox textBox;
         private void serial_data_in(object sender, SerialDataReceivedEventArgs e)
         {
-            
-            MessageBox.Show("switch flicked");
+
+            string txt = port.ReadExisting().ToString();
+            textBoxDetermin(txt);
+            SetText(txt.ToString());
         }
-
-        private void label25_Click(object sender, EventArgs e)
+        bool switchActive;
+        private void textBoxDetermin(string txt)
         {
+            if (txt.Contains("d"))
+            {
+                textBox = distTextBox;
+            }
+            else if (txt.Contains("ldr1"))
+            {
+                textBox = LDR1;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+            }
+            else if (txt.Contains("ldr2"))
+            {
+                textBox = LDR2;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+            }
+            else if (txt.Contains("ldr3"))
+            {
+                textBox = LDR3;
+            }
+            else if (txt.Contains("ldr4"))
+            {
+                textBox = LDR4;
+            }
+            else if (txt.Contains("ldr5"))
+            {
+                textBox = LDR5;
+            }
+            else if (txt.Contains("ldr6"))
+            {
+                textBox = LDR6;
+            }
+            else if (txt.Contains("sw1"))
+            {
+                textBox = switch1;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+                
+               // switch1Active = true;
+            }
+            else if (txt.Contains("sw2"))
+            {
+                textBox = switch2;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+                
 
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
+            }
+            else if (txt.Contains("sw3"))
+            {
+                textBox = button1Text;
+                if (switchActive)
+                {
+                    switchActive = false;
+                }
+                else
+                {
+                    switchActive = true;
+                }
+                
+               // switch3Active = true;
+            }
         }
 
         private void button5_Click_2(object sender, EventArgs e)
@@ -477,11 +512,9 @@ namespace Synergy_Solutions_App
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            writeRequest("l", 0);
-            readFromPort();
-            if (lastRecived.Contains("d") && requestSent)
+            for (int i = 3; i < 7; i++)
             {
-                textBox8.Text = lastRecived.Substring(getPacket(lastRecived)[0], getPacket(lastRecived)[1]);
+                writeRequest("l", i);
             }
         }
 
@@ -489,5 +522,193 @@ namespace Synergy_Solutions_App
         {
 
         }
+
+        delegate void SetTextCallback(string text);
+        private void SetText(string text)
+        {
+            try
+            {
+                if (this.textBox.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    this.Invoke(d, new object[] { text });
+                }
+                else
+                {
+                    logTraffic(RX_traffic_window, text, Color.Black);
+                    if (switchActive == false) // if its not a switch
+                    {
+                        string displayText = getData(text);
+
+                        if (text.Contains("sw") || text.Contains("ldr"))//if last recived is a switch
+                        {
+                            this.textBox.Text = "Inactive";
+                        }
+                        else
+                        {
+                            this.textBox.Text = displayText;
+                        }
+                    }
+                    else
+                    {
+                        this.textBox.Text = "Active";
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+
+
+
+                
+            }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown2_ValueChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label38_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label35_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox8_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PartyMode_Click(object sender, EventArgs e)
+        {
+
+            int n = 0;
+            TextBox[] boxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox,
+            LEDbox1, LEDbox2, LEDbox3, LEDbox4, LEDbox5, LEDbox6, LEDbox7, button1Text, switch1, switch2,
+                slider1, slider2, LDR1, LDR2, limitSwitch, LDR3, LDR4, LDR5, LDR6, RedBox, GreenBox, BlueBox, ClearBox,
+                Connection_window, LEDbox8};
+
+            RichTextBox[] richBox = { Debug_W, TX_traffic_window, RX_traffic_window };
+            for (int j = 0; j < richBox.Length; j++)
+            {
+                RichRandoColor(richBox[j]);
+            }
+            for (int i = 0; i < boxes.Length; i++)
+            {
+                RandoColor(boxes[i]);
+            }
+        }
+
+
+        private Random rnd = new Random();
+        private void RichRandoColor(RichTextBox t)
+        {
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            this.BackColor = randomColor;
+            t.BackColor = randomColor;
+        }
+        private void RandoColor(TextBox t)
+        {
+            Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+            this.BackColor = randomColor;
+            t.BackColor = randomColor;
+        }
+        private void DarkMode(TextBox t)
+        {
+            this.BackColor = Color.Gray;
+            t.BackColor = Color.DimGray;
+        }
+        private void DarkModeBtn_Click(object sender, EventArgs e)
+        {
+            TextBox[] backBoxes = { LEDBox, ControlPanelBox, ComPortBox, CardReaderBox, ServoBox, DistBox, MotorBox, ColourBox, LEDStripBox };
+            TextBox[] textBoxes = {LEDbox1, LEDbox2, LEDbox3, LEDbox4, LEDbox5, LEDbox6, LEDbox7, button1Text, switch1, switch2,
+                slider1, slider2, LDR1, LDR2, limitSwitch, LDR3, LDR4, LDR5, LDR6, RedBox, GreenBox, BlueBox, ClearBox, 
+                Connection_window};
+            for (int i = 0; i < backBoxes.Length; i++)
+            {
+                DarkMode(backBoxes[i]);
+            }
+        }
     }
-}
+    }
