@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.instruction = new System.Windows.Forms.Label();
             this.img_star02_2 = new System.Windows.Forms.PictureBox();
-            this.img_star_01_2 = new System.Windows.Forms.PictureBox();
+            this.img_star01_2 = new System.Windows.Forms.PictureBox();
             this.img_planet02_2 = new System.Windows.Forms.PictureBox();
             this.img_planet02_3 = new System.Windows.Forms.PictureBox();
             this.img_star01_1 = new System.Windows.Forms.PictureBox();
@@ -58,7 +58,7 @@
             this.gameDebugWindow = new System.Windows.Forms.RichTextBox();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_1)).BeginInit();
@@ -152,16 +152,16 @@
             this.img_star02_2.TabIndex = 23;
             this.img_star02_2.TabStop = false;
             // 
-            // img_star_01_2
+            // img_star01_2
             // 
-            this.img_star_01_2.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
-            this.img_star_01_2.Location = new System.Drawing.Point(668, 176);
-            this.img_star_01_2.Margin = new System.Windows.Forms.Padding(2);
-            this.img_star_01_2.Name = "img_star_01_2";
-            this.img_star_01_2.Size = new System.Drawing.Size(39, 39);
-            this.img_star_01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.img_star_01_2.TabIndex = 22;
-            this.img_star_01_2.TabStop = false;
+            this.img_star01_2.Image = global::Synergy_Solutions_App.Properties.Resources.star01;
+            this.img_star01_2.Location = new System.Drawing.Point(668, 176);
+            this.img_star01_2.Margin = new System.Windows.Forms.Padding(2);
+            this.img_star01_2.Name = "img_star01_2";
+            this.img_star01_2.Size = new System.Drawing.Size(39, 39);
+            this.img_star01_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.img_star01_2.TabIndex = 22;
+            this.img_star01_2.TabStop = false;
             // 
             // img_planet02_2
             // 
@@ -377,7 +377,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.gameDebugWindow);
             this.Controls.Add(this.img_star02_2);
-            this.Controls.Add(this.img_star_01_2);
+            this.Controls.Add(this.img_star01_2);
             this.Controls.Add(this.img_planet02_2);
             this.Controls.Add(this.img_planet02_3);
             this.Controls.Add(this.img_star01_1);
@@ -404,7 +404,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.StartScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.img_star_01_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_1)).EndInit();
@@ -450,7 +450,7 @@
         private System.Windows.Forms.PictureBox img_star01_1;
         public System.Windows.Forms.PictureBox img_planet02_3;
         public System.Windows.Forms.PictureBox img_planet02_2;
-        private System.Windows.Forms.PictureBox img_star_01_2;
+        private System.Windows.Forms.PictureBox img_star01_2;
         private System.Windows.Forms.PictureBox img_star02_2;
         private System.IO.Ports.SerialPort gameSerial;
         private System.Windows.Forms.RichTextBox gameDebugWindow;

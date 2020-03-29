@@ -243,33 +243,82 @@ namespace Synergy_Solutions_App
 
             //img_planet01_1
             img_planet01_1.Location = new Point(
-               centerElementXcor(startGame.Location.X, startGame.Size.Width) + startGameMoveX,
-               centerElementYcor(startGame.Location.Y, startGame.Size.Height) + startGameMoveY);
-            startGame.Refresh();
+               centerElementXcor(img_planet01_1.Location.X, img_planet01_1.Size.Width) + img_planet01_1MoveX,
+               centerElementYcor(img_planet01_1.Location.Y, img_planet01_1.Size.Height) + img_planet01_1MoveY);
+            img_planet01_1.Refresh();
 
             //img_planet01_2
+            img_planet01_2.Location = new Point(
+             centerElementXcor(img_planet01_2.Location.X, img_planet01_2.Size.Width) + img_planet01_2MoveX,
+             centerElementYcor(img_planet01_2.Location.Y, img_planet01_2.Size.Height) + img_planet01_2MoveY);
+            img_planet01_2.Refresh();
 
             //img_planet02_1
+            img_planet02_1.Location = new Point(
+            centerElementXcor(img_planet02_1.Location.X, img_planet02_1.Size.Width) + img_planet02_1MoveX,
+            centerElementYcor(img_planet02_1.Location.Y, img_planet02_1.Size.Height) + img_planet02_1MoveY);
+            img_planet02_1.Refresh();
 
             //img_planet02_2
+            img_planet02_2.Location = new Point(
+            centerElementXcor(img_planet02_2.Location.X, img_planet02_2.Size.Width) + img_planet02_2MoveX,
+            centerElementYcor(img_planet02_2.Location.Y, img_planet02_2.Size.Height) + img_planet02_2MoveY);
+            img_planet02_2.Refresh();
 
             //img_planet02_3
+            img_planet02_2.Location = new Point(
+            centerElementXcor(img_planet02_3.Location.X, img_planet02_3.Size.Width) + img_planet02_3MoveX,
+            centerElementYcor(img_planet02_3.Location.Y, img_planet02_3.Size.Height) + img_planet02_3MoveY);
+            img_planet02_3.Refresh();
 
             //img_planet03_1
+            img_planet03_1.Location = new Point(
+            centerElementXcor(img_planet03_1.Location.X, img_planet03_1.Size.Width) + img_planet03_1MoveX,
+            centerElementYcor(img_planet03_1.Location.Y, img_planet03_1.Size.Height) + img_planet03_1MoveY);
+            img_planet03_1.Refresh();
 
             //img_planet03_2
+            img_planet03_2.Location = new Point(
+            centerElementXcor(img_planet03_2.Location.X, img_planet03_2.Size.Width) + img_planet03_2MoveX,
+            centerElementYcor(img_planet03_2.Location.Y, img_planet03_2.Size.Height) + img_planet03_2MoveY);
+            img_planet03_2.Refresh();
 
             //img_planet04_1
+            img_planet04_1.Location = new Point(
+            centerElementXcor(img_planet04_1.Location.X, img_planet04_1.Size.Width) + img_planet04_1MoveX,
+            centerElementYcor(img_planet04_1.Location.Y, img_planet04_1.Size.Height) + img_planet04_1MoveY);
+            img_planet04_1.Refresh();
 
             //img_planet04F_1
+            img_planet04F_1.Location = new Point(
+            centerElementXcor(img_planet04F_1.Location.X, img_planet04F_1.Size.Width) + img_planet04F_1MoveX,
+            centerElementYcor(img_planet04F_1.Location.Y, img_planet04F_1.Size.Height) + img_planet04F_1MoveY);
+            img_planet04F_1.Refresh();
 
             //img_star01_1
+            img_star01_1.Location = new Point(
+            centerElementXcor(img_star01_1.Location.X, img_star01_1.Size.Width) + img_star01_1MoveX,
+            centerElementYcor(img_star01_1.Location.Y, img_star01_1.Size.Height) + img_star01_1MoveY);
+            img_star01_1.Refresh();
 
             //img_star01_2
+            img_star01_2.Location = new Point(
+            centerElementXcor(img_star01_2.Location.X, img_star01_2.Size.Width) + img_star01_2MoveX,
+            centerElementYcor(img_star01_2.Location.Y, img_star01_2.Size.Height) + img_star01_2MoveY);
+            img_star01_2.Refresh();
 
             //img_star02_1
+            img_star02_1.Location = new Point(
+            centerElementXcor(img_star02_1.Location.X, img_star02_1.Size.Width) + img_star02_1MoveX,
+            centerElementYcor(img_star02_1.Location.Y, img_star02_1.Size.Height) + img_star02_1MoveY);
+            img_star02_1.Refresh();
+
 
             //img_star02_2
+            img_star02_2.Location = new Point(
+            centerElementXcor(img_star02_2.Location.X, img_star02_2.Size.Width) + img_star02_2MoveX,
+            centerElementYcor(img_star02_2.Location.Y, img_star02_2.Size.Height) + img_star02_2MoveY);
+            img_star02_2.Refresh();
 
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
