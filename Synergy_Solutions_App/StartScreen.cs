@@ -591,14 +591,43 @@ namespace Synergy_Solutions_App
 
         private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            Console.Write("serial read ");
+            //give time to allow all data to come into the computer
+            Thread.Sleep(10);
 
-            String testing1 = gameSerial.ReadTo("/n");
 
-            if (testing1.Contains("start"))
-            {
-                startGame_Click(sender, e);
-            }
+            String testing1 = "connected to: ";
+            testing1 += gameSerial.ReadExisting().ToString();
+            SetText(testing1);
         }
+        /*
+                        if (this.textBox.InvokeRequired)
+                {
+            SetTextCallback d = new SetTextCallback(SetText);
+            this.Invoke(d, new object[] { text });
+        }
+
+    */
+        delegate void SetTextCallback(string text);
+        private void SetText(string text)
+        {
+            try
+            {
+                gameDebugWindow.AppendText(text);
+            }
+            catch
+            {
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+
     }
 }
