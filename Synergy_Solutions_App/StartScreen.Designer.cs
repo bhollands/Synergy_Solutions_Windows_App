@@ -374,6 +374,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.instruction);
+            this.Controls.Add(this.action);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.gameDebugWindow);
             this.Controls.Add(this.img_star02_2);
@@ -389,16 +391,14 @@
             this.Controls.Add(this.img_planet03_1);
             this.Controls.Add(this.img_planet02_1);
             this.Controls.Add(this.img_planet01_1);
-            this.Controls.Add(this.img_UFO);
             this.Controls.Add(this.startGame);
             this.Controls.Add(this.lanuage);
-            this.Controls.Add(this.instruction);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.img_action);
-            this.Controls.Add(this.action);
             this.Controls.Add(this.img_arrow);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.img_UFO);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "StartScreen";
             this.Text = "Form1";

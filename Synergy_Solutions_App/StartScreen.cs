@@ -390,7 +390,7 @@ namespace Synergy_Solutions_App
                 Thread.Sleep(1000);
 
             }
-
+            Console.WriteLine("end of game");
             openUI();
             this.Close();
 
@@ -608,11 +608,42 @@ namespace Synergy_Solutions_App
 
     */
         delegate void SetTextCallback(string text);
-        private void SetText(string text)
+        private object mScanLock = new object();
+            private void SetText(string text)
         {
+            if (text.Contains("go"))
+            {
+                lock (mScanLock)
+                {
+                    UserMode frm = new UserMode();
+                    frm.ShowDialog();
+                    frm.Dispose();
+                }
+            }
             try
             {
-                gameDebugWindow.AppendText(text);
+                //gameDebugWindow.AppendText(text);
+                if (gameDebugWindow.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    gameDebugWindow.Invoke(d, new object[] { text });
+                }
+                else {
+                     gameDebugWindow.Clear();
+                     gameDebugWindow.Text =text;
+                     gameDebugWindow.Refresh();
+
+                     img_arrow.Visible = false;
+                     img_UFO.Visible = false;
+                     startGame.Visible = false;
+                     Thread.Sleep(300);
+                     runGame();
+
+
+
+
+                }
+
             }
             catch
             {
