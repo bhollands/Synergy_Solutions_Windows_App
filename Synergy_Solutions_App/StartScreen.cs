@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO.Ports;
+using System.IO;
 
 namespace Synergy_Solutions_App
 {
@@ -354,7 +355,8 @@ namespace Synergy_Solutions_App
 
         private void startGame_Click(object sender, EventArgs e)
         {
-
+            //datalog();
+            Console.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString());
             img_arrow.Visible = false;
             img_UFO.Visible = false;
             startGame.Visible = false;
@@ -529,7 +531,17 @@ namespace Synergy_Solutions_App
         }
 
 
+        public void datalog() {
 
+            using (StreamWriter w = File.AppendText("userModeLog.txt")) { 
+            
+            }
+
+        }
+
+        public static void writeToFile() { 
+        
+        }
 
 
 
