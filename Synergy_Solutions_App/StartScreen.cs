@@ -82,13 +82,34 @@ namespace Synergy_Solutions_App
                 gameSerial.PortName = ports[0];
                 gameSerial.Open();
                 gameSerial.DtrEnable = true;
-                gameDebugWindow.AppendText("connected to:" + gameSerial.PortName + Environment.NewLine);
+                Console.WriteLine("connected to:" + gameSerial.PortName + Environment.NewLine);
             }
             catch {
-                gameDebugWindow.AppendText("can't connect to serial bus" + Environment.NewLine);
+                Console.WriteLine("can't connect to serial bus" + Environment.NewLine);
                 System.Windows.Forms.MessageBox.Show("Cannot connect to system please contact park staff");
             }
            
+        }
+
+        //get the score from serial communication if an error occurs return 99 (used for datalogging)
+        public int getScore()
+        {
+            string score = " ";
+
+            if (gameSerial.IsOpen)
+            {
+                gameSerial.Write("gs");
+                score = gameSerial.ReadTo("/n");
+
+            }
+
+            // if an error with the serial communication occurs or the serial communication is not present set the score to 99
+            if (score == " ")
+            {
+                score = "99";
+            }
+            int s = Int32.Parse(score);
+            return s;
         }
 
 
@@ -473,7 +494,6 @@ namespace Synergy_Solutions_App
         }
 
         //----Debug button----
-
         //debug button to move straight to user mode skipping game
         private void button1_Click(object sender, EventArgs e)
         {
@@ -482,10 +502,6 @@ namespace Synergy_Solutions_App
         }
 
         private void openUI() {
-
-            //disable data in and close serial port before changing screen
- 
-
             thUI = new Thread(opennewform);
             thUI.SetApartmentState(ApartmentState.STA);
             thUI.Start();
@@ -494,6 +510,7 @@ namespace Synergy_Solutions_App
 
         private void opennewform()
         {
+            //disable data in and close serial port before changing screen
             if (gameSerial.IsOpen)
             {
                 gameSerial.DtrEnable = false;
@@ -554,40 +571,58 @@ namespace Synergy_Solutions_App
 
         }
 
-        //get the score from serial communication if an error occurs return 99
-        public int getScore() {
-            string score = " ";
 
-            if (gameSerial.IsOpen)
+        private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            //give time to allow all data to come into the computer
+            Thread.Sleep(10);
+
+
+            String testing1 = "connected to: ";
+            testing1 += gameSerial.ReadExisting().ToString();
+            SetText(testing1);
+        }
+
+        delegate void SetTextCallback(string text);
+        private object mScanLock = new object();
+        private void SetText(string text)
+        {
+            if (text.Contains("go"))
             {
-                gameSerial.Write("gs");
-                score = gameSerial.ReadTo("/n");
-
-                //Console.WriteLine("score: {0}",score);
-
-                
-            }
-
-            // if an error with the serial communication occurs or the serial communication is not present set the score to 99
-            if (score == " ")
-            {
-                score = "99";
-            }
-
-            /*
-            Not needed error with Arduino code not C# code
-            Was going to parse the string manually going through the incomming string but not needed
-
-            for (int t = 0; t < score.Length; t++) {
-                char check = score[t];
-               
-                if (Char.IsNumber(score[t])) {
-                    Console.WriteLine("char {0}",score[t]);
+                lock (mScanLock)
+                {
+                    UserMode frm = new UserMode();
+                    frm.ShowDialog();
+                    frm.Dispose();
                 }
             }
-            */
-            int s = Int32.Parse(score);
-            return s;
+            try
+            {
+                //gameDebugWindow.AppendText(text);
+                if (gameDebugWindow.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    gameDebugWindow.Invoke(d, new object[] { text });
+                }
+                else
+                {
+                    gameDebugWindow.Clear();
+                    gameDebugWindow.Text = text;
+                    gameDebugWindow.Refresh();
+
+                    img_arrow.Visible = false;
+                    img_UFO.Visible = false;
+                    startGame.Visible = false;
+                    Thread.CurrentThread.Abort();
+                    runGame();
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("Threadig error occured");
+
+            }
         }
 
 
@@ -636,87 +671,6 @@ namespace Synergy_Solutions_App
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (gameSerial.IsOpen)
-            {
-                gameSerial.Write("hello");
-            }
-
-        }
-
-        private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            //give time to allow all data to come into the computer
-            Thread.Sleep(10);
-
-
-            String testing1 = "connected to: ";
-            testing1 += gameSerial.ReadExisting().ToString();
-            SetText(testing1);
-        }
-        /*
-                        if (this.textBox.InvokeRequired)
-                {
-            SetTextCallback d = new SetTextCallback(SetText);
-            this.Invoke(d, new object[] { text });
-        }
-
-    */
-        delegate void SetTextCallback(string text);
-        private object mScanLock = new object();
-            private void SetText(string text)
-        {
-            if (text.Contains("go"))
-            {
-                lock (mScanLock)
-                {
-                    UserMode frm = new UserMode();
-                    frm.ShowDialog();
-                    frm.Dispose();
-                }
-            }
-            try
-            {
-                //gameDebugWindow.AppendText(text);
-                if (gameDebugWindow.InvokeRequired)
-                {
-                    SetTextCallback d = new SetTextCallback(SetText);
-                    gameDebugWindow.Invoke(d, new object[] { text });
-                }
-                else {
-                     gameDebugWindow.Clear();
-                     gameDebugWindow.Text =text;
-                     gameDebugWindow.Refresh();
-
-                     img_arrow.Visible = false;
-                     img_UFO.Visible = false;
-                     startGame.Visible = false;
-                    Thread.CurrentThread.Abort();
-                     runGame();
-
-
-
-
-                }
-
-            }
-            catch
-            {
-                Console.WriteLine("Threadig error occured");
-
-            }
-
-
-  
-
-        }
-
-
-
-
-
 
     }
 }
