@@ -60,6 +60,7 @@
             this.AlienImage2 = new System.Windows.Forms.PictureBox();
             this.AlienImage4 = new System.Windows.Forms.PictureBox();
             this.AlienImage3 = new System.Windows.Forms.PictureBox();
+            this.UISerial = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage1)).BeginInit();
@@ -516,6 +517,7 @@
         private System.Windows.Forms.PictureBox AlienImage2;
         private System.Windows.Forms.PictureBox AlienImage4;
         private System.Windows.Forms.PictureBox AlienImage3;
+        private System.IO.Ports.SerialPort UISerial;
     }
 }
 
