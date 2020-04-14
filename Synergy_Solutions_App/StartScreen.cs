@@ -355,8 +355,7 @@ namespace Synergy_Solutions_App
 
         private void startGame_Click(object sender, EventArgs e)
         {
-            //datalog();
-            Console.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString());
+            datalog();
             img_arrow.Visible = false;
             img_UFO.Visible = false;
             startGame.Visible = false;
@@ -533,17 +532,22 @@ namespace Synergy_Solutions_App
 
         public void datalog() {
 
-            using (StreamWriter w = File.AppendText("userModeLog.txt")) { 
-            
+            using (StreamWriter logFile = File.AppendText("userModeLog.txt")) {
+
+                writeToFile(getScore(), logFile);
             }
 
         }
 
-        public static void writeToFile() { 
-        
+        public static void writeToFile(int hs, TextWriter logFile) {
+            logFile.WriteLine("Game played at {0} {1} with score {2} the current highscore is {3}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString(),hs, 1);
+            logFile.WriteLine("Total games played: {0}", 1);
+            logFile.Flush();
         }
 
-
+        public int getScore() {
+            return 100;
+        }
 
 
         //Basically end of start screen code
