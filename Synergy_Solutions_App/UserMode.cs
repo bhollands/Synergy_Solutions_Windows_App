@@ -150,7 +150,11 @@ namespace Synergy_Solutions_App
                     break;
                 }
 
+
+
+
             }
+
 
             //update the scoreboard to show the new order
            highScores.Items.Clear();
@@ -163,8 +167,22 @@ namespace Synergy_Solutions_App
                 highScores.Items.Add(nameAndScoreTogether);
 
             }
+            Thread.Sleep(1000);
+            th = new Thread(loopback);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
 
+            System.Windows.Forms.Application.ExitThread();
+            this.Close();
         }
+
+
+            private void loopback()
+        {
+            Application.Run(new StartScreen());
+        }
+
+
         //button to move through letters in the options box (will be implimented into a hardware button soon)
         private void button2_Click(object sender, EventArgs e)
         {

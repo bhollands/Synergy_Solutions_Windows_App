@@ -15,6 +15,8 @@ namespace Synergy_Solutions_App
 {
     public partial class StartScreen : Form
     {
+        public int GAMESPLAYED = 0;
+        public int HIGHSCORE = 0;
         //all displayed text with a lanuage select varible
         int lanSelect = 0;
         String readyFReady = "Ready";
@@ -93,12 +95,12 @@ namespace Synergy_Solutions_App
         public StartScreen()
         {
             InitializeComponent();
-            getSerialPorts();
+            
         }
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-
+            getSerialPorts();
 
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
@@ -393,6 +395,7 @@ namespace Synergy_Solutions_App
             }
             Console.WriteLine("end of game");
             openUI();
+            System.Windows.Forms.Application.ExitThread();
             this.Close();
 
 
@@ -408,16 +411,7 @@ namespace Synergy_Solutions_App
             img_action.Refresh();
             action.Refresh();
 
-            timingP.Start();
             String[] instructionsFromMBED = getActionsFromSerial();
-            timingP.Stop();
-
-            Console.WriteLine(timingP.ElapsedMilliseconds);
-
-            int timeoutTime = 1000;
-            timeoutTime -= unchecked((int)timingP.ElapsedMilliseconds);
-            Thread.Sleep(timeoutTime);
-            Console.WriteLine(timeoutTime);
 
             action.Visible = false;
             img_action.Visible = false;
@@ -490,8 +484,7 @@ namespace Synergy_Solutions_App
         private void openUI() {
 
             //disable data in and close serial port before changing screen
-            gameSerial.DtrEnable = false;
-            gameSerial.Close();
+ 
 
             thUI = new Thread(opennewform);
             thUI.SetApartmentState(ApartmentState.STA);
@@ -501,6 +494,12 @@ namespace Synergy_Solutions_App
 
         private void opennewform()
         {
+            if (gameSerial.IsOpen)
+            {
+                gameSerial.DtrEnable = false;
+                gameSerial.Close();
+            }
+
             Application.Run(new UserMode());
         }
 
@@ -508,7 +507,7 @@ namespace Synergy_Solutions_App
 
         private void lanuage_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("mee");
+           
             lanSelect++;
             if (lanSelect == 0) {
                 startGame.Text = "Start Game";
@@ -529,24 +528,66 @@ namespace Synergy_Solutions_App
             
         }
 
-
+        //open log file userModeLog.txt and write the date/time, score, highscore and games played since startup to the file then close the file
+       
         public void datalog() {
 
             using (StreamWriter logFile = File.AppendText("userModeLog.txt")) {
 
-                writeToFile(getScore(), logFile);
+                int Score = getScore();
+
+
+                if (HIGHSCORE < Score) {
+                    HIGHSCORE = Score;
+                }
+
+
+                logFile.WriteLine("Game played at {0} {1} with score {2} the current highscore is {3}",
+                DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString(), Score, HIGHSCORE);
+
+                logFile.WriteLine("Total games played: {0}", GAMESPLAYED);
+                GAMESPLAYED++;
+                logFile.Flush();
+
+                logFile.Close();
             }
 
         }
 
-        public static void writeToFile(int hs, TextWriter logFile) {
-            logFile.WriteLine("Game played at {0} {1} with score {2} the current highscore is {3}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString(),hs, 1);
-            logFile.WriteLine("Total games played: {0}", 1);
-            logFile.Flush();
-        }
-
+        //get the score from serial communication if an error occurs return 99
         public int getScore() {
-            return 100;
+            string score = " ";
+
+            if (gameSerial.IsOpen)
+            {
+                gameSerial.Write("gs");
+                score = gameSerial.ReadTo("/n");
+
+                //Console.WriteLine("score: {0}",score);
+
+                
+            }
+
+            // if an error with the serial communication occurs or the serial communication is not present set the score to 99
+            if (score == " ")
+            {
+                score = "99";
+            }
+
+            /*
+            Not needed error with Arduino code not C# code
+            Was going to parse the string manually going through the incomming string but not needed
+
+            for (int t = 0; t < score.Length; t++) {
+                char check = score[t];
+               
+                if (Char.IsNumber(score[t])) {
+                    Console.WriteLine("char {0}",score[t]);
+                }
+            }
+            */
+            int s = Int32.Parse(score);
+            return s;
         }
 
 
@@ -652,7 +693,7 @@ namespace Synergy_Solutions_App
                      img_arrow.Visible = false;
                      img_UFO.Visible = false;
                      startGame.Visible = false;
-                     Thread.Sleep(300);
+                    Thread.CurrentThread.Abort();
                      runGame();
 
 
@@ -663,11 +704,12 @@ namespace Synergy_Solutions_App
             }
             catch
             {
+                Console.WriteLine("Threadig error occured");
 
             }
 
 
-
+  
 
         }
 
