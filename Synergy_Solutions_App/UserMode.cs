@@ -52,6 +52,7 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //lanSelect
             string[] documentLines = File.ReadAllLines("score.txt");
             bool inputChangeOver = true;
             for (int inputData = 0; inputData < 23; inputData++) {
@@ -64,15 +65,15 @@ namespace Synergy_Solutions_App
                     highScoreNames[inputData] = (documentLines[inputData]);
                 }
                 else {
-                    
-                    highScoresList[inputData-12] = Int32.Parse(documentLines[inputData]);
+
+                    highScoresList[inputData - 12] = Int32.Parse(documentLines[inputData]);
                     //Console.WriteLine(documentLines[inputData]);
 
                 }
-               // Console.WriteLine(inputData);
+                // Console.WriteLine(inputData);
             }
 
-          
+
 
 
             //box holding the player's score is loaded at the end of the game as well as the high scores of other users
@@ -163,7 +164,7 @@ namespace Synergy_Solutions_App
 
                 highScores.Items.Add(nameAndScoreTogether);
                 highScores.Refresh();
-                
+
 
             }
             datalog();
@@ -190,66 +191,33 @@ namespace Synergy_Solutions_App
             File.WriteAllText("score.txt", string.Empty);
             using (StreamWriter scoreFile = File.AppendText("score.txt"))
             {
-                    int hiAmount = 11;
+                int hiAmount = 11;
 
-                    //scoreFile.WriteLine()
-                    for(int i = 0; i < hiAmount; i++)
-                    {
-                        scoreFile.WriteLine(highScoreNames[i]);
+                //scoreFile.WriteLine()
+                for (int i = 0; i < hiAmount; i++)
+                {
+                    scoreFile.WriteLine(highScoreNames[i]);
 
-                    }
+                }
 
-                    scoreFile.WriteLine("/n");
+                scoreFile.WriteLine("/n");
 
-                    for (int j = 0; j < hiAmount; j++)
-                    {
-                        scoreFile.WriteLine(highScoresList[j]);
+                for (int j = 0; j < hiAmount; j++)
+                {
+                    scoreFile.WriteLine(highScoresList[j]);
 
-                    }
+                }
 
-                    scoreFile.Flush();
-                    scoreFile.Close();
-                    
+                scoreFile.Flush();
+                scoreFile.Close();
+
             }
 
 
 
         }
 
-
-
-
-
-        //button to move through letters in the options box (will be implimented into a hardware button soon)
-        private void button2_Click(object sender, EventArgs e)
-        {
-            switch (letterChoice)
-            {
-
-                case 0:
-                    letter1.UpButton();
-                    break;
-                case 1:
-                    letter2.UpButton();
-                    break;
-                case 2:
-                    letter3.UpButton();
-                    break;
-                case 3:
-                    letter4.UpButton();
-                    break;
-                default:
-                    Console.WriteLine("out of letters");
-                    letterChoice = 0;
-                    break;
-
-
-            }
-        }
-        //button to move through letters in the options box (will be implimented into a hardware button soon)
-        private void debugButton2_Click(object sender, EventArgs e)
-        {
-
+        public void letterDown(){
 
             switch (letterChoice)
             {
@@ -273,15 +241,61 @@ namespace Synergy_Solutions_App
 
 
             }
+        }
+
+        public void letterUp() {
+
+            switch (letterChoice)
+            {
+
+                case 0:
+                    letter1.UpButton();
+                    break;
+                case 1:
+                    letter2.UpButton();
+                    break;
+                case 2:
+                    letter3.UpButton();
+                    break;
+                case 3:
+                    letter4.UpButton();
+                    break;
+                default:
+                    Console.WriteLine("out of letters");
+                    letterChoice = 0;
+                    break;
+
+
+            }
+
+        }
 
 
 
+        //button to move through letters in the options box (will be implimented into a hardware button soon)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            letterUp();
+        }
+        //button to move through letters in the options box (will be implimented into a hardware button soon)
+        private void debugButton2_Click(object sender, EventArgs e)
+        {
+            letterDown();
         }
         //button to move into the next letter selection
         private void button2_Click_1(object sender, EventArgs e)
         {
             letterChoice++;
+           
         }
+
+        private void UISerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+
+        }
+
+
+
         // The goal of this is to fade in and out but alas it doesn't
         /*           private void timer1_Tick(object sender, EventArgs e)
                    {
