@@ -55,6 +55,7 @@
             this.img_arrow = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameSerial = new System.IO.Ports.SerialPort(this.components);
+            this.gameDifficulty = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
@@ -108,7 +109,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(40, 41);
+            this.button1.Location = new System.Drawing.Point(41, 84);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -121,7 +122,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Location = new System.Drawing.Point(28, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
@@ -338,7 +339,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 49);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(143, 67);
             this.pictureBox1.TabIndex = 7;
@@ -348,12 +349,24 @@
             // 
             this.gameSerial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.gameSerial_DataReceived);
             // 
+            // gameDifficulty
+            // 
+            this.gameDifficulty.AutoSize = true;
+            this.gameDifficulty.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameDifficulty.ForeColor = System.Drawing.Color.White;
+            this.gameDifficulty.Location = new System.Drawing.Point(9, 12);
+            this.gameDifficulty.Name = "gameDifficulty";
+            this.gameDifficulty.Size = new System.Drawing.Size(92, 13);
+            this.gameDifficulty.TabIndex = 24;
+            this.gameDifficulty.Text = "Difficulty: Easy";
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.gameDifficulty);
             this.Controls.Add(this.instruction);
             this.Controls.Add(this.action);
             this.Controls.Add(this.img_star02_2);
@@ -431,5 +444,6 @@
         private System.Windows.Forms.PictureBox img_star01_2;
         private System.Windows.Forms.PictureBox img_star02_2;
         private System.IO.Ports.SerialPort gameSerial;
+        private System.Windows.Forms.Label gameDifficulty;
     }
 }

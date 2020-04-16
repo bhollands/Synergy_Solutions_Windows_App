@@ -88,6 +88,22 @@ namespace Synergy_Solutions_App
 
         }
 
+        //write request (adapted from bernard's code) ensure's all instructions are the same format 
+        private void writeRequest(string key, int no)
+        {
+            try
+            {
+                string mesg = "#" + key + ":" + no + ";";
+                gameSerial.Write(mesg);
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: :" + e.Message);
+            }
+
+        }
+
         //get the score from serial communication if an error occurs return 99 (used for datalogging)
         public int getScore()
         {
@@ -95,8 +111,8 @@ namespace Synergy_Solutions_App
 
             if (gameSerial.IsOpen)
             {
-                gameSerial.Write("gs");
-                score = gameSerial.ReadTo("/n");
+                writeRequest("gs",1);
+                score = gameSerial.ReadTo(";");
 
             }
 
@@ -119,6 +135,12 @@ namespace Synergy_Solutions_App
         private void StartScreen_Load(object sender, EventArgs e)
         {
             getSerialPorts();
+
+            if (gameSerial.IsOpen) { 
+            
+                gameSerial.Write("")
+            
+            }
 
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
@@ -429,21 +451,12 @@ namespace Synergy_Solutions_App
         //dummy method to load data from MBED
         private string[] loadActions()
         {
-            Stopwatch timingP = new Stopwatch();
-            action.Text = loadingText;
-            action.Visible = true;
-            //img_action.Image = Synergy_Solutions_App.Properties.Resources.ufo;
-            img_action.Visible = true;
-            img_action.Refresh();
-            action.Refresh();
-
-            String[] instructionsFromMBED = getActionsFromSerial();
-
-            action.Visible = false;
-            img_action.Visible = false;
-            action.Refresh();
-            img_action.Refresh();
-
+            writeRequest("i", 2);
+            string instructions = gameSerial.ReadExisting();
+            for (int i = 0; i < instructions.Length; i++) { 
+            
+            
+            }
             return instructionsFromMBED;
         }
 
