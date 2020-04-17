@@ -53,7 +53,7 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //lanSelect
+            lanuage();
             string[] documentLines = File.ReadAllLines("score.txt");
             bool inputChangeOver = true;
             for (int inputData = 0; inputData < 23; inputData++) {

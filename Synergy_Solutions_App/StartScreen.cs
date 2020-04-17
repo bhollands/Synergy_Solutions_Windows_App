@@ -151,7 +151,6 @@ namespace Synergy_Solutions_App
 
             //update UI
             manualUIUpdate();
-
             startAudio();
 
         }
