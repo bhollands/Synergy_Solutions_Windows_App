@@ -20,6 +20,7 @@ namespace Synergy_Solutions_App
         public string[] highScoreNames = { "STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_" };
         public byte AA = 255;
         private object locker = new object();
+        int lanFromStartScreen = StartScreen.lanSelect;
         Thread th;
 
         //getting serial ports (modified from Bernard's code(maintanceMode), modified to auto connect if a port exists)
@@ -112,6 +113,12 @@ namespace Synergy_Solutions_App
         {
             //can only be pressed once
             button1.Enabled = false;
+            submitScore();
+
+            
+        }
+
+        public void submitScore() {
 
             //initializing everything 
             int listLength = highScoresList.Length;
@@ -177,8 +184,8 @@ namespace Synergy_Solutions_App
 
             System.Windows.Forms.Application.ExitThread();
             this.Close();
-        }
 
+        }
 
         private void loopback()
         {
@@ -285,8 +292,34 @@ namespace Synergy_Solutions_App
         //button to move into the next letter selection
         private void button2_Click_1(object sender, EventArgs e)
         {
-            letterChoice++;
+            lanuage();
            
+        }
+
+        private void lanuage()
+        {
+
+            lanFromStartScreen++;
+            if (lanFromStartScreen == 0)
+            {
+                label3.Text = "Name";
+                button1.Text = "Submit";
+                label2.Text = "High Score!";
+                label4.Text = "Your Score";
+
+            }
+            if (lanFromStartScreen == 1)
+            {
+
+                label3.Text = "Nombre";
+                button1.Text = "Enviar";
+                label2.Text = "Alto Puntuación!";
+                label4.Text = "Tu Puntuación";
+
+                lanFromStartScreen = 0;
+
+            }
+
         }
 
         private void UISerial_DataReceived(object sender, SerialDataReceivedEventArgs e)

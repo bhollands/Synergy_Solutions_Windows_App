@@ -13,7 +13,7 @@ namespace Synergy_Solutions_App
         public int GAMESPLAYED = 0;
         public int HIGHSCORE = 0;
         //all displayed text with a lanuage select varible
-        int lanSelect = 0;
+        public static int lanSelect = 0;
         String readyFReady = "Ready";
         String readyFGo = "Go";
         String loadingText = "Loading";
@@ -395,12 +395,15 @@ namespace Synergy_Solutions_App
 
         private void startGame_Click(object sender, EventArgs e)
         {
+            /*
             datalog();
             img_arrow.Visible = false;
             img_UFO.Visible = false;
             startGame.Visible = false;
             Thread.Sleep(300);
             runGame();
+            */
+            startGameViaSerial();
         }
 
         private void startGameViaSerial()
@@ -551,10 +554,12 @@ namespace Synergy_Solutions_App
             }
             if (lanSelect == 1)
             {
-                startGame.Text = "Start Game in Spanish";
-                readyFReady = "Ready in Spanish";
-                readyFGo = "Go in Spanish";
-                loadingText = "Loading in Spanish";
+                startGame.Text = "Empezar juego";
+                readyFReady = "Listo";
+                readyFGo = "Vamos";
+                loadingText = "Cargando";
+                
+
 
                 lanSelect = 0;
 
