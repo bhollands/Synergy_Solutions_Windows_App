@@ -134,13 +134,6 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-            getSerialPorts();
-
-            if (gameSerial.IsOpen) { 
-            
-                gameSerial.Write("")
-            
-            }
 
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
@@ -426,7 +419,7 @@ namespace Synergy_Solutions_App
         private void runGame()
         {
 
-            String[] instructions = loadActions();
+            String[] instructions = getActionsFromSerial();
             int numInstructions = instructions.Length;
 
             ready321();
@@ -447,7 +440,7 @@ namespace Synergy_Solutions_App
 
 
         }
-
+        /*
         //dummy method to load data from MBED
         private string[] loadActions()
         {
@@ -459,7 +452,7 @@ namespace Synergy_Solutions_App
             }
             return instructionsFromMBED;
         }
-
+        */
         private string[] getActionsFromSerial()
         {
             int numOfCommands = 4;
