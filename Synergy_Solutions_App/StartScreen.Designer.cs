@@ -169,7 +169,7 @@
             this.img_planet02_2.Location = new System.Drawing.Point(848, 159);
             this.img_planet02_2.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet02_2.Name = "img_planet02_2";
-            this.img_planet02_2.Size = new System.Drawing.Size(100, 98);
+            this.img_planet02_2.Size = new System.Drawing.Size(111, 107);
             this.img_planet02_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet02_2.TabIndex = 21;
             this.img_planet02_2.TabStop = false;
@@ -180,7 +180,7 @@
             this.img_planet02_3.Location = new System.Drawing.Point(848, 285);
             this.img_planet02_3.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet02_3.Name = "img_planet02_3";
-            this.img_planet02_3.Size = new System.Drawing.Size(100, 98);
+            this.img_planet02_3.Size = new System.Drawing.Size(47, 47);
             this.img_planet02_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet02_3.TabIndex = 20;
             this.img_planet02_3.TabStop = false;
@@ -274,7 +274,7 @@
             this.img_planet02_1.Location = new System.Drawing.Point(848, 45);
             this.img_planet02_1.Margin = new System.Windows.Forms.Padding(2);
             this.img_planet02_1.Name = "img_planet02_1";
-            this.img_planet02_1.Size = new System.Drawing.Size(100, 98);
+            this.img_planet02_1.Size = new System.Drawing.Size(79, 77);
             this.img_planet02_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.img_planet02_1.TabIndex = 12;
             this.img_planet02_1.TabStop = false;

@@ -110,7 +110,7 @@ namespace Synergy_Solutions_App
 
         //----------Starts manually moving UI elements (called in form_load)---
 
-        //Center x-y positiins of a element (next two functions)
+        //Center x-y positions of a element (next two functions)
         private int centerElementXcor(int Xcor, int elementWidth)
         {
             Xcor = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width / 2) - (elementWidth / 2);
@@ -152,56 +152,56 @@ namespace Synergy_Solutions_App
             int actionMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
 
             //img_planet01_1
-            int img_planet01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.02));
+            int img_planet01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.35));
 
             //img_planet01_2
-            int img_planet01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.15));
+            int img_planet01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.45));
 
             //img_planet02_1
-            int img_planet02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.25));
+            int img_planet02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.28));
 
             //img_planet02_2
-            int img_planet02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.4)); //???
+            int img_planet02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.38));
 
             //img_planet02_3
-            int img_planet02_3MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet02_3MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet02_3MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.32));
+            int img_planet02_3MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.12));
 
             //img_planet03_1
-            int img_planet03_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet03_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet03_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.2));
+            int img_planet03_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.2));
 
             //img_planet03_2
-            int img_planet03_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet03_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet03_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.35));
+            int img_planet03_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.4));
 
             //img_planet04_1
-            int img_planet04_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet04_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet04_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.15));
+            int img_planet04_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.24));
 
             //img_planet04F_1
-            int img_planet04F_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_planet04F_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_planet04F_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.24));
+            int img_planet04F_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.13));
 
             //img_star01_1
-            int img_star01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_star01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_star01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.2));
+            int img_star01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.05));
 
             //img_star01_2
-            int img_star01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_star01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_star01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.3));
+            int img_star01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.25));
 
             //img_star02_1
-            int img_star02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_star02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_star02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.36));
+            int img_star02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.08));
 
             //img_star02_2
-            int img_star02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0));
-            int img_star02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+            int img_star02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.1));
+            int img_star02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.2));
 
             ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -266,7 +266,7 @@ namespace Synergy_Solutions_App
             img_planet02_2.Refresh();
 
             //img_planet02_3
-            img_planet02_2.Location = new Point(
+            img_planet02_3.Location = new Point(
             centerElementXcor(img_planet02_3.Location.X, img_planet02_3.Size.Width) + img_planet02_3MoveX,
             centerElementYcor(img_planet02_3.Location.Y, img_planet02_3.Size.Height) + img_planet02_3MoveY);
             img_planet02_3.Refresh();
