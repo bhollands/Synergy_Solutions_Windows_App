@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.IO;
+using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.IO.Ports;
 
 namespace Synergy_Solutions_App
 {
     public partial class StartScreen : Form
     {
+        public int GAMESPLAYED = 0;
+        public int HIGHSCORE = 0;
         //all displayed text with a lanuage select varible
-        int lanSelect = 0;
+        public static int lanSelect = 0;
         String readyFReady = "Ready";
         String readyFGo = "Go";
         String loadingText = "Loading";
@@ -72,32 +70,80 @@ namespace Synergy_Solutions_App
         {
             string[] ports;
             ports = SerialPort.GetPortNames();
-            
-           
 
-            try {
+
+
+            try
+            {
                 gameSerial.PortName = ports[0];
                 gameSerial.Open();
                 gameSerial.DtrEnable = true;
-                gameDebugWindow.AppendText("connected to:" + gameSerial.PortName + Environment.NewLine);
+                Console.WriteLine("connected to:" + gameSerial.PortName + Environment.NewLine);
             }
-            catch {
-                gameDebugWindow.AppendText("can't connect to serial bus" + Environment.NewLine);
+            catch
+            {
+                Console.WriteLine("can't connect to serial bus" + Environment.NewLine);
                 System.Windows.Forms.MessageBox.Show("Cannot connect to system please contact park staff");
             }
-           
+
+        }
+
+        //write request (adapted from bernard's code) ensure's all instructions are the same format 
+        private void writeRequest(string key, int no)
+        {
+            try
+            {
+                string mesg = "#" + key + ":" + no + ";";
+                gameSerial.Write(mesg);
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: :" + e.Message);
+            }
+
+        }
+
+        //get the score from serial communication if an error occurs return 99 (used for datalogging)
+        public int getScore()
+        {
+            string score = " ";
+
+            if (gameSerial.IsOpen)
+            {
+                writeRequest("gs",1);
+                score = gameSerial.ReadTo(";");
+
+            }
+
+            // if an error with the serial communication occurs or the serial communication is not present set the score to 99
+            if (score == " ")
+            {
+                score = "99";
+            }
+            int s = Int32.Parse(score);
+            return s;
+        }
+
+        public void startAudio() {
+            try
+            {
+                System.Media.SoundPlayer gameAudio = new System.Media.SoundPlayer(@"\Synergy_Solutions_Windows_App\other\Castlevania.wav");
+                gameAudio.Play();
+
+            }
+            catch { }
         }
 
 
         public StartScreen()
         {
             InitializeComponent();
-            getSerialPorts();
+
         }
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-
 
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
@@ -105,7 +151,8 @@ namespace Synergy_Solutions_App
 
             //update UI
             manualUIUpdate();
-            
+            startAudio();
+
         }
 
         //----------Starts manually moving UI elements (called in form_load)---
@@ -124,7 +171,8 @@ namespace Synergy_Solutions_App
         }
 
         //Updating the user interfance
-        public void manualUIUpdate() {
+        public void manualUIUpdate()
+        {
 
             //edit to *0 to change position relative to center
             //startGame - button to start game
@@ -207,8 +255,8 @@ namespace Synergy_Solutions_App
 
             //startGame
             startGame.Location = new Point(
-                centerElementXcor(startGame.Location.X, startGame.Size.Width)+ startGameMoveX,
-                centerElementYcor(startGame.Location.Y, startGame.Size.Height)+startGameMoveY);
+                centerElementXcor(startGame.Location.X, startGame.Size.Width) + startGameMoveX,
+                centerElementYcor(startGame.Location.Y, startGame.Size.Height) + startGameMoveY);
             startGame.Refresh();
 
             //img_action
@@ -219,26 +267,26 @@ namespace Synergy_Solutions_App
 
             //img_arrow
             img_arrow.Location = new Point(
-                centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width)+img_arrowMoveX,
-                centerElementYcor(img_arrow.Location.Y, img_arrow.Size.Height)+img_arrowMoveY);
-                    img_arrow.Refresh();
+                centerElementXcor(img_arrow.Location.X, img_arrow.Size.Width) + img_arrowMoveX,
+                centerElementYcor(img_arrow.Location.Y, img_arrow.Size.Height) + img_arrowMoveY);
+            img_arrow.Refresh();
 
             //img_UFO
             img_UFO.Location = new Point(
-                centerElementXcor(img_UFO.Location.X, img_UFO.Size.Width)+img_UFOMoveX,
-                centerElementYcor(img_UFO.Location.Y, img_UFO.Size.Height)+img_UFOMoveY);
+                centerElementXcor(img_UFO.Location.X, img_UFO.Size.Width) + img_UFOMoveX,
+                centerElementYcor(img_UFO.Location.Y, img_UFO.Size.Height) + img_UFOMoveY);
             img_UFO.Refresh();
 
             //instruction
             instruction.Location = new Point(
-                centerElementXcor(instruction.Location.X, instruction.Size.Width)+instructionMoveX,
-                centerElementYcor(instruction.Location.Y, instruction.Size.Height)+instructionMoveY);
+                centerElementXcor(instruction.Location.X, instruction.Size.Width) + instructionMoveX,
+                centerElementYcor(instruction.Location.Y, instruction.Size.Height) + instructionMoveY);
             instruction.Refresh();
 
             //action
             action.Location = new Point(
-                centerElementXcor(action.Location.X, action.Size.Width)+actionMoveY,
-                centerElementYcor(action.Location.Y, action.Size.Height)+actionMoveX);
+                centerElementXcor(action.Location.X, action.Size.Width) + actionMoveY,
+                centerElementYcor(action.Location.Y, action.Size.Height) + actionMoveX);
             action.Refresh();
 
             //img_planet01_1
@@ -323,7 +371,7 @@ namespace Synergy_Solutions_App
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
 
-            lanuage.Location = new Point(bottomCW,bottomCH);
+            lanuage.Location = new Point(bottomCW, bottomCH);
             lanuage.Refresh();
         }
 
@@ -335,17 +383,21 @@ namespace Synergy_Solutions_App
         {
             img_arrow.Image = changeTransparacy(img_arrow.Image, alpha);
 
-            if (inOut == true) {
+            if (inOut == true)
+            {
                 alpha -= 10;
             }
-            if (inOut == false) {
+            if (inOut == false)
+            {
                 alpha += 10;
             }
 
-            if (alpha < 10) {
+            if (alpha < 10)
+            {
                 inOut = false;
             }
-            if (alpha > 240) {
+            if (alpha > 240)
+            {
                 inOut = true;
             }
 
@@ -354,15 +406,19 @@ namespace Synergy_Solutions_App
 
         private void startGame_Click(object sender, EventArgs e)
         {
-
+            /*
+            datalog();
             img_arrow.Visible = false;
             img_UFO.Visible = false;
             startGame.Visible = false;
             Thread.Sleep(300);
             runGame();
+            */
+            startGameViaSerial();
         }
 
-        private void startGameViaSerial() {
+        private void startGameViaSerial()
+        {
             timer1.Stop();
             img_arrow.Visible = false;
             img_UFO.Visible = false;
@@ -376,14 +432,15 @@ namespace Synergy_Solutions_App
 
         private void runGame()
         {
-            
-            String[] instructions = loadActions();
+
+            String[] instructions = getActionsFromSerial();
             int numInstructions = instructions.Length;
 
             ready321();
             instruction.Visible = true;
             instruction.Refresh();
-            for (int dis = 0; dis < numInstructions; dis++) {
+            for (int dis = 0; dis < numInstructions; dis++)
+            {
 
                 instruction.Text = instructions[dis];
                 instruction.Refresh();
@@ -391,42 +448,30 @@ namespace Synergy_Solutions_App
 
             }
 
+            
+
+            Console.WriteLine("end of game");
             openUI();
+            System.Windows.Forms.Application.ExitThread();
             this.Close();
 
 
         }
-
+        /*
         //dummy method to load data from MBED
-        private string[] loadActions() {
-            Stopwatch timingP = new Stopwatch();
-            action.Text = loadingText;
-            action.Visible = true;
-            //img_action.Image = Synergy_Solutions_App.Properties.Resources.ufo;
-            img_action.Visible = true;
-            img_action.Refresh();
-            action.Refresh();
-
-            timingP.Start();
-            String[] instructionsFromMBED = getActionsFromSerial();
-            timingP.Stop();
-
-            Console.WriteLine(timingP.ElapsedMilliseconds);
-
-            int timeoutTime = 1000;
-            timeoutTime -= unchecked((int)timingP.ElapsedMilliseconds);
-            Thread.Sleep(timeoutTime);
-            Console.WriteLine(timeoutTime);
-
-            action.Visible = false;
-            img_action.Visible = false;
-            action.Refresh();
-            img_action.Refresh();
-
+        private string[] loadActions()
+        {
+            writeRequest("i", 2);
+            string instructions = gameSerial.ReadExisting();
+            for (int i = 0; i < instructions.Length; i++) { 
+            
+            
+            }
             return instructionsFromMBED;
         }
-
-        private string[] getActionsFromSerial() {
+        */
+        private string[] getActionsFromSerial()
+        {
             int numOfCommands = 4;
             string[] MBEDcommands = new string[numOfCommands];
 
@@ -446,14 +491,16 @@ namespace Synergy_Solutions_App
         }
 
 
-        private void ready321(){
+        private void ready321()
+        {
 
             action.Text = readyFReady;
             action.Visible = true;
             action.Refresh();
 
 
-            for (int t = 3; t > -1; t--) {
+            for (int t = 3; t > -1; t--)
+            {
 
                 if (t != 0)
                 {
@@ -478,7 +525,6 @@ namespace Synergy_Solutions_App
         }
 
         //----Debug button----
-
         //debug button to move straight to user mode skipping game
         private void button1_Click(object sender, EventArgs e)
         {
@@ -486,12 +532,8 @@ namespace Synergy_Solutions_App
             openUI();
         }
 
-        private void openUI() {
-
-            //disable data in and close serial port before changing screen
-            gameSerial.DtrEnable = false;
-            gameSerial.Close();
-
+        private void openUI()
+        {
             thUI = new Thread(opennewform);
             thUI.SetApartmentState(ApartmentState.STA);
             thUI.Start();
@@ -500,6 +542,13 @@ namespace Synergy_Solutions_App
 
         private void opennewform()
         {
+            //disable data in and close serial port before changing screen
+            if (gameSerial.IsOpen)
+            {
+                gameSerial.DtrEnable = false;
+                gameSerial.Close();
+            }
+
             Application.Run(new UserMode());
         }
 
@@ -507,31 +556,112 @@ namespace Synergy_Solutions_App
 
         private void lanuage_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("mee");
+
             lanSelect++;
-            if (lanSelect == 0) {
+            if (lanSelect == 0)
+            {
                 startGame.Text = "Start Game";
                 readyFGo = "Go";
                 readyFReady = "Ready";
                 loadingText = "Loading";
-            
+
             }
-            if (lanSelect == 1) {
-                startGame.Text = "Start Game in Spanish";
-                readyFReady = "Ready in Spanish";
-                readyFGo = "Go in Spanish";
-                loadingText = "Loading in Spanish";
+            if (lanSelect == 1)
+            {
+                startGame.Text = "Empezar juego";
+                readyFReady = "Listo";
+                readyFGo = "Vamos";
+                loadingText = "Cargando";
+                
+
 
                 lanSelect = 0;
-            
+
             }
-            
+
+        }
+
+        //open log file userModeLog.txt and write the date/time, score, highscore and games played since startup to the file then close the file
+        public void datalog()
+        {
+
+            using (StreamWriter logFile = File.AppendText("userModeLog.txt"))
+            {
+
+                int Score = getScore();
+
+
+                if (HIGHSCORE < Score)
+                {
+                    HIGHSCORE = Score;
+                }
+
+
+                logFile.WriteLine("Game played at {0} {1} with score {2} the current highscore is {3}",
+                DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString(), Score, HIGHSCORE);
+
+                logFile.WriteLine("Total games played: {0}", GAMESPLAYED);
+                GAMESPLAYED++;
+                logFile.Flush();
+
+                logFile.Close();
+            }
+
         }
 
 
+        private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            //give time to allow all data to come into the computer
+            Thread.Sleep(10);
 
 
+            String testing1 = "connected to: ";
+            testing1 += gameSerial.ReadExisting().ToString();
+            SetText(testing1);
+        }
 
+        delegate void SetTextCallback(string text);
+        private object mScanLock = new object();
+        private void SetText(string text)
+        {
+            if (text.Contains("go"))
+            {
+                lock (mScanLock)
+                {
+                    UserMode frm = new UserMode();
+                    frm.ShowDialog();
+                    frm.Dispose();
+                }
+            }
+            try
+            {
+                /*gameDebugWindow.AppendText(text);
+                if (gameDebugWindow.InvokeRequired)
+                {
+                    SetTextCallback d = new SetTextCallback(SetText);
+                    gameDebugWindow.Invoke(d, new object[] { text });
+                }
+                else
+                {
+                    gameDebugWindow.Clear();
+                    gameDebugWindow.Text = text;
+                    gameDebugWindow.Refresh();
+                    */
+                img_arrow.Visible = false;
+                img_UFO.Visible = false;
+                startGame.Visible = false;
+                Thread.CurrentThread.Abort();
+                runGame();
+                //}
+
+            }
+            catch
+            {
+                Console.WriteLine("Threadig error occured");
+
+            }
+        }
 
 
         //Basically end of start screen code
@@ -580,25 +710,5 @@ namespace Synergy_Solutions_App
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (gameSerial.IsOpen)
-            {
-                gameSerial.Write("hello");
-            }
-
-        }
-
-        private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            Console.Write("serial read ");
-
-            String testing1 = gameSerial.ReadTo("/n");
-
-            if (testing1.Contains("start"))
-            {
-                startGame_Click(sender, e);
-            }
-        }
     }
 }

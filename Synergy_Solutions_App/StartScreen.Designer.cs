@@ -55,8 +55,6 @@
             this.img_arrow = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameSerial = new System.IO.Ports.SerialPort(this.components);
-            this.gameDebugWindow = new System.Windows.Forms.RichTextBox();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
@@ -110,12 +108,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(40, 41);
+            this.button1.Location = new System.Drawing.Point(41, 84);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Debug";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -123,11 +122,12 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Location = new System.Drawing.Point(28, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Debug button to UI mode";
+            this.label1.Visible = false;
             // 
             // instruction
             // 
@@ -340,33 +340,16 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 49);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(143, 67);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // gameSerial
             // 
             this.gameSerial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.gameSerial_DataReceived);
-            // 
-            // gameDebugWindow
-            // 
-            this.gameDebugWindow.Location = new System.Drawing.Point(483, 378);
-            this.gameDebugWindow.Name = "gameDebugWindow";
-            this.gameDebugWindow.Size = new System.Drawing.Size(100, 96);
-            this.gameDebugWindow.TabIndex = 25;
-            this.gameDebugWindow.Text = "";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(390, 430);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 44);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "readFromSerial";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // StartScreen
             // 
@@ -374,8 +357,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.gameDebugWindow);
+            this.Controls.Add(this.instruction);
+            this.Controls.Add(this.action);
             this.Controls.Add(this.img_star02_2);
             this.Controls.Add(this.img_star01_2);
             this.Controls.Add(this.img_planet02_2);
@@ -389,16 +372,14 @@
             this.Controls.Add(this.img_planet03_1);
             this.Controls.Add(this.img_planet02_1);
             this.Controls.Add(this.img_planet01_1);
-            this.Controls.Add(this.img_UFO);
             this.Controls.Add(this.startGame);
             this.Controls.Add(this.lanuage);
-            this.Controls.Add(this.instruction);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.img_action);
-            this.Controls.Add(this.action);
             this.Controls.Add(this.img_arrow);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.img_UFO);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "StartScreen";
             this.Text = "Form1";
@@ -453,7 +434,5 @@
         private System.Windows.Forms.PictureBox img_star01_2;
         private System.Windows.Forms.PictureBox img_star02_2;
         private System.IO.Ports.SerialPort gameSerial;
-        private System.Windows.Forms.RichTextBox gameDebugWindow;
-        private System.Windows.Forms.Button button2;
     }
 }

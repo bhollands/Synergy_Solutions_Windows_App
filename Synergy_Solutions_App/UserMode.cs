@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Drawing;
+using System.IO;
+using System.IO.Ports;
 using System.Threading;
 using System.Windows.Forms;
-using System.IO.Ports;
-using System.Timers;
 //using System.Windows.Media;
 
 namespace Synergy_Solutions_App
@@ -17,71 +16,64 @@ namespace Synergy_Solutions_App
         //setting up. scorePH should be changed to the player's score but it is set to 5555 for now
         public int scorePH = 5555;
         int letterChoice = 0;
-        public int[] highScoresList = {101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
-        public string[] highScoreNames = {"STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_"};
+        public int[] highScoresList = { 101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
+        public string[] highScoreNames = { "STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_" };
         public byte AA = 255;
         private object locker = new object();
-        bool holder = true;
-        //Debugging string
-        String dug = "hello ";
-
-       
-
+        int lanFromStartScreen = StartScreen.lanSelect;
         Thread th;
 
-        private static Bitmap changeTransparacy(Image image, Byte alpha, int theWidth, int theHeight)
+        //getting serial ports (modified from Bernard's code(maintanceMode), modified to auto connect if a port exists)
+        public void getSerialPorts()
         {
-            Bitmap inputImage = new Bitmap(image);
-            Bitmap outputImage = new Bitmap(image.Width, image.Height);
-            System.Drawing.Color orignalPixel = System.Drawing.Color.Black;
-            System.Drawing.Color newPixel = System.Drawing.Color.Black;
+            string[] ports;
+            ports = SerialPort.GetPortNames();
 
 
-                for (int w = 0; w < theWidth; w++)
-                {
-                    for (int h = 0; h <theHeight; h++)
-                    {
-                        orignalPixel = inputImage.GetPixel(w, h);
-                        if (orignalPixel == Color.FromArgb(0, orignalPixel.R, orignalPixel.G, orignalPixel.B))
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            newPixel = Color.FromArgb(alpha, orignalPixel.R, orignalPixel.G, orignalPixel.B);
 
-                            outputImage.SetPixel(w, h, newPixel);
-                        }
-                    }
-
-                }
-            
-
-            return outputImage;
-        }
-
-        /*
-        public void connectToSerial() {
-
-                string[] ports;
-                ports = SerialPort.GetPortNames();
-
-            System.Windows.Forms.MessageBox.Show("Connected to " + ports[0]);
+            try
+            {
+                UISerial.PortName = ports[0];
+                UISerial.Open();
+                UISerial.DtrEnable = true;
+                Console.WriteLine("connected to:" + UISerial.PortName + Environment.NewLine);
+            }
+            catch
+            {
+                Console.WriteLine("can't connect to serial bus" + Environment.NewLine);
+                System.Windows.Forms.MessageBox.Show("Cannot connect to system please contact park staff");
+            }
 
         }
-            
-    */
-
-        
-
         public UserMode()
         {
             InitializeComponent();
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            lanuage();
+            string[] documentLines = File.ReadAllLines("score.txt");
+            bool inputChangeOver = true;
+            for (int inputData = 0; inputData < 23; inputData++) {
+                if (documentLines[inputData] == "/n") {
+                    inputChangeOver = false;
+                    continue;
+                }
+                if (inputChangeOver)
+                {
+                    highScoreNames[inputData] = (documentLines[inputData]);
+                }
+                else {
+
+                    highScoresList[inputData - 12] = Int32.Parse(documentLines[inputData]);
+                    //Console.WriteLine(documentLines[inputData]);
+
+                }
+                // Console.WriteLine(inputData);
+            }
+
 
 
 
@@ -89,14 +81,13 @@ namespace Synergy_Solutions_App
             scoreText.ReadOnly = true;
             scoreText.Text = scorePH.ToString();
 
-            //connectToSerial();
+            getSerialPorts();
 
-            //runTimer();
-
-            for (int k = 0; k <= 10; k++) {
+            for (int k = 0; k <= 10; k++)
+            {
                 highScores.Items.Add(highScoreNames[k] + "         " + highScoresList[k].ToString());
             }
-            
+
         }
 
         private void maintainceModeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,6 +100,12 @@ namespace Synergy_Solutions_App
 
         private void opennewform()
         {
+            if (UISerial.IsOpen)
+            {
+                UISerial.DtrEnable = false;
+                UISerial.Close();
+
+            }
             Application.Run(new Authorization());
         }
 
@@ -116,6 +113,12 @@ namespace Synergy_Solutions_App
         {
             //can only be pressed once
             button1.Enabled = false;
+            submitScore();
+
+            
+        }
+
+        public void submitScore() {
 
             //initializing everything 
             int listLength = highScoresList.Length;
@@ -124,22 +127,24 @@ namespace Synergy_Solutions_App
             //on click read in all the letters and write them into the user name variable
             string[] letterList = { letter1.Text, letter2.Text, letter3.Text, letter4.Text };
 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++)
+            {
                 userName = userName + letterList[i];
             }
 
-           
+
 
             //go down the high scores and check to see if the player's score is a high score if it is add it to the leader board in
             //the correct place (PLAYER NAME       PLAYER SCORE)
             for (int j = 0; j < listLength; j++)
             {
                 //highScoresList[j] = 22;
-                if (scorePH >= highScoresList[j]) {
+                if (scorePH >= highScoresList[j])
+                {
 
                     for (int l = 1; l < (listLength - j); l++)
                     {
-                         highScoresList[listLength - l] = highScoresList[listLength - 1 - l];
+                        highScoresList[listLength - l] = highScoresList[listLength - 1 - l];
                         highScoreNames[listLength - l] = highScoreNames[listLength - 1 - l];
                         // = -2;
                     }
@@ -150,10 +155,14 @@ namespace Synergy_Solutions_App
                     break;
                 }
 
+
+
+
             }
 
+
             //update the scoreboard to show the new order
-           highScores.Items.Clear();
+            highScores.Items.Clear();
 
             for (int k = 0; k <= 10; k++)
             {
@@ -161,13 +170,88 @@ namespace Synergy_Solutions_App
                 string nameAndScoreTogether = highScoreNames[k] + "         " + highScoresList[k].ToString();
 
                 highScores.Items.Add(nameAndScoreTogether);
+                highScores.Refresh();
+
+
+            }
+            datalog();
+
+
+            Thread.Sleep(3000);
+            th = new Thread(loopback);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+
+            System.Windows.Forms.Application.ExitThread();
+            this.Close();
+
+        }
+
+        private void loopback()
+        {
+            Application.Run(new StartScreen());
+        }
+
+
+        public void datalog()
+        {
+            File.WriteAllText("score.txt", string.Empty);
+            using (StreamWriter scoreFile = File.AppendText("score.txt"))
+            {
+                int hiAmount = 11;
+
+                //scoreFile.WriteLine()
+                for (int i = 0; i < hiAmount; i++)
+                {
+                    scoreFile.WriteLine(highScoreNames[i]);
+
+                }
+
+                scoreFile.WriteLine("/n");
+
+                for (int j = 0; j < hiAmount; j++)
+                {
+                    scoreFile.WriteLine(highScoresList[j]);
+
+                }
+
+                scoreFile.Flush();
+                scoreFile.Close();
 
             }
 
+
+
         }
-        //button to move through letters in the options box (will be implimented into a hardware button soon)
-        private void button2_Click(object sender, EventArgs e)
-        {
+
+        public void letterDown(){
+
+            switch (letterChoice)
+            {
+
+                case 0:
+                    letter1.DownButton();
+                    break;
+                case 1:
+                    letter2.DownButton();
+                    break;
+                case 2:
+                    letter3.DownButton();
+                    break;
+                case 3:
+                    letter4.DownButton();
+                    break;
+                default:
+                    Console.WriteLine("out of letters");
+                    letterChoice = 0;
+                    break;
+
+
+            }
+        }
+
+        public void letterUp() {
+
             switch (letterChoice)
             {
 
@@ -190,118 +274,136 @@ namespace Synergy_Solutions_App
 
 
             }
+
+        }
+
+
+
+        //button to move through letters in the options box (will be implimented into a hardware button soon)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            letterUp();
         }
         //button to move through letters in the options box (will be implimented into a hardware button soon)
         private void debugButton2_Click(object sender, EventArgs e)
         {
-
-
-                switch (letterChoice)
-                {
-                    
-                case 0:
-                    letter1.DownButton();
-                    break;
-                case 1:
-                    letter2.DownButton();
-                    break;
-                case 2:
-                    letter3.DownButton();
-                    break;
-                case 3:
-                    letter4.DownButton();
-                    break;
-                default:
-                    Console.WriteLine("out of letters");
-                    letterChoice = 0;
-                    break;
-            
-            
-                }
-
-
-      
+            letterDown();
         }
         //button to move into the next letter selection
         private void button2_Click_1(object sender, EventArgs e)
         {
-            letterChoice++;
+            lanuage();
+           
         }
+
+        private void lanuage()
+        {
+
+            lanFromStartScreen++;
+            if (lanFromStartScreen == 0)
+            {
+                label3.Text = "Name";
+                button1.Text = "Submit";
+                label2.Text = "High Score!";
+                label4.Text = "Your Score";
+
+            }
+            if (lanFromStartScreen == 1)
+            {
+
+                label3.Text = "Nombre";
+                button1.Text = "Enviar";
+                label2.Text = "Alto Puntuación!";
+                label4.Text = "Tu Puntuación";
+
+                lanFromStartScreen = 0;
+
+            }
+
+        }
+
+        private void UISerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+
+        }
+
+
+
         // The goal of this is to fade in and out but alas it doesn't
-     /*           private void timer1_Tick(object sender, EventArgs e)
-                {
-                    changeTransparacy(AlienImage.Image, alienAlpha);
-                    alienAlpha-=20;
-                }
-                
-       
-        public void runTimer()
-        {
-            System.Timers.Timer aTimer = new System.Timers.Timer(10000);
-
-            aTimer.Elapsed += new ElapsedEventHandler(RunEvent);
-            aTimer.Interval = 2;
-            aTimer.Enabled = true;
-            if (AA == 0)
-            {
-                aTimer.Stop();
-            }
-        }
-
-        //This method will get called every second until the timer stops or the program exits.
-        public void RunEvent(object source, ElapsedEventArgs e)
-        {
-
-            Image ph = AlienImage1.Image;
-            lock (locker)
-            {
-
-              
-                if (AA >= 45 )
-                {
-                    AA -= 30;
-
-                    ph = changeTransparacy(ph, AA, ph.Width, ph.Height);
-                    AlienImage1.Image = ph;
+        /*           private void timer1_Tick(object sender, EventArgs e)
+                   {
+                       changeTransparacy(AlienImage.Image, alienAlpha);
+                       alienAlpha-=20;
+                   }
 
 
-                }
-                if(AA <=45)
-                {
-                    ph = changeTransparacy(ph, 0, ph.Width, ph.Height);
-                    AlienImage1.Image = ph;
-                    AA = 0;
+           public void runTimer()
+           {
+               System.Timers.Timer aTimer = new System.Timers.Timer(10000);
 
-                }
-            }
+               aTimer.Elapsed += new ElapsedEventHandler(RunEvent);
+               aTimer.Interval = 2;
+               aTimer.Enabled = true;
+               if (AA == 0)
+               {
+                   aTimer.Stop();
+               }
+           }
+
+           //This method will get called every second until the timer stops or the program exits.
+           public void RunEvent(object source, ElapsedEventArgs e)
+           {
+
+               Image ph = AlienImage1.Image;
+               lock (locker)
+               {
 
 
-            
-        }
+                   if (AA >= 45 )
+                   {
+                       AA -= 30;
 
-        /*
-private void AlienImage_MouseEnter(object sender, EventArgs e)
-{
-   /*
+                       ph = changeTransparacy(ph, AA, ph.Width, ph.Height);
+                       AlienImage1.Image = ph;
 
-   DoubleAnimation da = new DoubleAnimation
+
+                   }
+                   if(AA <=45)
+                   {
+                       ph = changeTransparacy(ph, 0, ph.Width, ph.Height);
+                       AlienImage1.Image = ph;
+                       AA = 0;
+
+                   }
+               }
+
+
+
+           }
+
+           /*
+   private void AlienImage_MouseEnter(object sender, EventArgs e)
    {
-       From = 0,
-       To = 1,
-       Duration = new Duration(TimeSpan.FromSeconds(1)),
-       AutoReverse = true
-   };
-   Logo.BeginAnimation(OpacityProperty, da);
+      /*
+
+      DoubleAnimation da = new DoubleAnimation
+      {
+          From = 0,
+          To = 1,
+          Duration = new Duration(TimeSpan.FromSeconds(1)),
+          AutoReverse = true
+      };
+      Logo.BeginAnimation(OpacityProperty, da);
 
 
-   Image ing = (Image)sender;
-   DoubleAnimation animate = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
-   ing.BeginAnimation(Opacity, animate);
+      Image ing = (Image)sender;
+      DoubleAnimation animate = new DoubleAnimation(0, TimeSpan.FromSeconds(2));
+      ing.BeginAnimation(Opacity, animate);
 
 
-  /// this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).Start();
-  // await this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).StartAsync();  //Fade animation can be awaited
-  */
+     /// this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).Start();
+     // await this.Fade(value: 0.5f, duration: 2500, delay: 250, easingType: EasingType.Default).StartAsync();  //Fade animation can be awaited
+     */
     }
-    }
+}
 //}
