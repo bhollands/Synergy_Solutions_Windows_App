@@ -10,7 +10,7 @@ namespace Synergy_Solutions_App
 
     public partial class UserMode : Form
     {
-
+        System.Media.SoundPlayer scoreAudio = new System.Media.SoundPlayer(Properties.Resources.Magical_Triumph1);
 
 
         //setting up. scorePH should be changed to the player's score but it is set to 5555 for now
@@ -53,6 +53,7 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            scoreAudio.Play();
             lanuage();
             string[] documentLines = File.ReadAllLines("score.txt");
             bool inputChangeOver = true;
@@ -183,6 +184,7 @@ namespace Synergy_Solutions_App
             th.Start();
 
             System.Windows.Forms.Application.ExitThread();
+            scoreAudio.Stop();
             this.Close();
 
         }

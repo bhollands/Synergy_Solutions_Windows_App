@@ -141,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\button-finger.png" />
+    <None Include="Resources\Magical_Triumph.mp3" />
+    <None Include="Resources\Magical_Triumph.wav" />
+    <None Include="Resources\Castlevania.wav" />
     <Content Include="Resources\Pulse-1s-200px %282%29.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

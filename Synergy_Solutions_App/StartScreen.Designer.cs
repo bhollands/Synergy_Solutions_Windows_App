@@ -366,6 +366,7 @@
             this.Title.TabIndex = 24;
             this.Title.Text = "BLAST OFF";
             this.Title.Click += new System.EventHandler(this.label2_Click);
+            this.Title.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Title_PreviewKeyDown);
             // 
             // loadingScreen
             // 
@@ -413,9 +414,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.img_UFO);
             this.ForeColor = System.Drawing.Color.Black;
+            this.KeyPreview = true;
             this.Name = "StartScreen";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.StartScreen_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StartScreen_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).EndInit();

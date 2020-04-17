@@ -22,6 +22,8 @@ namespace Synergy_Solutions_App
         int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
         int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
+        System.Media.SoundPlayer gameAudio = new System.Media.SoundPlayer(Properties.Resources.Castlevania);
+
         double getScreenHightInPixels = Screen.PrimaryScreen.Bounds.Height;
         double getScreenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
 
@@ -127,13 +129,7 @@ namespace Synergy_Solutions_App
         }
 
         public void startAudio() {
-            try
-            {
-                System.Media.SoundPlayer gameAudio = new System.Media.SoundPlayer(@"\Synergy_Solutions_Windows_App\other\Castlevania.wav");
-                gameAudio.Play();
-
-            }
-            catch { }
+                
         }
 
 
@@ -145,14 +141,15 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-
+            System.Windows.Forms.MessageBox.Show("The audio is pretty loud you may want to trun your speakers down");
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
             this.Location = new Point(0, 0);
 
             //update UI
             manualUIUpdate();
-            startAudio();
+           
+            gameAudio.Play();
 
         }
 
@@ -464,6 +461,7 @@ namespace Synergy_Solutions_App
             
 
             Console.WriteLine("end of game");
+            gameAudio.Stop();
             openUI();
             System.Windows.Forms.Application.ExitThread();
             this.Close();
@@ -570,8 +568,14 @@ namespace Synergy_Solutions_App
         private void lanuage_Click(object sender, EventArgs e)
         {
 
+            changeLanguage();
+
+        }
+
+        public void changeLanguage() {
+
             lanSelect++;
-            if (lanSelect == 0)
+            if (lanSelect%2 == 0)
             {
                 startGame.Text = "Start Game";
                 readyFGo = "Go";
@@ -579,16 +583,12 @@ namespace Synergy_Solutions_App
                 loadingText = "Loading";
 
             }
-            if (lanSelect == 1)
+            if (lanSelect%2 == 1)
             {
                 startGame.Text = "Empezar juego";
                 readyFReady = "Listo";
                 readyFGo = "Vamos";
                 loadingText = "Cargando";
-                
-
-
-                
 
             }
 
@@ -729,6 +729,26 @@ namespace Synergy_Solutions_App
         }
 
         private void pictureBox2_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartScreen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            //the L key is the equlivant to swapping betweeen a red(for english) and yellow(for spanish block) before the game starts
+            if (e.KeyChar == (Char)Keys.L);
+            {
+                changeLanguage();
+            }
+            //Equlivant to any input being recieved during the game's operation
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                //todo function to flash up spaceship and play engine whrrrr
+            }
+        }
+
+        private void Title_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
 
         }
