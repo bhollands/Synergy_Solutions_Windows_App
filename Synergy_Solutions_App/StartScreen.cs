@@ -125,6 +125,16 @@ namespace Synergy_Solutions_App
             return s;
         }
 
+        public void startAudio() {
+            try
+            {
+                System.Media.SoundPlayer gameAudio = new System.Media.SoundPlayer(@"\Synergy_Solutions_Windows_App\other\Castlevania.wav");
+                gameAudio.Play();
+
+            }
+            catch { }
+        }
+
 
         public StartScreen()
         {
@@ -141,6 +151,8 @@ namespace Synergy_Solutions_App
 
             //update UI
             manualUIUpdate();
+
+            startAudio();
 
         }
 
@@ -436,6 +448,9 @@ namespace Synergy_Solutions_App
                 Thread.Sleep(1000);
 
             }
+
+            
+
             Console.WriteLine("end of game");
             openUI();
             System.Windows.Forms.Application.ExitThread();
