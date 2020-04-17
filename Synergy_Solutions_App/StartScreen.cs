@@ -47,6 +47,7 @@ namespace Synergy_Solutions_App
                 for (int h = 0; h < image.Height; h++)
                 {
                     orignalPixel = inputImage.GetPixel(w, h);
+                    //if the pixel is transparent do not change  (changing pixel will trun the transparant pixel black)
                     if (orignalPixel == Color.FromArgb(0, orignalPixel.R, orignalPixel.B, orignalPixel.G))
                     {
                         continue;
@@ -587,7 +588,7 @@ namespace Synergy_Solutions_App
                 
 
 
-                lanSelect = 0;
+                
 
             }
 

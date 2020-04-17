@@ -310,7 +310,7 @@
             // lanuage
             // 
             this.lanuage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lanuage.Image = ((System.Drawing.Image)(resources.GetObject("lanuage.Image")));
+            this.lanuage.Image = global::Synergy_Solutions_App.Properties.Resources.button_finger;
             this.lanuage.Location = new System.Drawing.Point(403, -128);
             this.lanuage.Name = "lanuage";
             this.lanuage.Size = new System.Drawing.Size(124, 82);
@@ -358,11 +358,11 @@
             // 
             this.Title.AutoSize = true;
             this.Title.BackColor = System.Drawing.Color.Transparent;
-            this.Title.Font = new System.Drawing.Font("Dealer Strikes", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.ForeColor = System.Drawing.Color.Red;
             this.Title.Location = new System.Drawing.Point(433, 344);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(693, 209);
+            this.Title.Size = new System.Drawing.Size(1180, 226);
             this.Title.TabIndex = 24;
             this.Title.Text = "BLAST OFF";
             this.Title.Click += new System.EventHandler(this.label2_Click);

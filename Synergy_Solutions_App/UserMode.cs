@@ -299,7 +299,7 @@ namespace Synergy_Solutions_App
         private void lanuage()
         {
 
-            lanFromStartScreen++;
+            
             if (lanFromStartScreen == 0)
             {
                 label3.Text = "Name";

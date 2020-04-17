@@ -103,6 +103,16 @@ namespace Synergy_Solutions_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_finger {
+            get {
+                object obj = ResourceManager.GetObject("button-finger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap planet01 {
             get {
                 object obj = ResourceManager.GetObject("planet01", resourceCulture);

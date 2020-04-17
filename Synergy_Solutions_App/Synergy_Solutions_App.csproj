@@ -140,6 +140,7 @@
     <None Include="Resources\star02.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\button-finger.png" />
     <Content Include="Resources\Pulse-1s-200px %282%29.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
