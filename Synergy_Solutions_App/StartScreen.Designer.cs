@@ -56,6 +56,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameSerial = new System.IO.Ports.SerialPort(this.components);
             this.Title = new System.Windows.Forms.Label();
+            this.loadingScreen = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingScreen)).BeginInit();
             this.SuspendLayout();
             // 
             // startGame
@@ -355,12 +357,29 @@
             // Title
             // 
             this.Title.AutoSize = true;
-            this.Title.Location = new System.Drawing.Point(502, 318);
+            this.Title.BackColor = System.Drawing.Color.Transparent;
+            this.Title.Font = new System.Drawing.Font("Dealer Strikes", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.ForeColor = System.Drawing.Color.Red;
+            this.Title.Location = new System.Drawing.Point(433, 344);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(64, 13);
+            this.Title.Size = new System.Drawing.Size(693, 209);
             this.Title.TabIndex = 24;
             this.Title.Text = "BLAST OFF";
             this.Title.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // loadingScreen
+            // 
+            this.loadingScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.loadingScreen.Image = ((System.Drawing.Image)(resources.GetObject("loadingScreen.Image")));
+            this.loadingScreen.Location = new System.Drawing.Point(0, 0);
+            this.loadingScreen.Name = "loadingScreen";
+            this.loadingScreen.Size = new System.Drawing.Size(1003, 492);
+            this.loadingScreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.loadingScreen.TabIndex = 25;
+            this.loadingScreen.TabStop = false;
+            this.loadingScreen.Visible = false;
+            this.loadingScreen.Click += new System.EventHandler(this.pictureBox2_Click_3);
             // 
             // StartScreen
             // 
@@ -368,6 +387,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.loadingScreen);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.instruction);
             this.Controls.Add(this.action);
@@ -414,6 +434,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_action)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_arrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingScreen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,5 +468,6 @@
         private System.Windows.Forms.PictureBox img_star02_2;
         private System.IO.Ports.SerialPort gameSerial;
         private System.Windows.Forms.Label Title;
+        private System.Windows.Forms.PictureBox loadingScreen;
     }
 }

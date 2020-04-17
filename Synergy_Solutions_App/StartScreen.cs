@@ -251,6 +251,10 @@ namespace Synergy_Solutions_App
             int img_star02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.1));
             int img_star02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.2));
 
+            //Title
+            int TitleMoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.35));
+            int TitleMoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0));
+
             ///////////////////////////////////////////////////////////////////////////////////////
 
             //startGame
@@ -367,6 +371,14 @@ namespace Synergy_Solutions_App
             centerElementXcor(img_star02_2.Location.X, img_star02_2.Size.Width) + img_star02_2MoveX,
             centerElementYcor(img_star02_2.Location.Y, img_star02_2.Size.Height) + img_star02_2MoveY);
             img_star02_2.Refresh();
+
+            //Title
+            Title.Location = new Point(
+            centerElementXcor(Title.Location.X, Title.Size.Width) + TitleMoveX,
+            centerElementYcor(Title.Location.Y, Title.Size.Height) + TitleMoveY);
+            Title.Refresh();
+
+
 
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
@@ -711,6 +723,11 @@ namespace Synergy_Solutions_App
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_3(object sender, EventArgs e)
         {
 
         }
