@@ -55,6 +55,7 @@
             this.img_arrow = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gameSerial = new System.IO.Ports.SerialPort(this.components);
+            this.Title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_star02_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_star01_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_planet02_2)).BeginInit();
@@ -351,12 +352,23 @@
             // 
             this.gameSerial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.gameSerial_DataReceived);
             // 
+            // Title
+            // 
+            this.Title.AutoSize = true;
+            this.Title.Location = new System.Drawing.Point(502, 318);
+            this.Title.Name = "Title";
+            this.Title.Size = new System.Drawing.Size(64, 13);
+            this.Title.TabIndex = 24;
+            this.Title.Text = "BLAST OFF";
+            this.Title.Click += new System.EventHandler(this.label2_Click);
+            // 
             // StartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(1003, 492);
+            this.Controls.Add(this.Title);
             this.Controls.Add(this.instruction);
             this.Controls.Add(this.action);
             this.Controls.Add(this.img_star02_2);
@@ -434,5 +446,6 @@
         private System.Windows.Forms.PictureBox img_star01_2;
         private System.Windows.Forms.PictureBox img_star02_2;
         private System.IO.Ports.SerialPort gameSerial;
+        private System.Windows.Forms.Label Title;
     }
 }

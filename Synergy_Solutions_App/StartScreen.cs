@@ -216,8 +216,8 @@ namespace Synergy_Solutions_App
             int img_planet02_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.38));
 
             //img_planet02_3
-            int img_planet02_3MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.32));
-            int img_planet02_3MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.12));
+            int img_planet02_3MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.32));
+            int img_planet02_3MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.32));
 
             //img_planet03_1
             int img_planet03_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.2));
@@ -232,20 +232,20 @@ namespace Synergy_Solutions_App
             int img_planet04_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.24));
 
             //img_planet04F_1
-            int img_planet04F_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.24));
-            int img_planet04F_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.13));
+            int img_planet04F_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.02));
+            int img_planet04F_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.32));
 
             //img_star01_1
             int img_star01_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.2));
-            int img_star01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.05));
+            int img_star01_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.35));
 
             //img_star01_2
             int img_star01_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.3));
             int img_star01_2MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.25));
 
             //img_star02_1
-            int img_star02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * -0.36));
-            int img_star02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * -0.08));
+            int img_star02_1MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.05));
+            int img_star02_1MoveX = Convert.ToInt32(Math.Floor(getScreenWidthInPixels * 0.12));
 
             //img_star02_2
             int img_star02_2MoveY = Convert.ToInt32(Math.Floor(getScreenHightInPixels * 0.1));
@@ -710,5 +710,9 @@ namespace Synergy_Solutions_App
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
