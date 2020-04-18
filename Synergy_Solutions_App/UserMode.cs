@@ -309,7 +309,7 @@ namespace Synergy_Solutions_App
         {
 
             
-            if (lanFromStartScreen == 0)
+            if (lanFromStartScreen%2 == 0)
             {
                 label3.Text = "Name";
                 button1.Text = "Submit";
@@ -317,15 +317,13 @@ namespace Synergy_Solutions_App
                 label4.Text = "Your Score";
 
             }
-            if (lanFromStartScreen == 1)
+            if (lanFromStartScreen%2 == 1)
             {
 
                 label3.Text = "Nombre";
                 button1.Text = "Enviar";
                 label2.Text = "Alto Puntuación!";
                 label4.Text = "Tu Puntuación";
-
-                lanFromStartScreen = 0;
 
             }
 
@@ -334,6 +332,29 @@ namespace Synergy_Solutions_App
         private void UISerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
+        }
+
+        private void UserMode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.D1)
+            {
+                letterUp();
+            }
+            else if (e.KeyChar == (Char)Keys.D2)
+            {
+                letterDown();
+            }
+            else if (e.KeyChar == (Char)Keys.D3)
+            {
+                if (letterChoice < 4)
+                {
+                    letterChoice++;
+                }
+                else {
+                    submitScore();
+                }
+
+            }
         }
 
 

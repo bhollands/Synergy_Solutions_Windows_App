@@ -429,7 +429,7 @@ namespace Synergy_Solutions_App
             Thread.Sleep(300);
             runGame();
             */
-            startGameViaSerial();
+            //startGameViaSerial();
             
         }
 
@@ -438,52 +438,48 @@ namespace Synergy_Solutions_App
             
             timer1.Stop();
             img_arrow.Visible = false;
-            img_UFO.Visible = false;
-            img_UFO.Location = new Point(img_UFO.Location.X - 20, img_UFO.Location.Y);
             startGame.Visible = false;
             loadingScreen.Visible = true;
+            img_UFO.Location = new Point(img_UFO.Location.X - 20, img_UFO.Location.Y);
             loadingScreen.Refresh();
             loading.Start();
-            //loadingScreen.Visible = false;
-            //runGame();
-
-
-        }
-
-
-        private void runGame()
-        {
-
-            String[] instructions = getActionsFromSerial();
-            //int numInstructions = instructions.Length;
-
-            //ready321();
-            //instruction.Visible = true;
-            //instruction.Refresh();
-       
- 
-
-            
-
-
-
 
         }
 
         public void stopGame() {
 
-            Console.WriteLine("end of game");
-            gameAudio.Stop();
-            openUI();
-            System.Windows.Forms.Application.ExitThread();
-            this.Close();
+            gameEnd.Play();
+            //Title.ForeColor = #483D8B;
+            Title.Visible = false;
+            img_planet02_2.Refresh();
+            img_planet03_2.Refresh();
+            img_star01_1.Refresh();
+            img_star01_2.Refresh();
+            Title.Refresh();
+            theScore = rnd.Next(50, 250);
+            for (int i = 0; i < 500; i++)
+            {
+
+                img_UFO.Location = new Point(img_UFO.Location.X, img_UFO.Location.Y - 1);
+                img_UFO.Refresh();
+                Thread.Sleep(1);
+            }
+                Console.WriteLine("end of game");
+                gameAudio.Stop();
+                openUI();
+                System.Windows.Forms.Application.ExitThread();
+                this.Close();
+                lanSelect = 0;
+
 
 
         }
 
-
         public void userInputRecieved() {
-            var j = 50;
+
+            
+
+            var j = Math.Pow(3,(5 - numInstructions))+40;
             var mx = 0;
             var my = 0;
             var action = numInstructions % 3;
@@ -493,12 +489,12 @@ namespace Synergy_Solutions_App
                 my = -1;
                 mx = -1;
             }
-            else if (action == 1) {
+            else if (action == 2) {
 
                 my = 1;
                 mx = -1;
             }
-            else if (action == 2) {
+            else if (action == 1) {
                 my = 1;
             
             }
@@ -521,40 +517,6 @@ namespace Synergy_Solutions_App
 
 
         }
-
-        /*
-        //dummy method to load data from MBED
-        private string[] loadActions()
-        {
-            writeRequest("i", 2);
-            string instructions = gameSerial.ReadExisting();
-            for (int i = 0; i < instructions.Length; i++) { 
-            
-            
-            }
-            return instructionsFromMBED;
-        }
-        */
-        private string[] getActionsFromSerial()
-        {
-            int numOfCommands = 4;
-            string[] MBEDcommands = new string[numOfCommands];
-
-            /*
-            for (int c = 0; c < numOfCommands;) { 
-                
-                MBEDcommands[c] = 
-            
-            }
-            */
-            MBEDcommands[0] = "button1";
-            MBEDcommands[1] = "sliderUp";
-            MBEDcommands[2] = "sliderDown";
-            MBEDcommands[3] = "button1";
-
-            return MBEDcommands;
-        }
-
 /*
         private void ready321()
         {
@@ -722,10 +684,10 @@ namespace Synergy_Solutions_App
                     gameDebugWindow.Refresh();
                     */
                 img_arrow.Visible = false;
-                img_UFO.Visible = false;
+                //img_UFO.Visible = false;
                 startGame.Visible = false;
                 Thread.CurrentThread.Abort();
-                runGame();
+                //runGame();
                 //}
 
             }
@@ -806,35 +768,12 @@ namespace Synergy_Solutions_App
             {
                 if (numInstructions >= 5)
                 {
-                  
                     startGameViaSerial();
                 } else if (numInstructions <= 0) {
-                   
-                    gameEnd.Play();
-                    //Title.ForeColor = #483D8B;
-                    Title.Visible = false;
-                    img_planet02_2.Refresh();
-                    img_planet03_2.Refresh();
-                    img_star01_1.Refresh();
-                    img_star01_2.Refresh();
-                    Title.Refresh();
-                    theScore = rnd.Next(50, 250);
-                    for (int i = 0; i < 500; i++)
-                    {
 
-                        img_UFO.Location = new Point(img_UFO.Location.X, img_UFO.Location.Y -1);
-                        img_UFO.Refresh();
-                        Thread.Sleep(1);
-                    }
-
-
-                    //Thread.Sleep(1000);
                     stopGame();
                 }else if(numInstructions < 5 || numInstructions > 0){
-
-
-                    
-                    //an instruction
+                    //an instruction from mbed
                     userInputRecieved();
                 }
 
@@ -855,7 +794,7 @@ namespace Synergy_Solutions_App
             if (loadingTick == 5) {
 
                 loadingScreen.Visible = false;
-            
+               
             }
         }
     }

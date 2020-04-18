@@ -110,7 +110,7 @@
             // 
             // loading
             // 
-            this.loading.Interval = 1000;
+            this.loading.Interval = 900;
             this.loading.Tick += new System.EventHandler(this.loading_Tick);
             // 
             // img_star02_2
