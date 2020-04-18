@@ -10,19 +10,25 @@ namespace Synergy_Solutions_App
 {
     public partial class StartScreen : Form
     {
+        Random rnd = new Random();
         public int GAMESPLAYED = 0;
         public int HIGHSCORE = 0;
         //all displayed text with a lanuage select varible
         public static int lanSelect = 0;
+        public static int theScore;
+        int numInstructions = 5;
         String readyFReady = "Ready";
         String readyFGo = "Go";
         String loadingText = "Loading";
+        int loadingTick = 0;
 
         //getting size of the screen (changes depending on screen used)
-        int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
-        int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
+        public static int getScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width;
+        public static int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
         System.Media.SoundPlayer gameAudio = new System.Media.SoundPlayer(Properties.Resources.Castlevania);
+        System.Media.SoundPlayer userInputR = new System.Media.SoundPlayer();
+        System.Media.SoundPlayer gameEnd = new System.Media.SoundPlayer(Properties.Resources.endSound);
 
         double getScreenHightInPixels = Screen.PrimaryScreen.Bounds.Height;
         double getScreenWidthInPixels = Screen.PrimaryScreen.Bounds.Width;
@@ -128,11 +134,6 @@ namespace Synergy_Solutions_App
             return s;
         }
 
-        public void startAudio() {
-                
-        }
-
-
         public StartScreen()
         {
             InitializeComponent();
@@ -141,7 +142,7 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("The audio is pretty loud you may want to trun your speakers down");
+            //System.Windows.Forms.MessageBox.Show("The audio is pretty loud you may want to trun your speakers down");
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
             this.Location = new Point(0, 0);
@@ -149,7 +150,8 @@ namespace Synergy_Solutions_App
             //update UI
             manualUIUpdate();
            
-            gameAudio.Play();
+            gameAudio.PlayLooping();
+            
 
         }
 
@@ -255,6 +257,13 @@ namespace Synergy_Solutions_App
 
             ///////////////////////////////////////////////////////////////////////////////////////
 
+            //Title
+            Title.Location = new Point(
+            centerElementXcor(Title.Location.X, Title.Size.Width) + TitleMoveX,
+            centerElementYcor(Title.Location.Y, Title.Size.Height) + TitleMoveY);
+            Title.Refresh();
+
+
             //startGame
             startGame.Location = new Point(
                 centerElementXcor(startGame.Location.X, startGame.Size.Width) + startGameMoveX,
@@ -278,7 +287,7 @@ namespace Synergy_Solutions_App
                 centerElementXcor(img_UFO.Location.X, img_UFO.Size.Width) + img_UFOMoveX,
                 centerElementYcor(img_UFO.Location.Y, img_UFO.Size.Height) + img_UFOMoveY);
             img_UFO.Refresh();
-
+            /*
             //instruction
             instruction.Location = new Point(
                 centerElementXcor(instruction.Location.X, instruction.Size.Width) + instructionMoveX,
@@ -290,7 +299,7 @@ namespace Synergy_Solutions_App
                 centerElementXcor(action.Location.X, action.Size.Width) + actionMoveY,
                 centerElementYcor(action.Location.Y, action.Size.Height) + actionMoveX);
             action.Refresh();
-
+            */
             //img_planet01_1
             img_planet01_1.Location = new Point(
                centerElementXcor(img_planet01_1.Location.X, img_planet01_1.Size.Width) + img_planet01_1MoveX,
@@ -370,18 +379,14 @@ namespace Synergy_Solutions_App
             centerElementYcor(img_star02_2.Location.Y, img_star02_2.Size.Height) + img_star02_2MoveY);
             img_star02_2.Refresh();
 
-            //Title
-            Title.Location = new Point(
-            centerElementXcor(Title.Location.X, Title.Size.Width) + TitleMoveX,
-            centerElementYcor(Title.Location.Y, Title.Size.Height) + TitleMoveY);
-            Title.Refresh();
+
 
 
 
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
 
-            lanuage.Location = new Point(bottomCW, bottomCH);
+            lanuage.Location = new Point(bottomCW-25, bottomCH-25);
             lanuage.Refresh();
         }
 
@@ -425,16 +430,22 @@ namespace Synergy_Solutions_App
             runGame();
             */
             startGameViaSerial();
+            
         }
 
         private void startGameViaSerial()
         {
+            
             timer1.Stop();
             img_arrow.Visible = false;
             img_UFO.Visible = false;
+            img_UFO.Location = new Point(img_UFO.Location.X - 20, img_UFO.Location.Y);
             startGame.Visible = false;
-            Thread.Sleep(300);
-            runGame();
+            loadingScreen.Visible = true;
+            loadingScreen.Refresh();
+            loading.Start();
+            //loadingScreen.Visible = false;
+            //runGame();
 
 
         }
@@ -444,21 +455,22 @@ namespace Synergy_Solutions_App
         {
 
             String[] instructions = getActionsFromSerial();
-            int numInstructions = instructions.Length;
+            //int numInstructions = instructions.Length;
 
-            ready321();
-            instruction.Visible = true;
-            instruction.Refresh();
-            for (int dis = 0; dis < numInstructions; dis++)
-            {
-
-                instruction.Text = instructions[dis];
-                instruction.Refresh();
-                Thread.Sleep(1000);
-
-            }
+            //ready321();
+            //instruction.Visible = true;
+            //instruction.Refresh();
+       
+ 
 
             
+
+
+
+
+        }
+
+        public void stopGame() {
 
             Console.WriteLine("end of game");
             gameAudio.Stop();
@@ -468,6 +480,48 @@ namespace Synergy_Solutions_App
 
 
         }
+
+
+        public void userInputRecieved() {
+            var j = 50;
+            var mx = 0;
+            var my = 0;
+            var action = numInstructions % 3;
+
+            if (action == 0)
+            {
+                my = -1;
+                mx = -1;
+            }
+            else if (action == 1) {
+
+                my = 1;
+                mx = -1;
+            }
+            else if (action == 2) {
+                my = 1;
+            
+            }
+
+
+
+            img_UFO.Visible = true;
+
+            for (int i = 0; i < j; i++) {
+                img_UFO.Location = new Point(img_UFO.Location.X + mx, img_UFO.Location.Y + my);
+                img_UFO.Refresh();
+                Thread.Sleep(1);
+            }
+            for (int i = 0; i < j; i++)
+            {
+                img_UFO.Location = new Point(img_UFO.Location.X-mx, img_UFO.Location.Y - my);
+                img_UFO.Refresh();
+                Thread.Sleep(1);
+            }
+
+
+        }
+
         /*
         //dummy method to load data from MBED
         private string[] loadActions()
@@ -501,7 +555,7 @@ namespace Synergy_Solutions_App
             return MBEDcommands;
         }
 
-
+/*
         private void ready321()
         {
 
@@ -542,7 +596,7 @@ namespace Synergy_Solutions_App
             //this.Close();
             openUI();
         }
-
+        */
         private void openUI()
         {
             thUI = new Thread(opennewform);
@@ -550,7 +604,7 @@ namespace Synergy_Solutions_App
             thUI.Start();
 
         }
-
+        
         private void opennewform()
         {
             //disable data in and close serial port before changing screen
@@ -568,15 +622,19 @@ namespace Synergy_Solutions_App
         private void lanuage_Click(object sender, EventArgs e)
         {
 
-            changeLanguage();
+           
+               
 
         }
+
 
         public void changeLanguage() {
 
             lanSelect++;
             if (lanSelect%2 == 0)
             {
+                lanuage.Image= Properties.Resources.EnglishLang;
+                lanuage.Refresh();
                 startGame.Text = "Start Game";
                 readyFGo = "Go";
                 readyFReady = "Ready";
@@ -585,6 +643,8 @@ namespace Synergy_Solutions_App
             }
             if (lanSelect%2 == 1)
             {
+                lanuage.Image = Properties.Resources.spanishLang;
+                lanuage.Refresh();
                 startGame.Text = "Empezar juego";
                 readyFReady = "Listo";
                 readyFGo = "Vamos";
@@ -737,20 +797,66 @@ namespace Synergy_Solutions_App
         {
 
             //the L key is the equlivant to swapping betweeen a red(for english) and yellow(for spanish block) before the game starts
-            if (e.KeyChar == (Char)Keys.L);
+            if (e.KeyChar == (Char)Keys.L)
             {
                 changeLanguage();
             }
             //Equlivant to any input being recieved during the game's operation
-            if (e.KeyChar == (Char)Keys.Enter)
+            if (e.KeyChar == (Char)Keys.K)
             {
-                //todo function to flash up spaceship and play engine whrrrr
+                if (numInstructions >= 5)
+                {
+                  
+                    startGameViaSerial();
+                } else if (numInstructions <= 0) {
+                   
+                    gameEnd.Play();
+                    //Title.ForeColor = #483D8B;
+                    Title.Visible = false;
+                    img_planet02_2.Refresh();
+                    img_planet03_2.Refresh();
+                    img_star01_1.Refresh();
+                    img_star01_2.Refresh();
+                    Title.Refresh();
+                    theScore = rnd.Next(50, 250);
+                    for (int i = 0; i < 500; i++)
+                    {
+
+                        img_UFO.Location = new Point(img_UFO.Location.X, img_UFO.Location.Y -1);
+                        img_UFO.Refresh();
+                        Thread.Sleep(1);
+                    }
+
+
+                    //Thread.Sleep(1000);
+                    stopGame();
+                }else if(numInstructions < 5 || numInstructions > 0){
+
+
+                    
+                    //an instruction
+                    userInputRecieved();
+                }
+
+                numInstructions--;
+
+
             }
         }
 
         private void Title_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
 
+        }
+
+        private void loading_Tick(object sender, EventArgs e)
+        {
+            loadingTick++;
+            if (loadingTick == 5) {
+
+                loadingScreen.Visible = false;
+            
+            }
         }
     }
 }

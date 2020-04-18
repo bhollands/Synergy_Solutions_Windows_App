@@ -121,6 +121,7 @@
             // 
             // highScores
             // 
+            this.highScores.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.highScores.FormattingEnabled = true;
             this.highScores.Location = new System.Drawing.Point(12, 63);
             this.highScores.Name = "highScores";
@@ -130,15 +131,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(12, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(170, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "High Scores!!";
             // 
             // letter1
             // 
+            this.letter1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter1.Items.Add("_");
             this.letter1.Items.Add("A");
             this.letter1.Items.Add("B");
@@ -174,6 +177,7 @@
             // 
             // letter3
             // 
+            this.letter3.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter3.Items.Add("_");
             this.letter3.Items.Add("A");
             this.letter3.Items.Add("B");
@@ -209,6 +213,7 @@
             // 
             // letter2
             // 
+            this.letter2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter2.Items.Add("_");
             this.letter2.Items.Add("A");
             this.letter2.Items.Add("B");
@@ -244,6 +249,7 @@
             // 
             // letter4
             // 
+            this.letter4.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.letter4.Items.Add("_");
             this.letter4.Items.Add("A");
@@ -281,18 +287,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(430, 173);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(420, 177);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(60, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Name:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(421, 79);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(401, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(104, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Your Score:";
             // 
@@ -316,6 +326,7 @@
             // 
             // scoreText
             // 
+            this.scoreText.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.scoreText.Location = new System.Drawing.Point(380, 101);
             this.scoreText.Name = "scoreText";
             this.scoreText.ReadOnly = true;
@@ -404,6 +415,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(722, 478);
             this.Controls.Add(this.AlienImage1);
             this.Controls.Add(this.label5);

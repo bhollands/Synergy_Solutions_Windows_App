@@ -120,6 +120,34 @@ namespace Synergy_Solutions_App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream endSound {
+            get {
+                return ResourceManager.GetStream("endSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EnglishLang {
+            get {
+                object obj = ResourceManager.GetObject("EnglishLang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream inputRecieved {
+            get {
+                return ResourceManager.GetStream("inputRecieved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Magical_Triumph {
@@ -184,6 +212,16 @@ namespace Synergy_Solutions_App.Properties {
         internal static System.Drawing.Bitmap planet04F {
             get {
                 object obj = ResourceManager.GetObject("planet04F", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spanishLang {
+            get {
+                object obj = ResourceManager.GetObject("spanishLang", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
