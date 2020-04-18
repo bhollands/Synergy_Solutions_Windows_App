@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
@@ -10,6 +9,7 @@ namespace Synergy_Solutions_App
 {
     public partial class StartScreen : Form
     {
+        //initalize random seed(used for testing without a MBED)
         Random rnd = new Random();
         public int GAMESPLAYED = 0;
         public int HIGHSCORE = 0;
@@ -17,9 +17,6 @@ namespace Synergy_Solutions_App
         public static int lanSelect = 0;
         public static int theScore;
         int numInstructions = 5;
-        String readyFReady = "Ready";
-        String readyFGo = "Go";
-        String loadingText = "Loading";
         int loadingTick = 0;
 
         //getting size of the screen (changes depending on screen used)
@@ -27,7 +24,6 @@ namespace Synergy_Solutions_App
         public static int getScreenHight = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height;
 
         System.Media.SoundPlayer gameAudio = new System.Media.SoundPlayer(Properties.Resources.Castlevania);
-        System.Media.SoundPlayer userInputR = new System.Media.SoundPlayer();
         System.Media.SoundPlayer gameEnd = new System.Media.SoundPlayer(Properties.Resources.endSound);
 
         double getScreenHightInPixels = Screen.PrimaryScreen.Bounds.Height;
@@ -104,7 +100,7 @@ namespace Synergy_Solutions_App
             {
                 string mesg = "#" + key + ":" + no + ";";
                 gameSerial.Write(mesg);
-                
+
             }
             catch (Exception e)
             {
@@ -120,7 +116,7 @@ namespace Synergy_Solutions_App
 
             if (gameSerial.IsOpen)
             {
-                writeRequest("gs",1);
+                writeRequest("gs", 1);
                 score = gameSerial.ReadTo(";");
 
             }
@@ -142,16 +138,18 @@ namespace Synergy_Solutions_App
 
         private void StartScreen_Load(object sender, EventArgs e)
         {
+            //Warning message for fellow devs commented out as development is finshed
             //System.Windows.Forms.MessageBox.Show("The audio is pretty loud you may want to trun your speakers down");
+
             //set UI to screen size and put it in top corner of screen and to size of the screen
             this.ClientSize = new System.Drawing.Size(getScreenWidth, getScreenHight);
             this.Location = new Point(0, 0);
 
             //update UI
             manualUIUpdate();
-           
+
             gameAudio.PlayLooping();
-            
+
 
         }
 
@@ -386,7 +384,7 @@ namespace Synergy_Solutions_App
             int bottomCW = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - lanuage.Size.Width);
             int bottomCH = (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - lanuage.Size.Height);
 
-            lanuage.Location = new Point(bottomCW-25, bottomCH-25);
+            lanuage.Location = new Point(bottomCW - 25, bottomCH - 25);
             lanuage.Refresh();
         }
 
@@ -430,12 +428,12 @@ namespace Synergy_Solutions_App
             runGame();
             */
             //startGameViaSerial();
-            
+
         }
 
         private void startGameViaSerial()
         {
-            
+
             timer1.Stop();
             img_arrow.Visible = false;
             startGame.Visible = false;
@@ -446,7 +444,8 @@ namespace Synergy_Solutions_App
 
         }
 
-        public void stopGame() {
+        public void stopGame()
+        {
 
             gameEnd.Play();
             //Title.ForeColor = #483D8B;
@@ -464,22 +463,23 @@ namespace Synergy_Solutions_App
                 img_UFO.Refresh();
                 Thread.Sleep(1);
             }
-                Console.WriteLine("end of game");
-                gameAudio.Stop();
-                openUI();
-                System.Windows.Forms.Application.ExitThread();
-                this.Close();
-                lanSelect = 0;
+            Console.WriteLine("end of game");
+            gameAudio.Stop();
+            openUI();
+            System.Windows.Forms.Application.ExitThread();
+            this.Close();
+            lanSelect = 0;
 
 
 
         }
 
-        public void userInputRecieved() {
+        public void userInputRecieved()
+        {
 
-            
 
-            var j = Math.Pow(3,(5 - numInstructions))+40;
+
+            var j = Math.Pow(3, (5 - numInstructions)) + 40;
             var mx = 0;
             var my = 0;
             var action = numInstructions % 3;
@@ -489,76 +489,79 @@ namespace Synergy_Solutions_App
                 my = -1;
                 mx = -1;
             }
-            else if (action == 2) {
+            else if (action == 2)
+            {
 
                 my = 1;
                 mx = -1;
             }
-            else if (action == 1) {
+            else if (action == 1)
+            {
                 my = 1;
-            
+
             }
 
 
 
             img_UFO.Visible = true;
 
-            for (int i = 0; i < j; i++) {
+            for (int i = 0; i < j; i++)
+            {
                 img_UFO.Location = new Point(img_UFO.Location.X + mx, img_UFO.Location.Y + my);
                 img_UFO.Refresh();
                 Thread.Sleep(1);
             }
             for (int i = 0; i < j; i++)
             {
-                img_UFO.Location = new Point(img_UFO.Location.X-mx, img_UFO.Location.Y - my);
+                img_UFO.Location = new Point(img_UFO.Location.X - mx, img_UFO.Location.Y - my);
                 img_UFO.Refresh();
                 Thread.Sleep(1);
             }
 
 
         }
-/*
-        private void ready321()
-        {
-
-            action.Text = readyFReady;
-            action.Visible = true;
-            action.Refresh();
-
-
-            for (int t = 3; t > -1; t--)
-            {
-
-                if (t != 0)
+        /*
+                private void ready321()
                 {
-                    instruction.Text = t.ToString();
+
+                    action.Text = readyFReady;
+                    action.Visible = true;
+                    action.Refresh();
+
+
+                    for (int t = 3; t > -1; t--)
+                    {
+
+                        if (t != 0)
+                        {
+                            instruction.Text = t.ToString();
+                        }
+                        else
+                        {
+                            instruction.Text = readyFGo;
+                        }
+
+                        instruction.Visible = true;
+                        instruction.Refresh();
+                        Thread.Sleep(1000);
+                    }
+
+                    instruction.Visible = false;
+                    action.Visible = false;
+                    action.Refresh();
+                    instruction.Refresh();
+
+
                 }
-                else
+
+                //----Debug button----
+                //debug button to move straight to user mode skipping game
+                private void button1_Click(object sender, EventArgs e)
                 {
-                    instruction.Text = readyFGo;
+                    //this.Close();
+                    openUI();
                 }
-
-                instruction.Visible = true;
-                instruction.Refresh();
-                Thread.Sleep(1000);
-            }
-
-            instruction.Visible = false;
-            action.Visible = false;
-            action.Refresh();
-            instruction.Refresh();
-
-
-        }
-
-        //----Debug button----
-        //debug button to move straight to user mode skipping game
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //this.Close();
-            openUI();
-        }
-        */
+                */
         private void openUI()
         {
             thUI = new Thread(opennewform);
@@ -566,7 +569,7 @@ namespace Synergy_Solutions_App
             thUI.Start();
 
         }
-        
+
         private void opennewform()
         {
             //disable data in and close serial port before changing screen
@@ -584,33 +587,27 @@ namespace Synergy_Solutions_App
         private void lanuage_Click(object sender, EventArgs e)
         {
 
-           
-               
+
+
 
         }
 
 
-        public void changeLanguage() {
+        public void changeLanguage()
+        {
 
             lanSelect++;
-            if (lanSelect%2 == 0)
+            if (lanSelect % 2 == 0)
             {
-                lanuage.Image= Properties.Resources.EnglishLang;
+                lanuage.Image = Properties.Resources.EnglishLang;
                 lanuage.Refresh();
                 startGame.Text = "Start Game";
-                readyFGo = "Go";
-                readyFReady = "Ready";
-                loadingText = "Loading";
-
             }
-            if (lanSelect%2 == 1)
+            if (lanSelect % 2 == 1)
             {
                 lanuage.Image = Properties.Resources.spanishLang;
                 lanuage.Refresh();
                 startGame.Text = "Empezar juego";
-                readyFReady = "Listo";
-                readyFGo = "Vamos";
-                loadingText = "Cargando";
 
             }
 
@@ -769,10 +766,14 @@ namespace Synergy_Solutions_App
                 if (numInstructions >= 5)
                 {
                     startGameViaSerial();
-                } else if (numInstructions <= 0) {
+                }
+                else if (numInstructions <= 0)
+                {
 
                     stopGame();
-                }else if(numInstructions < 5 || numInstructions > 0){
+                }
+                else if (numInstructions < 5 || numInstructions > 0)
+                {
                     //an instruction from mbed
                     userInputRecieved();
                 }
@@ -781,6 +782,20 @@ namespace Synergy_Solutions_App
 
 
             }
+            if (e.KeyChar == (Char)Keys.T) {
+                Thread tut;
+                tut = new Thread(tutorial);
+                tut.SetApartmentState(ApartmentState.STA);
+                tut.Start();
+
+            }
+        }
+
+        public void tutorial() {
+
+            Application.Run(new tutorial());
+
+
         }
 
         private void Title_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -791,10 +806,11 @@ namespace Synergy_Solutions_App
         private void loading_Tick(object sender, EventArgs e)
         {
             loadingTick++;
-            if (loadingTick == 5) {
+            if (loadingTick == 5)
+            {
 
                 loadingScreen.Visible = false;
-               
+
             }
         }
     }

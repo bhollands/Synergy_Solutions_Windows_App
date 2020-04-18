@@ -51,6 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tutorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tutorial.Designer.cs">
+      <DependentUpon>tutorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="WMPLib\WindowsMediaPlayer.cs" />
     <EmbeddedResource Include="Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tutorial.resx">
+      <DependentUpon>tutorial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartScreen.resx">
       <DependentUpon>StartScreen.cs</DependentUpon>
@@ -145,6 +154,7 @@
     <None Include="Resources\star02.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\tutorial.mp4" />
     <None Include="Resources\spanishLang.png" />
     <None Include="Resources\button-finger.png" />
     <None Include="Resources\Magical_Triumph.mp3" />
@@ -154,6 +164,25 @@
     <None Include="Resources\361250__japanyoshithegamer__sci-fi-engine-startup.wav" />
     <None Include="Resources\EnglishLang.png" />
     <Content Include="Resources\Pulse-1s-200px %282%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
