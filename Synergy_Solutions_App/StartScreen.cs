@@ -599,14 +599,20 @@ namespace Synergy_Solutions_App
             lanSelect++;
             if (lanSelect % 2 == 0)
             {
+                //Update lanuage block on the screen
                 lanuage.Image = Properties.Resources.EnglishLang;
                 lanuage.Refresh();
+
+                //Set Text to language
                 startGame.Text = "Start Game";
             }
             if (lanSelect % 2 == 1)
             {
+                //Update lanuage block on screen to new lanuage
                 lanuage.Image = Properties.Resources.spanishLang;
                 lanuage.Refresh();
+
+                //Update text
                 startGame.Text = "Empezar juego";
 
             }

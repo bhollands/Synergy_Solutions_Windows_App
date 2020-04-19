@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Synergy_Solutions_App
@@ -26,22 +20,25 @@ namespace Synergy_Solutions_App
 
             if (StartScreen.lanSelect % 2 == 0)
             {
-                axWindowsMediaPlayer1.URL = @"C:\Users\bear\Documents\GitHub\Synergy_Solutions_Windows_App\other\EnglishTutorial.mp4";
+                axWindowsMediaPlayer1.URL =
+                    @"C:\Users\bear\Documents\GitHub\Synergy_Solutions_Windows_App\other\EnglishTutorial.mp4";
             }
             if (StartScreen.lanSelect % 2 == 1)
             {
-                axWindowsMediaPlayer1.URL = @"C:\Users\bear\Documents\GitHub\Synergy_Solutions_Windows_App\other\SpanishTutorial.mp4";
+                axWindowsMediaPlayer1.URL =
+                    @"C:\Users\bear\Documents\GitHub\Synergy_Solutions_Windows_App\other\SpanishTutorial.mp4";
 
             }
 
-            
+
         }
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
             Console.WriteLine(e);
             //on event E being 1 (event one being the end of the video, exit the form)
-            if (e.newState == 1) {
+            if (e.newState == 1)
+            {
                 Console.WriteLine("end of video");
                 System.Windows.Forms.Application.ExitThread();
                 this.Close();
