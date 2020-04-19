@@ -139,6 +139,16 @@ namespace Synergy_Solutions_App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] EnglishTutorial {
+            get {
+                object obj = ResourceManager.GetObject("EnglishTutorial", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream inputRecieved {

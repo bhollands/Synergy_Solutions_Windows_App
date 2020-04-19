@@ -163,6 +163,7 @@
     <None Include="Resources\endSound.wav" />
     <None Include="Resources\361250__japanyoshithegamer__sci-fi-engine-startup.wav" />
     <None Include="Resources\EnglishLang.png" />
+    <None Include="Resources\EnglishTutorial.mp4" />
     <Content Include="Resources\Pulse-1s-200px %282%29.gif" />
   </ItemGroup>
   <ItemGroup>

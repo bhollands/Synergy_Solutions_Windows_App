@@ -309,7 +309,7 @@ namespace Synergy_Solutions_App
         {
 
             
-            if (lanFromStartScreen%2 == 0)
+            if (lanFromStartScreen%2 == 1)
             {
                 label3.Text = "Name";
                 button1.Text = "Submit";
@@ -317,7 +317,7 @@ namespace Synergy_Solutions_App
                 label4.Text = "Your Score";
 
             }
-            if (lanFromStartScreen%2 == 1)
+            if (lanFromStartScreen%2 ==0)
             {
 
                 label3.Text = "Nombre";

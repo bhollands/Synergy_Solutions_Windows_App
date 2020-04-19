@@ -148,7 +148,7 @@ namespace Synergy_Solutions_App
             //update UI
             manualUIUpdate();
 
-            gameAudio.PlayLooping();
+           gameAudio.PlayLooping();
 
 
         }
@@ -783,10 +783,14 @@ namespace Synergy_Solutions_App
 
             }
             if (e.KeyChar == (Char)Keys.T) {
+                
                 Thread tut;
                 tut = new Thread(tutorial);
                 tut.SetApartmentState(ApartmentState.STA);
                 tut.Start();
+
+                gameAudio.Stop();
+               
 
             }
         }
