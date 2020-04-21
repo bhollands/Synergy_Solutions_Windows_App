@@ -113,6 +113,7 @@
     <None Include="Resources\alien1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Dealer Strikes.ttf" />
     <None Include="Resources\ufo.png" />
   </ItemGroup>
   <ItemGroup>
