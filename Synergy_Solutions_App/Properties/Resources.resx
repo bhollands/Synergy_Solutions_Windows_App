@@ -169,4 +169,19 @@
   <data name="Magical_Triumph1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Magical_Triumph.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="endSound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\endSound.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="inputRecieved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\361250__japanyoshithegamer__sci-fi-engine-startup.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="EnglishLang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EnglishLang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spanishLang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spanishLang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EnglishTutorial" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EnglishTutorial.mp4;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

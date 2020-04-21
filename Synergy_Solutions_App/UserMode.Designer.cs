@@ -52,14 +52,14 @@
             this.debugButton2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.AlienImage1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.UISerial = new System.IO.Ports.SerialPort(this.components);
+            this.AlienImage1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -121,6 +121,7 @@
             // 
             // highScores
             // 
+            this.highScores.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.highScores.FormattingEnabled = true;
             this.highScores.Location = new System.Drawing.Point(12, 63);
             this.highScores.Name = "highScores";
@@ -130,15 +131,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(12, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 20);
+            this.label2.Size = new System.Drawing.Size(170, 29);
             this.label2.TabIndex = 3;
             this.label2.Text = "High Scores!!";
             // 
             // letter1
             // 
+            this.letter1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter1.Items.Add("_");
             this.letter1.Items.Add("A");
             this.letter1.Items.Add("B");
@@ -174,6 +177,7 @@
             // 
             // letter3
             // 
+            this.letter3.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter3.Items.Add("_");
             this.letter3.Items.Add("A");
             this.letter3.Items.Add("B");
@@ -209,6 +213,7 @@
             // 
             // letter2
             // 
+            this.letter2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter2.Items.Add("_");
             this.letter2.Items.Add("A");
             this.letter2.Items.Add("B");
@@ -244,6 +249,7 @@
             // 
             // letter4
             // 
+            this.letter4.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.letter4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.letter4.Items.Add("_");
             this.letter4.Items.Add("A");
@@ -281,18 +287,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(430, 173);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(420, 177);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(60, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Name:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(421, 79);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(401, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(104, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Your Score:";
             // 
@@ -316,6 +326,7 @@
             // 
             // scoreText
             // 
+            this.scoreText.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.scoreText.Location = new System.Drawing.Point(380, 101);
             this.scoreText.Name = "scoreText";
             this.scoreText.ReadOnly = true;
@@ -366,16 +377,6 @@
             this.label1.Text = "Your Score kept in int scorePH";
             this.label1.Visible = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(528, 264);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(194, 135);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -385,6 +386,10 @@
             this.label5.TabIndex = 20;
             this.label5.Text = "Delete after this section is integrated";
             this.label5.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 50;
             // 
             // AlienImage1
             // 
@@ -396,14 +401,21 @@
             this.AlienImage1.TabIndex = 22;
             this.AlienImage1.TabStop = false;
             // 
-            // timer1
+            // pictureBox1
             // 
-            this.timer1.Interval = 50;
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.Location = new System.Drawing.Point(528, 264);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(194, 135);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // UserMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(722, 478);
             this.Controls.Add(this.AlienImage1);
             this.Controls.Add(this.label5);
@@ -424,14 +436,16 @@
             this.Controls.Add(this.highScores);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "UserMode";
             this.Text = "UserMode";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UserMode_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlienImage1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

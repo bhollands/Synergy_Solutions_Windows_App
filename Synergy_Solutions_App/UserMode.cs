@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Threading;
@@ -14,7 +15,7 @@ namespace Synergy_Solutions_App
 
 
         //setting up. scorePH should be changed to the player's score but it is set to 5555 for now
-        public int scorePH = 5555;
+        public int scorePH = StartScreen.theScore;
         int letterChoice = 0;
         public int[] highScoresList = { 101, 100, 99, 95, 80, 50, 10, 7, 9, 2, 1 };
         public string[] highScoreNames = { "STU_", "JO__", "GORI", "ALEX", "BER_", "AAAA", "_ZED", "CATS", "ROBB", "BEAR", "ALI_" };
@@ -22,6 +23,7 @@ namespace Synergy_Solutions_App
         private object locker = new object();
         int lanFromStartScreen = StartScreen.lanSelect;
         Thread th;
+
 
         //getting serial ports (modified from Bernard's code(maintanceMode), modified to auto connect if a port exists)
         public void getSerialPorts()
@@ -41,7 +43,7 @@ namespace Synergy_Solutions_App
             catch
             {
                 Console.WriteLine("can't connect to serial bus" + Environment.NewLine);
-                System.Windows.Forms.MessageBox.Show("Cannot connect to system please contact park staff");
+                //System.Windows.Forms.MessageBox.Show("Cannot connect to system please contact park staff");
             }
 
         }
@@ -53,7 +55,12 @@ namespace Synergy_Solutions_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            scoreAudio.Play();
+           // 
+                
+            this.Location = new Point(this.Width / 2, (this.Height / 2)-10);
+
+
+            scoreAudio.PlayLooping();
             lanuage();
             string[] documentLines = File.ReadAllLines("score.txt");
             bool inputChangeOver = true;
@@ -302,7 +309,7 @@ namespace Synergy_Solutions_App
         {
 
             
-            if (lanFromStartScreen == 0)
+            if (lanFromStartScreen%2 == 1)
             {
                 label3.Text = "Name";
                 button1.Text = "Submit";
@@ -310,15 +317,13 @@ namespace Synergy_Solutions_App
                 label4.Text = "Your Score";
 
             }
-            if (lanFromStartScreen == 1)
+            if (lanFromStartScreen%2 ==0)
             {
 
                 label3.Text = "Nombre";
                 button1.Text = "Enviar";
                 label2.Text = "Alto Puntuación!";
                 label4.Text = "Tu Puntuación";
-
-                lanFromStartScreen = 0;
 
             }
 
@@ -327,6 +332,29 @@ namespace Synergy_Solutions_App
         private void UISerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
 
+        }
+
+        private void UserMode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.D1)
+            {
+                letterUp();
+            }
+            else if (e.KeyChar == (Char)Keys.D2)
+            {
+                letterDown();
+            }
+            else if (e.KeyChar == (Char)Keys.D3)
+            {
+                if (letterChoice < 4)
+                {
+                    letterChoice++;
+                }
+                else {
+                    submitScore();
+                }
+
+            }
         }
 
 
