@@ -35,6 +35,7 @@
             this.gameSerial = new System.IO.Ports.SerialPort(this.components);
             this.Title = new System.Windows.Forms.Label();
             this.loading = new System.Windows.Forms.Timer(this.components);
+            this.gameStart = new System.Windows.Forms.Timer(this.components);
             this.img_star02_2 = new System.Windows.Forms.PictureBox();
             this.img_star01_2 = new System.Windows.Forms.PictureBox();
             this.img_planet02_2 = new System.Windows.Forms.PictureBox();
@@ -98,11 +99,11 @@
             // 
             this.Title.AutoSize = true;
             this.Title.BackColor = System.Drawing.Color.Transparent;
-            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title.Font = new System.Drawing.Font("Dealer Strikes", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Title.ForeColor = System.Drawing.Color.Red;
             this.Title.Location = new System.Drawing.Point(433, 344);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(1180, 226);
+            this.Title.Size = new System.Drawing.Size(693, 209);
             this.Title.TabIndex = 24;
             this.Title.Text = "BLAST OFF";
             this.Title.Click += new System.EventHandler(this.label2_Click);
@@ -112,6 +113,11 @@
             // 
             this.loading.Interval = 900;
             this.loading.Tick += new System.EventHandler(this.loading_Tick);
+            // 
+            // gameStart
+            // 
+            this.gameStart.Interval = 1000;
+            this.gameStart.Tick += new System.EventHandler(this.gameStart_Tick);
             // 
             // img_star02_2
             // 
@@ -299,31 +305,12 @@
             // 
             // img_UFO
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 49);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(143, 67);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // gameSerial
-            // 
-            this.gameSerial.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.gameSerial_DataReceived);
-            // 
-            // Title
-            // 
-            this.Title.AutoSize = true;
-            this.Title.BackColor = System.Drawing.Color.Transparent;
-            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title.ForeColor = System.Drawing.Color.Red;
-            this.Title.Location = new System.Drawing.Point(433, 344);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(1180, 226);
-            this.Title.TabIndex = 24;
-            this.Title.Text = "BLAST OFF";
-            this.Title.Click += new System.EventHandler(this.label2_Click);
-            this.Title.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Title_PreviewKeyDown);
+            this.img_UFO.Image = global::Synergy_Solutions_App.Properties.Resources.ufo;
+            this.img_UFO.Location = new System.Drawing.Point(0, 0);
+            this.img_UFO.Name = "img_UFO";
+            this.img_UFO.Size = new System.Drawing.Size(100, 50);
+            this.img_UFO.TabIndex = 26;
+            this.img_UFO.TabStop = false;
             // 
             // loadingScreen
             // 
@@ -418,6 +405,7 @@
         private System.IO.Ports.SerialPort gameSerial;
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.Timer loading;
+        private System.Windows.Forms.Timer gameStart;
         private System.Windows.Forms.PictureBox loadingScreen;
     }
 }

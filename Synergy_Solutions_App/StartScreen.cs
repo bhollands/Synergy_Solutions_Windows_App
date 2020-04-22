@@ -596,7 +596,7 @@ namespace Synergy_Solutions_App
         public void changeLanguage()
         {
 
-            lanSelect++;
+            
             if (lanSelect % 2 == 0)
             {
                 //Update lanuage block on the screen
@@ -651,12 +651,31 @@ namespace Synergy_Solutions_App
         private void gameSerial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //give time to allow all data to come into the computer
-            Thread.Sleep(10);
+            Thread.Sleep(2);
 
 
             String testing1 = "connected to: ";
             testing1 += gameSerial.ReadExisting().ToString();
             SetText(testing1);
+
+
+            var distanceSens=0;
+            var r =0;
+            var g=0;
+            var b=0;
+
+            if (r > g && r > b) {
+                lanSelect = 2;
+            }
+            if (r > b && g > b) {
+                lanSelect = 3;
+            }
+            if (numInstructions >= 5 && distanceSens < 30)
+            {
+                startGameViaSerial();
+                numInstructions--;
+            }
+
         }
 
         delegate void SetTextCallback(string text);
@@ -764,6 +783,7 @@ namespace Synergy_Solutions_App
             //the L key is the equlivant to swapping betweeen a red(for english) and yellow(for spanish block) before the game starts
             if (e.KeyChar == (Char)Keys.L)
             {
+                lanSelect++;
                 changeLanguage();
             }
             //Equlivant to any input being recieved during the game's operation
@@ -821,6 +841,20 @@ namespace Synergy_Solutions_App
 
                 loadingScreen.Visible = false;
 
+            }
+        }
+
+        private void gameStart_Tick(object sender, EventArgs e)
+        {
+            if (gameSerial.IsOpen)
+            {
+
+                writeRequest("d", 0);
+                writeRequest("c", 0);
+
+            }
+            else {
+                gameStart.Stop();
             }
         }
     }
